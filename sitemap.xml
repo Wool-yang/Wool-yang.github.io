@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://woolym.com/2020/10/20/633.html</loc>
+    <loc>https://woolym.com/2020/10/25/635.html</loc>
     
     <lastmod>2020-10-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://woolym.com/2020/10/25/635.html</loc>
+    <loc>https://woolym.com/2020/10/20/633.html</loc>
     
     <lastmod>2020-10-25</lastmod>
     
@@ -375,14 +375,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/tags/basic-algorithm/</loc>
+    <loc>https://woolym.com/tags/linux-unix/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/tags/linux-unix/</loc>
+    <loc>https://woolym.com/tags/basic-algorithm/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -454,14 +454,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/algorithm/basic-algorithm/</loc>
+    <loc>https://woolym.com/categories/linux-unix/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/linux-unix/</loc>
+    <loc>https://woolym.com/categories/algorithm/basic-algorithm/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -475,14 +475,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/algorithm/number-theory/</loc>
+    <loc>https://woolym.com/categories/me/life/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/me/life/</loc>
+    <loc>https://woolym.com/categories/algorithm/number-theory/</loc>
     <lastmod>2020-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
