@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>01分数规划 与 最优比例生成树</title>
-    <url>/2020/01/14/429.html</url>
-    <content><![CDATA[<p>寒假更新</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>图论</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>图论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Bellman-Ford算法</title>
     <url>/2020/02/06/514.html</url>
     <content><![CDATA[<p>Bellman-Ford算法的浅要理解</p>
@@ -61,20 +47,17 @@
       </tags>
   </entry>
   <entry>
-    <title>c语言中的方括号</title>
-    <url>/2019/12/27/263.html</url>
-    <content><![CDATA[<p>方括号的实际意义</p>
-<a id="more"></a>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">3</span>][<span class="number">3</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; *(*((a+<span class="number">1</span>)+<span class="number">1</span>)) &lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt; *(a+<span class="number">1</span>)[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出： 7 7<br>a[n] 等价于 *(a+1)<br>(a+n)[x] 等价于 *((a+n)+x)<br>*(a+n)[x] 等价于 *(*((a+n)+x))<br>emm，有趣。(优先级得记好)</p>
+    <title>01分数规划 与 最优比例生成树</title>
+    <url>/2020/01/14/429.html</url>
+    <content><![CDATA[<p>寒假更新</p>
 ]]></content>
       <categories>
-        <category>语法</category>
-        <category>c/c++</category>
+        <category>算法</category>
+        <category>图论</category>
       </categories>
       <tags>
-        <tag>语法</tag>
-        <tag>c/c++</tag>
+        <tag>算法</tag>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -136,6 +119,23 @@
       </tags>
   </entry>
   <entry>
+    <title>c语言中的方括号</title>
+    <url>/2019/12/27/263.html</url>
+    <content><![CDATA[<p>方括号的实际意义</p>
+<a id="more"></a>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">3</span>][<span class="number">3</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; *(*((a+<span class="number">1</span>)+<span class="number">1</span>)) &lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt; *(a+<span class="number">1</span>)[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出： 7 7<br>a[n] 等价于 *(a+1)<br>(a+n)[x] 等价于 *((a+n)+x)<br>*(a+n)[x] 等价于 *(*((a+n)+x))<br>emm，有趣。(优先级得记好)</p>
+]]></content>
+      <categories>
+        <category>语法</category>
+        <category>c/c++</category>
+      </categories>
+      <tags>
+        <tag>语法</tag>
+        <tag>c/c++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Dijkstra算法</title>
     <url>/2020/02/05/512.html</url>
     <content><![CDATA[<p>Dijkstra算法的浅要理解</p>
@@ -152,23 +152,6 @@
       <tags>
         <tag>算法</tag>
         <tag>图论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JOJO</title>
-    <url>/2020/01/16/436.html</url>
-    <content><![CDATA[<blockquote>
-<p>人类的赞歌是勇气的赞歌，人类的伟大是勇气的伟大</p>
-</blockquote>
-<p>你的下一句话是 「 寒假摸鱼真爽 」</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-        <category>Anime</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>Anime</tag>
       </tags>
   </entry>
   <entry>
@@ -214,11 +197,12 @@
       </tags>
   </entry>
   <entry>
-    <title>The Real Folk Blues</title>
-    <url>/1998/10/23/313.html</url>
-    <content><![CDATA[<p>COWBOY BEBOP</p>
-<a id="more"></a>
-<p>菅野洋子 x 渡边信一郎<br>归于平淡亦或者做出了结<br>每个人都有自己的Folk Blues.<br>SEE YOU COWBOY COWGIRL<br>  SOMEDAY,SOMEWHERE !</p>
+    <title>JOJO</title>
+    <url>/2020/01/16/436.html</url>
+    <content><![CDATA[<blockquote>
+<p>人类的赞歌是勇气的赞歌，人类的伟大是勇气的伟大</p>
+</blockquote>
+<p>你的下一句话是 「 寒假摸鱼真爽 」</p>
 ]]></content>
       <categories>
         <category>随笔</category>
@@ -252,31 +236,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Trie字典树</title>
-    <url>/2020/01/06/398.html</url>
-    <content><![CDATA[<p>Trie树的实现方法与性质</p>
-<a id="more"></a>
-<p>Trie树 （字典树）可以高效统计、排序、保存大量字符串</p>
-<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> idx = <span class="number">0</span>, cnt[N], son[N][<span class="number">26</span>]; </span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> str[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span> str[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = str[i] - <span class="string">&#x27;a&#x27;</span>;     <span class="comment">//本例所有字符串为小写字母串</span></span><br><span class="line">        <span class="keyword">if</span> (!son[p][u])</span><br><span class="line">            son[p][u] = ++idx;</span><br><span class="line">        p = son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">    cnt[p]++;                      <span class="comment">//cnt记录该串出现的次数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">char</span> str[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = str[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!son[p][u])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="number">0</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        p = son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; cnt[p] &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;m);</span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">char</span> a[<span class="number">2</span>];</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%s%s&quot;</span>, a, str);</span><br><span class="line">        <span class="keyword">if</span> (a[<span class="number">0</span>] == <span class="string">&#x27;I&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            insert(str);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            query(str);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="性质："><a href="#性质：" class="headerlink" title="性质："></a>性质：</h2><ul>
-<li>  根节点没有字符，除根节点外的所有节点只保存一个字符</li>
-<li>  从根节点到某一节点，路径上的所有字符连接起来为该节点所对应的字符串</li>
-<li>  每个节点的所有子节点的字符各不相同</li>
-</ul>
-<h2 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h2><h3 id="最大异或对"><a href="#最大异或对" class="headerlink" title="最大异或对"></a>最大异或对</h3><p>n个数中任意两个数进行异或操作，求所有异或对中最大的异或对</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>, M = <span class="number">31</span> * N;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[N], son[M][<span class="number">2</span>], idx = <span class="number">0</span>, n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">30</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = x &gt;&gt; i &amp; <span class="number">1</span>;      <span class="comment">//常用位运算操作，查询一个二进制数的第k位（右至左）</span></span><br><span class="line">        <span class="keyword">if</span> (!son[p][u])</span><br><span class="line">            son[p][u] = ++idx;</span><br><span class="line">        p = son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">30</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = x &gt;&gt; i &amp; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (son[p][!u])</span><br><span class="line">        &#123;</span><br><span class="line">            p = son[p][!u];    </span><br><span class="line">            res = res * <span class="number">2</span> + !u;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            p = son[p][u];</span><br><span class="line">            res = res * <span class="number">2</span> + u;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        insert(a[i]);           <span class="comment">//只需要边查询边插入，每次遍历只需要查询第i个之前的数字</span></span><br><span class="line">        res = max(res, query(a[i]) ^ a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>暴力需要进行两重循环，我们优化第二重循环 用Trie树储存数字，每次查询时遵循从高位开始尽量选择与当前第i个数字对应位置不同的数字（异或异1同0），循环31次即可确定出一个与当前第i个数字异或的最大的数字，然后与之前的答案进行max操作</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WP Setting Up</title>
     <url>/2019/12/22/57.html</url>
     <content><![CDATA[<p>LAMP+WordPress</p>
@@ -304,6 +263,47 @@
       </categories>
       <tags>
         <tag>Linux/Unix</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Trie字典树</title>
+    <url>/2020/01/06/398.html</url>
+    <content><![CDATA[<p>Trie树的实现方法与性质</p>
+<a id="more"></a>
+<p>Trie树 （字典树）可以高效统计、排序、保存大量字符串</p>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> idx = <span class="number">0</span>, cnt[N], son[N][<span class="number">26</span>]; </span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> str[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span> str[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = str[i] - <span class="string">&#x27;a&#x27;</span>;     <span class="comment">//本例所有字符串为小写字母串</span></span><br><span class="line">        <span class="keyword">if</span> (!son[p][u])</span><br><span class="line">            son[p][u] = ++idx;</span><br><span class="line">        p = son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">    cnt[p]++;                      <span class="comment">//cnt记录该串出现的次数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">char</span> str[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; str[i]; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = str[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!son[p][u])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="number">0</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        p = son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; cnt[p] &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;m);</span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">char</span> a[<span class="number">2</span>];</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%s%s&quot;</span>, a, str);</span><br><span class="line">        <span class="keyword">if</span> (a[<span class="number">0</span>] == <span class="string">&#x27;I&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            insert(str);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            query(str);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="性质："><a href="#性质：" class="headerlink" title="性质："></a>性质：</h2><ul>
+<li>  根节点没有字符，除根节点外的所有节点只保存一个字符</li>
+<li>  从根节点到某一节点，路径上的所有字符连接起来为该节点所对应的字符串</li>
+<li>  每个节点的所有子节点的字符各不相同</li>
+</ul>
+<h2 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h2><h3 id="最大异或对"><a href="#最大异或对" class="headerlink" title="最大异或对"></a>最大异或对</h3><p>n个数中任意两个数进行异或操作，求所有异或对中最大的异或对</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>, M = <span class="number">31</span> * N;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[N], son[M][<span class="number">2</span>], idx = <span class="number">0</span>, n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">30</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = x &gt;&gt; i &amp; <span class="number">1</span>;      <span class="comment">//常用位运算操作，查询一个二进制数的第k位（右至左）</span></span><br><span class="line">        <span class="keyword">if</span> (!son[p][u])</span><br><span class="line">            son[p][u] = ++idx;</span><br><span class="line">        p = son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">30</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = x &gt;&gt; i &amp; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (son[p][!u])</span><br><span class="line">        &#123;</span><br><span class="line">            p = son[p][!u];    </span><br><span class="line">            res = res * <span class="number">2</span> + !u;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            p = son[p][u];</span><br><span class="line">            res = res * <span class="number">2</span> + u;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        insert(a[i]);           <span class="comment">//只需要边查询边插入，每次遍历只需要查询第i个之前的数字</span></span><br><span class="line">        res = max(res, query(a[i]) ^ a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>暴力需要进行两重循环，我们优化第二重循环 用Trie树储存数字，每次查询时遵循从高位开始尽量选择与当前第i个数字对应位置不同的数字（异或异1同0），循环31次即可确定出一个与当前第i个数字异或的最大的数字，然后与之前的答案进行max操作</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>The Real Folk Blues</title>
+    <url>/1998/10/23/313.html</url>
+    <content><![CDATA[<p>COWBOY BEBOP</p>
+<a id="more"></a>
+<p>菅野洋子 x 渡边信一郎<br>归于平淡亦或者做出了结<br>每个人都有自己的Folk Blues.<br>SEE YOU COWBOY COWGIRL<br>  SOMEDAY,SOMEWHERE !</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+        <category>Anime</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>Anime</tag>
       </tags>
   </entry>
   <entry>
@@ -469,6 +469,25 @@
       </tags>
   </entry>
   <entry>
+    <title>单链表</title>
+    <url>/2019/12/30/297.html</url>
+    <content><![CDATA[<p>数组实现单链表</p>
+<a id="more"></a>
+<p>e[N]储存每个节点的value，ne[N]储存每个节点的next指针 变量head储存头节点，idx储存当前使用到的地址</p>
+<h2 id="初始化操作"><a href="#初始化操作" class="headerlink" title="初始化操作"></a>初始化操作</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    head = <span class="number">-1</span>;</span><br><span class="line">    idx = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="在头节点后增加一个节点"><a href="#在头节点后增加一个节点" class="headerlink" title="在头节点后增加一个节点"></a>在头节点后增加一个节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">headadd</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    ne[idx] = head;</span><br><span class="line">    head = idx++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="在地址为k的节点后增加一个节点"><a href="#在地址为k的节点后增加一个节点" class="headerlink" title="在地址为k的节点后增加一个节点"></a>在地址为k的节点后增加一个节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    ne[idx] = ne[k];</span><br><span class="line">    ne[k] = idx++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="删除地址为k的节点"><a href="#删除地址为k的节点" class="headerlink" title="删除地址为k的节点"></a>删除地址为k的节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ne[k] = ne[ne[k]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>博客由 LAMP + WordPress 配置转移至 Github 与 Coding 托管方式双线部署</title>
     <url>/2020/10/25/635.html</url>
     <content><![CDATA[<p>博客配置方式 与 域名 变化，随之也有想法的改变</p>
@@ -491,15 +510,15 @@
       </tags>
   </entry>
   <entry>
-    <title>单链表</title>
-    <url>/2019/12/30/297.html</url>
-    <content><![CDATA[<p>数组实现单链表</p>
+    <title>双链表</title>
+    <url>/2019/12/30/299.html</url>
+    <content><![CDATA[<p>数组实现双链表</p>
 <a id="more"></a>
-<p>e[N]储存每个节点的value，ne[N]储存每个节点的next指针 变量head储存头节点，idx储存当前使用到的地址</p>
-<h2 id="初始化操作"><a href="#初始化操作" class="headerlink" title="初始化操作"></a>初始化操作</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    head = <span class="number">-1</span>;</span><br><span class="line">    idx = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="在头节点后增加一个节点"><a href="#在头节点后增加一个节点" class="headerlink" title="在头节点后增加一个节点"></a>在头节点后增加一个节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">headadd</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    ne[idx] = head;</span><br><span class="line">    head = idx++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="在地址为k的节点后增加一个节点"><a href="#在地址为k的节点后增加一个节点" class="headerlink" title="在地址为k的节点后增加一个节点"></a>在地址为k的节点后增加一个节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    ne[idx] = ne[k];</span><br><span class="line">    ne[k] = idx++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="删除地址为k的节点"><a href="#删除地址为k的节点" class="headerlink" title="删除地址为k的节点"></a>删除地址为k的节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ne[k] = ne[ne[k]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<p>e[N]储存每个节点的value l[N]储存每个节点的左指针 r[N]储存每个节点的右指针 idx保存已使用到的地址</p>
+<h2 id="初始化操作"><a href="#初始化操作" class="headerlink" title="初始化操作"></a>初始化操作</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    r[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    l[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    idx = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在这里将双链表的头节点地址表示为0，尾节点地址表示为1，0与1使用所以这里的idx初始化为2</span></span><br></pre></td></tr></table></figure>
+<h2 id="在地址为k的节点右边（后边）增加一个节点"><a href="#在地址为k的节点右边（后边）增加一个节点" class="headerlink" title="在地址为k的节点右边（后边）增加一个节点"></a>在地址为k的节点右边（后边）增加一个节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    l[idx] = k;</span><br><span class="line">    r[idx] = r[k];</span><br><span class="line">    l[r[k]] = idx;</span><br><span class="line">    r[k] = idx;</span><br><span class="line">    e[idx++] = x;</span><br><span class="line">&#125;<span class="comment">//在这里r[k]的更新一定要在 l[r[k]]更新后</span></span><br></pre></td></tr></table></figure>
+<p>（代码实现往右增加，同样可以实现往左，但往左边增加相当于往左边节点的右边增加节点）</p>
+<h2 id="删除地址为k的节点"><a href="#删除地址为k的节点" class="headerlink" title="删除地址为k的节点"></a>删除地址为k的节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    r[l[k]] = r[k];</span><br><span class="line">    l[r[k]] = l[k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>算法</category>
         <category>数据结构</category>
@@ -534,25 +553,6 @@
       </tags>
   </entry>
   <entry>
-    <title>双链表</title>
-    <url>/2019/12/30/299.html</url>
-    <content><![CDATA[<p>数组实现双链表</p>
-<a id="more"></a>
-<p>e[N]储存每个节点的value l[N]储存每个节点的左指针 r[N]储存每个节点的右指针 idx保存已使用到的地址</p>
-<h2 id="初始化操作"><a href="#初始化操作" class="headerlink" title="初始化操作"></a>初始化操作</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    r[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    l[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    idx = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在这里将双链表的头节点地址表示为0，尾节点地址表示为1，0与1使用所以这里的idx初始化为2</span></span><br></pre></td></tr></table></figure>
-<h2 id="在地址为k的节点右边（后边）增加一个节点"><a href="#在地址为k的节点右边（后边）增加一个节点" class="headerlink" title="在地址为k的节点右边（后边）增加一个节点"></a>在地址为k的节点右边（后边）增加一个节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    l[idx] = k;</span><br><span class="line">    r[idx] = r[k];</span><br><span class="line">    l[r[k]] = idx;</span><br><span class="line">    r[k] = idx;</span><br><span class="line">    e[idx++] = x;</span><br><span class="line">&#125;<span class="comment">//在这里r[k]的更新一定要在 l[r[k]]更新后</span></span><br></pre></td></tr></table></figure>
-<p>（代码实现往右增加，同样可以实现往左，但往左边增加相当于往左边节点的右边增加节点）</p>
-<h2 id="删除地址为k的节点"><a href="#删除地址为k的节点" class="headerlink" title="删除地址为k的节点"></a>删除地址为k的节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    r[l[k]] = r[k];</span><br><span class="line">    l[r[k]] = l[k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>哈哈</title>
     <url>/2020/05/22/625.html</url>
     <content><![CDATA[<p>好臭 是什么腐烂了？</p>
@@ -583,38 +583,6 @@
       <tags>
         <tag>算法</tag>
         <tag>数论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>哈希表</title>
-    <url>/2020/01/17/446.html</url>
-    <content><![CDATA[<p>数字哈希 与 字符串前缀哈希法</p>
-<a id="more"></a>
-<p>哈希表主要作用为将一个较大的空间映射到一个较小的空间</p>
-<h2 id="一、数字哈希"><a href="#一、数字哈希" class="headerlink" title="一、数字哈希"></a>一、数字哈希</h2><p>将一些值域区间大的数字映射到一个较小的区间，一般将每个数字进行取模运算，模一般为一个离2的整次幂较远的一个质数(这样取可以减少冲突)，例:0—1e9 映射到 0—1e5，我们可以模1e5+3这个数字，（但是数组就得开得大于这个数字了） 有两种避免冲突的方法，分别为 拉链法 与 开放寻址法</p>
-<h3 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h3><p>运用了邻接表的思想，将每次取模操作的结果作为相应的数组地址，将原数字储存于该数组地址的链表上，每次查找时则遍历取模操作结果的数组地址上的链表，来检查是否存在该数字</p>
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="查找操作"><a href="#查找操作" class="headerlink" title="查找操作"></a>查找操作</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = (x % p + N) % N;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (e[i] == x)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> t = (x % p + N) % N; <span class="comment">//p为模</span></span><br><span class="line">e[++idx] = x;</span><br><span class="line">ne[idx] = h[t];</span><br><span class="line">h[t] = idx;</span><br></pre></td></tr></table></figure>
-<h3 id="开放寻址法"><a href="#开放寻址法" class="headerlink" title="开放寻址法"></a>开放寻址法</h3><p>一般将数组开为映射后区间大小的两倍，模的选择方法同拉链法，一般取小于映射区间的一个最大的质数，开放寻址法具体思路核心是首先将数组元素初始化为一个不存在于源区间值域的数字，(例如0x3f3f3f3f)，检查一个数x的取模操作的结果对应的数组地址上储存的元素如果同时满足不等于初始化元素并且不等于x，则继续检查下一个地址，如果检查到映射区间的最大地址时返回到第一个地址，直到不满足上述条件，则返回当前地址，如果x存在于哈希表，则该地址为x的地址，如果x不存在，则当前地址为x应当储存的地址</p>
-<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="查找操作-1"><a href="#查找操作-1" class="headerlink" title="查找操作"></a>查找操作</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = (x % p + N) % N; <span class="comment">//p为模</span></span><br><span class="line">    <span class="keyword">while</span> (a[t] != null &amp;&amp; a[t] != x)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (t == N)</span><br><span class="line">            t = <span class="number">0</span>;</span><br><span class="line">        t++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>插入操作</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">k = find(x);</span><br><span class="line">a[k] = x;</span><br></pre></td></tr></table></figure>
-<h2 id="二、字符串前缀哈希法"><a href="#二、字符串前缀哈希法" class="headerlink" title="二、字符串前缀哈希法"></a>二、字符串前缀哈希法</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>通过将字符串看作一个p进制的数字，求出字符串的值对一个数字q取模得到的值作为前缀哈希数组的值，来求出整个前缀哈希数组的方式 注：</p>
-<ul>
-<li>  假设人品足够好不产生冲突的情况</li>
-<li>  p一般取131或者13331，q取2^64，这样一般不会出现冲突，并且使用 unsigned long long 定义前缀数组则可通过溢出的方式免去取模的步骤</li>
-</ul>
-<p>我们通过上述方法也可求出一个字符串任意子段的哈希值，公式为</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">a[r] - a[l - <span class="number">1</span>] * p ^ (r - l + <span class="number">1</span>) <span class="comment">// 自己理解</span></span><br></pre></td></tr></table></figure>
-<h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="建立字符串前缀哈希数组"><a href="#建立字符串前缀哈希数组" class="headerlink" title="建立字符串前缀哈希数组"></a>建立字符串前缀哈希数组</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">p[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">&#123; </span><br><span class="line">    p[i] = p[i - <span class="number">1</span>] * P;          <span class="comment">// 简化求子段哈希</span></span><br><span class="line">    a[i] = a[i - <span class="number">1</span>] * P + str[i]; <span class="comment">// a为前缀数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="求子段哈希"><a href="#求子段哈希" class="headerlink" title="求子段哈希"></a>求子段哈希</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">a[r] - a[l - <span class="number">1</span>] * p[r - l + <span class="number">1</span>];</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -658,6 +626,38 @@
       <tags>
         <tag>随笔</tag>
         <tag>Life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈希表</title>
+    <url>/2020/01/17/446.html</url>
+    <content><![CDATA[<p>数字哈希 与 字符串前缀哈希法</p>
+<a id="more"></a>
+<p>哈希表主要作用为将一个较大的空间映射到一个较小的空间</p>
+<h2 id="一、数字哈希"><a href="#一、数字哈希" class="headerlink" title="一、数字哈希"></a>一、数字哈希</h2><p>将一些值域区间大的数字映射到一个较小的区间，一般将每个数字进行取模运算，模一般为一个离2的整次幂较远的一个质数(这样取可以减少冲突)，例:0—1e9 映射到 0—1e5，我们可以模1e5+3这个数字，（但是数组就得开得大于这个数字了） 有两种避免冲突的方法，分别为 拉链法 与 开放寻址法</p>
+<h3 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h3><p>运用了邻接表的思想，将每次取模操作的结果作为相应的数组地址，将原数字储存于该数组地址的链表上，每次查找时则遍历取模操作结果的数组地址上的链表，来检查是否存在该数字</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="查找操作"><a href="#查找操作" class="headerlink" title="查找操作"></a>查找操作</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = (x % p + N) % N;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (e[i] == x)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> t = (x % p + N) % N; <span class="comment">//p为模</span></span><br><span class="line">e[++idx] = x;</span><br><span class="line">ne[idx] = h[t];</span><br><span class="line">h[t] = idx;</span><br></pre></td></tr></table></figure>
+<h3 id="开放寻址法"><a href="#开放寻址法" class="headerlink" title="开放寻址法"></a>开放寻址法</h3><p>一般将数组开为映射后区间大小的两倍，模的选择方法同拉链法，一般取小于映射区间的一个最大的质数，开放寻址法具体思路核心是首先将数组元素初始化为一个不存在于源区间值域的数字，(例如0x3f3f3f3f)，检查一个数x的取模操作的结果对应的数组地址上储存的元素如果同时满足不等于初始化元素并且不等于x，则继续检查下一个地址，如果检查到映射区间的最大地址时返回到第一个地址，直到不满足上述条件，则返回当前地址，如果x存在于哈希表，则该地址为x的地址，如果x不存在，则当前地址为x应当储存的地址</p>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="查找操作-1"><a href="#查找操作-1" class="headerlink" title="查找操作"></a>查找操作</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = (x % p + N) % N; <span class="comment">//p为模</span></span><br><span class="line">    <span class="keyword">while</span> (a[t] != null &amp;&amp; a[t] != x)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (t == N)</span><br><span class="line">            t = <span class="number">0</span>;</span><br><span class="line">        t++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>插入操作</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">k = find(x);</span><br><span class="line">a[k] = x;</span><br></pre></td></tr></table></figure>
+<h2 id="二、字符串前缀哈希法"><a href="#二、字符串前缀哈希法" class="headerlink" title="二、字符串前缀哈希法"></a>二、字符串前缀哈希法</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>通过将字符串看作一个p进制的数字，求出字符串的值对一个数字q取模得到的值作为前缀哈希数组的值，来求出整个前缀哈希数组的方式 注：</p>
+<ul>
+<li>  假设人品足够好不产生冲突的情况</li>
+<li>  p一般取131或者13331，q取2^64，这样一般不会出现冲突，并且使用 unsigned long long 定义前缀数组则可通过溢出的方式免去取模的步骤</li>
+</ul>
+<p>我们通过上述方法也可求出一个字符串任意子段的哈希值，公式为</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">a[r] - a[l - <span class="number">1</span>] * p ^ (r - l + <span class="number">1</span>) <span class="comment">// 自己理解</span></span><br></pre></td></tr></table></figure>
+<h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="建立字符串前缀哈希数组"><a href="#建立字符串前缀哈希数组" class="headerlink" title="建立字符串前缀哈希数组"></a>建立字符串前缀哈希数组</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">p[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">&#123; </span><br><span class="line">    p[i] = p[i - <span class="number">1</span>] * P;          <span class="comment">// 简化求子段哈希</span></span><br><span class="line">    a[i] = a[i - <span class="number">1</span>] * P + str[i]; <span class="comment">// a为前缀数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="求子段哈希"><a href="#求子段哈希" class="headerlink" title="求子段哈希"></a>求子段哈希</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">a[r] - a[l - <span class="number">1</span>] * p[r - l + <span class="number">1</span>];</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -737,30 +737,6 @@
       </tags>
   </entry>
   <entry>
-    <title>最小生成树</title>
-    <url>/2020/02/10/425.html</url>
-    <content><![CDATA[<ul>
-<li>  Prim求最小生成树</li>
-<li>  Kruskal求最小生成树<a id="more"></a>
-<h2 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h2></li>
-</ul>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>算法流程类似于Dijkstra，Prim是建立一个集合st[N]，将所有点（起点初始化为0）到该集合距离 dist 初始化为0x3f3f3f3f n个点，一共遍历n次，每次寻找不在集合中距离集合最近的点（起点任意找），将其放入集合中，并用其更新其余所有点到集合的距离</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">prim</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="keyword">if</span> (!st[j] &amp;&amp; (t == <span class="number">-1</span>  dist[t] &gt; dist[j]))</span><br><span class="line">                t = j;</span><br><span class="line">        <span class="keyword">if</span> (dist[t] == <span class="number">0x3f3f3f3f</span>) <span class="comment">//如果距离集合最近的点与集合不连通，则不存在最小生成树</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        res += dist[t]; <span class="comment">//这里记录的是最小生成树的边权之和</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            dist[j] = min(dist[j], g[t][j]);</span><br><span class="line">        st[t] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><ol>
-<li> 将所有边按照权重从小到大排序（快排）</li>
-<li> 枚举每一条边，并检查边的起点与终点是否连通，如果不连通，则将这条边加入集合中（并查集）</li>
-</ol>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    p[i] = i;</span><br><span class="line">sort(edge, edge + m);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> a = edge[i].a, b = edge[i].b, w = edge[i].w;</span><br><span class="line">    a = find(a), b = find(b);</span><br><span class="line">    <span class="keyword">if</span> (a == b)</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        p[a] = b;</span><br><span class="line">        cnt++;</span><br><span class="line">        res += w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (cnt == n - <span class="number">1</span>) <span class="comment">//cnt记录边数, n 个点对应n - 1条边</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;impossible&quot;</span>);</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>图论</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>图论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>最短路问题</title>
     <url>/2020/02/06/420.html</url>
     <content><![CDATA[<ul>
@@ -787,6 +763,30 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>算法</category>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最小生成树</title>
+    <url>/2020/02/10/425.html</url>
+    <content><![CDATA[<ul>
+<li>  Prim求最小生成树</li>
+<li>  Kruskal求最小生成树<a id="more"></a>
+<h2 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h2></li>
+</ul>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>算法流程类似于Dijkstra，Prim是建立一个集合st[N]，将所有点（起点初始化为0）到该集合距离 dist 初始化为0x3f3f3f3f n个点，一共遍历n次，每次寻找不在集合中距离集合最近的点（起点任意找），将其放入集合中，并用其更新其余所有点到集合的距离</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">prim</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="keyword">if</span> (!st[j] &amp;&amp; (t == <span class="number">-1</span>  dist[t] &gt; dist[j]))</span><br><span class="line">                t = j;</span><br><span class="line">        <span class="keyword">if</span> (dist[t] == <span class="number">0x3f3f3f3f</span>) <span class="comment">//如果距离集合最近的点与集合不连通，则不存在最小生成树</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        res += dist[t]; <span class="comment">//这里记录的是最小生成树的边权之和</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            dist[j] = min(dist[j], g[t][j]);</span><br><span class="line">        st[t] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><ol>
+<li> 将所有边按照权重从小到大排序（快排）</li>
+<li> 枚举每一条边，并检查边的起点与终点是否连通，如果不连通，则将这条边加入集合中（并查集）</li>
+</ol>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    p[i] = i;</span><br><span class="line">sort(edge, edge + m);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> a = edge[i].a, b = edge[i].b, w = edge[i].w;</span><br><span class="line">    a = find(a), b = find(b);</span><br><span class="line">    <span class="keyword">if</span> (a == b)</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        p[a] = b;</span><br><span class="line">        cnt++;</span><br><span class="line">        res += w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (cnt == n - <span class="number">1</span>) <span class="comment">//cnt记录边数, n 个点对应n - 1条边</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;impossible&quot;</span>);</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>算法</category>
         <category>图论</category>
@@ -912,20 +912,6 @@
       </tags>
   </entry>
   <entry>
-    <title>线段树</title>
-    <url>/2020/01/11/418.html</url>
-    <content><![CDATA[<p>寒假更新</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>线索二叉树的理解与实现</title>
     <url>/2020/10/20/633.html</url>
     <content><![CDATA[<p>利用二叉树二叉链结构中的空链域，储存某种遍历次序下每个带空链域的节点的前驱（后继）节点的指针，称其为线索.</p>
@@ -970,6 +956,20 @@
       </tags>
   </entry>
   <entry>
+    <title>线段树</title>
+    <url>/2020/01/11/418.html</url>
+    <content><![CDATA[<p>寒假更新</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>高精度</title>
     <url>/2019/12/23/110.html</url>
     <content><![CDATA[<p>高精度算法 四则运算模板</p>
@@ -988,6 +988,11 @@
       </tags>
   </entry>
   <entry>
+    <title>分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>关于我</title>
     <url>/about/index.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1003,11 +1008,6 @@
 <li>Blizzard: Wool#5502</li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>标签</title>
