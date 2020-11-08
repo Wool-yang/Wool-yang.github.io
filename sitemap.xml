@@ -375,13 +375,6 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/tags/data-structure/</loc>
-    <lastmod>2020-11-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://woolym.com/tags/me/</loc>
     <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
@@ -390,6 +383,13 @@
   
   <url>
     <loc>https://woolym.com/tags/anime/</loc>
+    <lastmod>2020-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://woolym.com/tags/data-structure/</loc>
     <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -440,13 +440,6 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/algorithm/graph-theory/</loc>
-    <lastmod>2020-11-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://woolym.com/categories/grammar/</loc>
     <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
@@ -454,7 +447,7 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/algorithm/data-structure/</loc>
+    <loc>https://woolym.com/categories/algorithm/graph-theory/</loc>
     <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -468,14 +461,21 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/linux-unix/</loc>
+    <loc>https://woolym.com/categories/grammar/c-c/</loc>
     <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/grammar/c-c/</loc>
+    <loc>https://woolym.com/categories/algorithm/data-structure/</loc>
+    <lastmod>2020-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://woolym.com/categories/linux-unix/</loc>
     <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
