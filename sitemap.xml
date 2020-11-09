@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://woolym.com/2020/11/09/647.html</loc>
+    
+    <lastmod>2020-11-09</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://woolym.com/2020/11/08/645.html</loc>
     
     <lastmod>2020-11-08</lastmod>
@@ -454,13 +461,6 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/grammar/c-c/</loc>
-    <lastmod>2020-11-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://woolym.com/categories/me/</loc>
     <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
@@ -469,6 +469,13 @@
   
   <url>
     <loc>https://woolym.com/categories/algorithm/data-structure/</loc>
+    <lastmod>2020-11-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://woolym.com/categories/grammar/c-c/</loc>
     <lastmod>2020-11-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
