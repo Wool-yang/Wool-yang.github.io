@@ -188,6 +188,28 @@
       </tags>
   </entry>
   <entry>
+    <title>SPFA算法</title>
+    <url>/2020/02/06/521.html</url>
+    <content><![CDATA[<p>SPFA算法的浅要理解</p>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>对Bellman-Ford进行优化，松弛操作的产生是因为</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">dist[b] = min(dist[b], dist[a] + w);</span><br></pre></td></tr></table></figure>
+<p>dist[a] 在之前的松弛操作中发生了改变，导致 dist[b] 在该次松弛中也需要改变 所以可以使用队列的方式将因松弛发生改变的点放入队头 每次将队头弹出并将与之相连的点进行松弛操作，松弛成功后更新队头 直到队列为空 注：需要一个st[N]数组来记录哪些点已经在队列中，防止重复</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    q.push(<span class="number">1</span>);</span><br><span class="line">    st[<span class="number">1</span>] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">while</span> (q.size())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        st[t] = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            <span class="keyword">if</span> (dist[j] &gt; dist[t] + w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j] = dist[t] + w[i];</span><br><span class="line">                <span class="keyword">if</span> (!st[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    q.push(j);</span><br><span class="line">                    st[j] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (dist[n] == <span class="number">0x3f3f3f3f</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> dist[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="增："><a href="#增：" class="headerlink" title="增："></a>增：</h2><p>SPFA判负环只需要添加一个 cnt[N] 数组，每次进行松弛操作时增加如下操作</p>
+<p>cnt[j] = cnt[t] + 1; //cnt[j]代表从第1个点到第j个点经过了多少个点</p>
+<p>当然一开始的队头需要将所有点都放入，因为负环可能不在1点开始的路径上 如果 cnt[j] &gt;= n 时，由于共n个点，抽屉原理可知存在负环</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        st[i] = <span class="literal">true</span>;</span><br><span class="line">        q.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (q.size())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        st[t] = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            <span class="keyword">if</span> (dist[j] &gt; dist[t] + w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j] = dist[t] + w[i];</span><br><span class="line">                cnt[j] = cnt[t] + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (cnt[j] &gt;= n)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span> (!st[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    q.push(j);</span><br><span class="line">                    st[j] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>KMP字符串</title>
     <url>/2020/01/02/338.html</url>
     <content><![CDATA[<p>KMP字符串问题的思想</p>
@@ -211,28 +233,6 @@
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SPFA算法</title>
-    <url>/2020/02/06/521.html</url>
-    <content><![CDATA[<p>SPFA算法的浅要理解</p>
-<a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>对Bellman-Ford进行优化，松弛操作的产生是因为</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">dist[b] = min(dist[b], dist[a] + w);</span><br></pre></td></tr></table></figure>
-<p>dist[a] 在之前的松弛操作中发生了改变，导致 dist[b] 在该次松弛中也需要改变 所以可以使用队列的方式将因松弛发生改变的点放入队头 每次将队头弹出并将与之相连的点进行松弛操作，松弛成功后更新队头 直到队列为空 注：需要一个st[N]数组来记录哪些点已经在队列中，防止重复</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    q.push(<span class="number">1</span>);</span><br><span class="line">    st[<span class="number">1</span>] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">while</span> (q.size())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        st[t] = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            <span class="keyword">if</span> (dist[j] &gt; dist[t] + w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j] = dist[t] + w[i];</span><br><span class="line">                <span class="keyword">if</span> (!st[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    q.push(j);</span><br><span class="line">                    st[j] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (dist[n] == <span class="number">0x3f3f3f3f</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> dist[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="增："><a href="#增：" class="headerlink" title="增："></a>增：</h2><p>SPFA判负环只需要添加一个 cnt[N] 数组，每次进行松弛操作时增加如下操作</p>
-<p>cnt[j] = cnt[t] + 1; //cnt[j]代表从第1个点到第j个点经过了多少个点</p>
-<p>当然一开始的队头需要将所有点都放入，因为负环可能不在1点开始的路径上 如果 cnt[j] &gt;= n 时，由于共n个点，抽屉原理可知存在负环</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        st[i] = <span class="literal">true</span>;</span><br><span class="line">        q.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (q.size())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        st[t] = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            <span class="keyword">if</span> (dist[j] &gt; dist[t] + w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j] = dist[t] + w[i];</span><br><span class="line">                cnt[j] = cnt[t] + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (cnt[j] &gt;= n)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span> (!st[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    q.push(j);</span><br><span class="line">                    st[j] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>图论</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -307,6 +307,36 @@
       </tags>
   </entry>
   <entry>
+    <title>位运算</title>
+    <url>/2019/12/26/255.html</url>
+    <content><![CDATA[<p>位运算操作符介绍，源码、反码、补码相关，位运算常用操作</p>
+<a id="more"></a>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>&amp; 按位与：同1则1 其余0 </p>
+<p>| 按位或：有1则1 都0则0 </p>
+<p>^ 按位异或：同0 异1 </p>
+<p>~ 按位取反：0变1 1变0 （符号位不变） </p>
+<p>&lt;&lt; 左移：左移n位 = * 2^n</p>
+<p>&gt;&gt; 带符号右移 右移n位 = / 2^n （带符号右移 正数右移后高位补0 负数右移后高位补1）</p>
+<p>&gt;&gt;&gt; 无符号右移 右移n位 （无符号右移 正负数高位均补0）</p>
+<h2 id="源码、反码、补码"><a href="#源码、反码、补码" class="headerlink" title="源码、反码、补码"></a>源码、反码、补码</h2><p>计算储存整型数时 最高位0代表正数 1代表负数 int 型可以储存 [-2^32,2^32-1] （c语言规定10000000000000000000000000000000为-2147483648的补码） 源码：二进制数 反码：二进制数各位取反 补码：二进制数各位取反后加1 注：在计算机底层没有减法操作，因此计算机用补码的方式储存负数 例：设x二进制数为 00000000000000000000000000000001 ~x为 11111111111111111111111111111110 又 -x = 0 - x 0的二进制数为 00000000000000000000000000000000 假设可以加一高位1 100000000000000000000000000000000 - x = ~x + 1 （超出范围的高位舍去）</p>
+<h2 id="常用的几个操作"><a href="#常用的几个操作" class="headerlink" title="常用的几个操作"></a>常用的几个操作</h2><p>1.求n的二进制数最后一位</p>
+<p>n &amp; 1</p>
+<p>2.求n的二进制数第k位是多少</p>
+<p>n &gt;&gt; k &amp; 1<br>/* n的第k位指从右往左由0开始计位 */</p>
+<p>3.lowbit (x) 操作 返回x的最后一位1 （100100 则返回 100）</p>
+<p>x &amp; -x<br>/* x &amp; (~x + 1) */</p>
+<p>假设 x 为 1010…10000 ~x = 0101…01111 ~x + 1 = 0101…10000 x &amp; ~x+1 后 为 0000…10000</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>基础算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>二分</title>
     <url>/2019/12/23/112.html</url>
     <content><![CDATA[<p>二分整型与浮点模板</p>
@@ -346,36 +376,6 @@
       <tags>
         <tag>算法</tag>
         <tag>图论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>位运算</title>
-    <url>/2019/12/26/255.html</url>
-    <content><![CDATA[<p>位运算操作符介绍，源码、反码、补码相关，位运算常用操作</p>
-<a id="more"></a>
-<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>&amp; 按位与：同1则1 其余0 </p>
-<p>| 按位或：有1则1 都0则0 </p>
-<p>^ 按位异或：同0 异1 </p>
-<p>~ 按位取反：0变1 1变0 （符号位不变） </p>
-<p>&lt;&lt; 左移：左移n位 = * 2^n</p>
-<p>&gt;&gt; 带符号右移 右移n位 = / 2^n （带符号右移 正数右移后高位补0 负数右移后高位补1）</p>
-<p>&gt;&gt;&gt; 无符号右移 右移n位 （无符号右移 正负数高位均补0）</p>
-<h2 id="源码、反码、补码"><a href="#源码、反码、补码" class="headerlink" title="源码、反码、补码"></a>源码、反码、补码</h2><p>计算储存整型数时 最高位0代表正数 1代表负数 int 型可以储存 [-2^32,2^32-1] （c语言规定10000000000000000000000000000000为-2147483648的补码） 源码：二进制数 反码：二进制数各位取反 补码：二进制数各位取反后加1 注：在计算机底层没有减法操作，因此计算机用补码的方式储存负数 例：设x二进制数为 00000000000000000000000000000001 ~x为 11111111111111111111111111111110 又 -x = 0 - x 0的二进制数为 00000000000000000000000000000000 假设可以加一高位1 100000000000000000000000000000000 - x = ~x + 1 （超出范围的高位舍去）</p>
-<h2 id="常用的几个操作"><a href="#常用的几个操作" class="headerlink" title="常用的几个操作"></a>常用的几个操作</h2><p>1.求n的二进制数最后一位</p>
-<p>n &amp; 1</p>
-<p>2.求n的二进制数第k位是多少</p>
-<p>n &gt;&gt; k &amp; 1<br>/* n的第k位指从右往左由0开始计位 */</p>
-<p>3.lowbit (x) 操作 返回x的最后一位1 （100100 则返回 100）</p>
-<p>x &amp; -x<br>/* x &amp; (~x + 1) */</p>
-<p>假设 x 为 1010…10000 ~x = 0101…01111 ~x + 1 = 0101…10000 x &amp; ~x+1 后 为 0000…10000</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>基础算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>基础算法</tag>
       </tags>
   </entry>
   <entry>
@@ -488,28 +488,6 @@
       </tags>
   </entry>
   <entry>
-    <title>博客由 LAMP + WordPress 配置转移至 Github 与 Coding 托管方式双线部署</title>
-    <url>/2020/10/25/635.html</url>
-    <content><![CDATA[<p>博客配置方式 与 域名 变化，随之也有想法的改变</p>
-<a id="more"></a>
-
-<h2 id="博客配置方式-与-域名-变化"><a href="#博客配置方式-与-域名-变化" class="headerlink" title="博客配置方式 与 域名 变化"></a>博客配置方式 与 域名 变化</h2><p>大一嫖到一个华为云的服务器，一时兴起配置了一个基于 LAMP + WordPress 的个人博客，有后端的个人博客可以实现许多功能，但是还是有些许麻烦</p>
-<p>正好域名和服务器快到期了，就转移成了托管在 Github 和 Coding 的方式，原因是 Github 国内访问速度实在不堪，所以将境内外线路分别解析到 Coding 和 Github 的页面上，使用 hexo 平台可以很方便地将 markdown文件 渲染成静态网页</p>
-<p>旧域名: <a href="https://www.wool.pub/">https://www.wool.pub</a> (大概还有俩月时间吧，不更新了)</p>
-<p>新域名: <a href="https://www.woolym.com/">https://www.woolym.com</a> (里面所有文章都是由WordPress转移过来的，格式在细节上也许有问题…）</p>
-<p>2020年，自己浪费了很多时间，博客也鸽了很久，准备重新捡起来，先写写数据结构课上的代码实现和理解吧</p>
-<p>这是最近写的一篇 <a href="https://www.woolym.com/2020/10/20/633.html">线索二叉树的理解与实现</a></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-        <category>状态更新</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>状态更新</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>双指针算法</title>
     <url>/2019/12/24/157.html</url>
     <content><![CDATA[<p>双指针算法的思路</p>
@@ -531,6 +509,28 @@
       <tags>
         <tag>算法</tag>
         <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客由 LAMP + WordPress 配置转移至 Github 与 Coding 托管方式双线部署</title>
+    <url>/2020/10/25/635.html</url>
+    <content><![CDATA[<p>博客配置方式 与 域名 变化，随之也有想法的改变</p>
+<a id="more"></a>
+
+<h2 id="博客配置方式-与-域名-变化"><a href="#博客配置方式-与-域名-变化" class="headerlink" title="博客配置方式 与 域名 变化"></a>博客配置方式 与 域名 变化</h2><p>大一嫖到一个华为云的服务器，一时兴起配置了一个基于 LAMP + WordPress 的个人博客，有后端的个人博客可以实现许多功能，但是还是有些许麻烦</p>
+<p>正好域名和服务器快到期了，就转移成了托管在 Github 和 Coding 的方式，原因是 Github 国内访问速度实在不堪，所以将境内外线路分别解析到 Coding 和 Github 的页面上，使用 hexo 平台可以很方便地将 markdown文件 渲染成静态网页</p>
+<p>旧域名: <a href="https://www.wool.pub/">https://www.wool.pub</a> (大概还有俩月时间吧，不更新了)</p>
+<p>新域名: <a href="https://www.woolym.com/">https://www.woolym.com</a> (里面所有文章都是由WordPress转移过来的，格式在细节上也许有问题…）</p>
+<p>2020年，自己浪费了很多时间，博客也鸽了很久，准备重新捡起来，先写写数据结构课上的代码实现和理解吧</p>
+<p>这是最近写的一篇 <a href="https://www.woolym.com/2020/10/20/633.html">线索二叉树的理解与实现</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+        <category>状态更新</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>状态更新</tag>
       </tags>
   </entry>
   <entry>
@@ -3360,7 +3360,7 @@
 
 <p><strong>数据结构课代码实现 之 最小生成树</strong></p>
 <h2 id="简要理解"><a href="#简要理解" class="headerlink" title="简要理解"></a>简要理解</h2><p>求图的最小生成树的两种算法：Prim（适用于稠密图） 与 Kruskal （适用于稀疏图）</p>
-<h3 id="Prim算法："><a href="#Prim算法：" class="headerlink" title="Prim算法："></a>Prim算法：</h3><p>维护一个 点集合 和 一个 边集合 用来保存最小生成树，点集合初始只有一个存在于该图的点，边集合初始为空集</p>
+<h3 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h3><p>维护一个 点集合 和 一个 边集合 用来保存最小生成树，点集合初始只有一个存在于该图的点，边集合初始为空集</p>
 <p>每次更新操作都是寻找一条边 (u, v)，将该边并入边集合中，将点 v 并入点集合中</p>
 <p>点 u 为当前点集合中的一个点，点 v 为不在点集合中的一个点</p>
 <p>边 (u, v) 满足条件为不在边集合中并且代价最小</p>
@@ -3584,6 +3584,23 @@
       </tags>
   </entry>
   <entry>
+    <title>有向图的拓扑排序</title>
+    <url>/2020/01/30/502.html</url>
+    <content><![CDATA[<p>拓扑排序的简要理解</p>
+<a id="more"></a>
+<h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><p>拓扑排序只存在于有向无环图，排序后的序列满足对于图中任意一条边的起点在序列中一定在终点前（拓扑排序的序列不唯一）</p>
+<h2 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h2><p>BFS的方法实现，纪录每一个点的入度（作为几条边的终点），首先将入度为0的点入队（入度为0意味着该点之前的点已经被排入序列），然后开始BFS的过程，重复队头出队，将队头相连的点的入度减一，并检查更新后的入度是否为0，如果为0则将其扩展至队头的过程 (数组实现队列的话，数组则保存了拓扑序列，如果使用queue则需要使用另外的数组保存序列)</p>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> h[N], e[N], ne[N], idx, d[N], q[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">topo</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (d[i] == <span class="number">0</span>)</span><br><span class="line">            q[++tt] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (hh &lt;= tt)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = q[hh++];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            d[j]--;</span><br><span class="line">            <span class="keyword">if</span> (d[j] == <span class="number">0</span>)</span><br><span class="line">                q[++tt] = j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tt == n - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(h, <span class="number">-1</span>, <span class="keyword">sizeof</span> h);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x, y;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        e[++idx] = y;</span><br><span class="line">        ne[idx] = h[x];</span><br><span class="line">        h[x] = idx;</span><br><span class="line">        d[y]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (topo())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, q[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>最短路问题</title>
     <url>/2020/02/06/420.html</url>
     <content><![CDATA[<ul>
@@ -3620,20 +3637,27 @@
       </tags>
   </entry>
   <entry>
-    <title>有向图的拓扑排序</title>
-    <url>/2020/01/30/502.html</url>
-    <content><![CDATA[<p>拓扑排序的简要理解</p>
+    <title>模拟栈 与 单调栈</title>
+    <url>/2020/01/02/320.html</url>
+    <content><![CDATA[<p>使用数组实现栈与单调栈的功能</p>
 <a id="more"></a>
-<h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><p>拓扑排序只存在于有向无环图，排序后的序列满足对于图中任意一条边的起点在序列中一定在终点前（拓扑排序的序列不唯一）</p>
-<h2 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h2><p>BFS的方法实现，纪录每一个点的入度（作为几条边的终点），首先将入度为0的点入队（入度为0意味着该点之前的点已经被排入序列），然后开始BFS的过程，重复队头出队，将队头相连的点的入度减一，并检查更新后的入度是否为0，如果为0则将其扩展至队头的过程 (数组实现队列的话，数组则保存了拓扑序列，如果使用queue则需要使用另外的数组保存序列)</p>
-<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> h[N], e[N], ne[N], idx, d[N], q[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">topo</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (d[i] == <span class="number">0</span>)</span><br><span class="line">            q[++tt] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (hh &lt;= tt)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = q[hh++];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            d[j]--;</span><br><span class="line">            <span class="keyword">if</span> (d[j] == <span class="number">0</span>)</span><br><span class="line">                q[++tt] = j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tt == n - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(h, <span class="number">-1</span>, <span class="keyword">sizeof</span> h);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x, y;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        e[++idx] = y;</span><br><span class="line">        ne[idx] = h[x];</span><br><span class="line">        h[x] = idx;</span><br><span class="line">        d[y]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (topo())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, q[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<p>st[N]作为栈数组，tt作为栈顶指针 (初始为0)</p>
+<h2 id="一、模拟栈"><a href="#一、模拟栈" class="headerlink" title="一、模拟栈"></a>一、模拟栈</h2><h3 id="向栈顶插入一个元素（push）"><a href="#向栈顶插入一个元素（push）" class="headerlink" title="向栈顶插入一个元素（push）"></a>向栈顶插入一个元素（push）</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">st[++tt] = x;</span><br></pre></td></tr></table></figure>
+<h3 id="弹出栈顶元素（pop）"><a href="#弹出栈顶元素（pop）" class="headerlink" title="弹出栈顶元素（pop）"></a>弹出栈顶元素（pop）</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">tt--;</span><br></pre></td></tr></table></figure>
+<h3 id="查询栈是否为空（empty）"><a href="#查询栈是否为空（empty）" class="headerlink" title="查询栈是否为空（empty）"></a>查询栈是否为空（empty）</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!tt)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;YES&quot;</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;NO&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="返回栈的大小（size）"><a href="#返回栈的大小（size）" class="headerlink" title="返回栈的大小（size）"></a>返回栈的大小（size）</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; tt;</span><br></pre></td></tr></table></figure>
+<h3 id="返回栈顶元素（top）"><a href="#返回栈顶元素（top）" class="headerlink" title="返回栈顶元素（top）"></a>返回栈顶元素（top）</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; st[tt];</span><br></pre></td></tr></table></figure>
+<h2 id="二、单调栈"><a href="#二、单调栈" class="headerlink" title="二、单调栈"></a>二、单调栈</h2><p>给定一个长度为N的整数数列，输出每个数左边第一个比它小的数，如果不存在则输出-1。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> st[N], tt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">        <span class="keyword">while</span> (tt &amp;&amp; st[tt] &gt;= x)</span><br><span class="line">            tt--;</span><br><span class="line">        <span class="keyword">if</span> (tt)</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; st[tt];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span>;</span><br><span class="line">        st[++tt] = x;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h3><p>按序检查每一个数，如果当前栈顶元素大于等于当前数则弹出当前栈顶元素并且继续检查新的栈顶元素，直到栈顶元素小于当前数或者栈中无元素 ，检查栈的大小不为零后输出栈顶元素，并且把当前数入栈 (最后栈中元素严格单调递增)</p>
+]]></content>
       <categories>
         <category>算法</category>
-        <category>图论</category>
+        <category>数据结构</category>
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>图论</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -3668,6 +3692,27 @@
       </tags>
   </entry>
   <entry>
+    <title>离散化</title>
+    <url>/2019/12/27/268.html</url>
+    <content><![CDATA[<p>关于离散化算法的理解</p>
+<a id="more"></a>
+<p>给定一个值域(1e9)很大，个数不多(1e5)的数列 如何以这些值为下标来实现某些算法呢？<br>可以将这些数排序后映射到从0或1开始的自然数 称为 <strong><em>离散化</em></strong><br>实现离散化有两个关键步骤： </p>
+<ol>
+<li>这些数字中有重复需要 去重 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">sort(a.begin(), a.end());</span><br><span class="line"></span><br><span class="line">a.erase(unique(a.begin(), a.end()), a.end());</span><br></pre></td></tr></table></figure>
+这里unique实现的操作是将a容器中的重复元素放置于容器的后面，并且返回去重后容器的尾端点<br>代码实现unique（没有实现放置重复元素于后的功能）（双指针）：<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::<span class="function">iterator <span class="title">unique</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!i  a[i] != a[i - <span class="number">1</span>])</span><br><span class="line">            a[j++] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a.begin() + j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>如何快速求出这些数字离散化后映射的数字  （使用二分）<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = a.size() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (a[mid] &gt;= x)</span><br><span class="line">            r = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            l = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;<span class="comment">//映射到从0开始的自然数</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>基础算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>欧拉筛法（线性筛）</title>
     <url>/2020/01/05/387.html</url>
     <content><![CDATA[<p>求n以内质数，只用最小质因子筛掉n以内的所有合数</p>
@@ -3690,86 +3735,9 @@
       </tags>
   </entry>
   <entry>
-    <title>模拟栈 与 单调栈</title>
-    <url>/2020/01/02/320.html</url>
-    <content><![CDATA[<p>使用数组实现栈与单调栈的功能</p>
-<a id="more"></a>
-<p>st[N]作为栈数组，tt作为栈顶指针 (初始为0)</p>
-<h2 id="一、模拟栈"><a href="#一、模拟栈" class="headerlink" title="一、模拟栈"></a>一、模拟栈</h2><h3 id="向栈顶插入一个元素（push）"><a href="#向栈顶插入一个元素（push）" class="headerlink" title="向栈顶插入一个元素（push）"></a>向栈顶插入一个元素（push）</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">st[++tt] = x;</span><br></pre></td></tr></table></figure>
-<h3 id="弹出栈顶元素（pop）"><a href="#弹出栈顶元素（pop）" class="headerlink" title="弹出栈顶元素（pop）"></a>弹出栈顶元素（pop）</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">tt--;</span><br></pre></td></tr></table></figure>
-<h3 id="查询栈是否为空（empty）"><a href="#查询栈是否为空（empty）" class="headerlink" title="查询栈是否为空（empty）"></a>查询栈是否为空（empty）</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!tt)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;YES&quot;</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;NO&quot;</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="返回栈的大小（size）"><a href="#返回栈的大小（size）" class="headerlink" title="返回栈的大小（size）"></a>返回栈的大小（size）</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; tt;</span><br></pre></td></tr></table></figure>
-<h3 id="返回栈顶元素（top）"><a href="#返回栈顶元素（top）" class="headerlink" title="返回栈顶元素（top）"></a>返回栈顶元素（top）</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; st[tt];</span><br></pre></td></tr></table></figure>
-<h2 id="二、单调栈"><a href="#二、单调栈" class="headerlink" title="二、单调栈"></a>二、单调栈</h2><p>给定一个长度为N的整数数列，输出每个数左边第一个比它小的数，如果不存在则输出-1。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> st[N], tt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">        <span class="keyword">while</span> (tt &amp;&amp; st[tt] &gt;= x)</span><br><span class="line">            tt--;</span><br><span class="line">        <span class="keyword">if</span> (tt)</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; st[tt];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span>;</span><br><span class="line">        st[++tt] = x;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h3><p>按序检查每一个数，如果当前栈顶元素大于等于当前数则弹出当前栈顶元素并且继续检查新的栈顶元素，直到栈顶元素小于当前数或者栈中无元素 ，检查栈的大小不为零后输出栈顶元素，并且把当前数入栈 (最后栈中元素严格单调递增)</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>线段树</title>
     <url>/2020/01/11/418.html</url>
     <content><![CDATA[<p>寒假更新</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>离散化</title>
-    <url>/2019/12/27/268.html</url>
-    <content><![CDATA[<p>关于离散化算法的理解</p>
-<a id="more"></a>
-<p>给定一个值域(1e9)很大，个数不多(1e5)的数列 如何以这些值为下标来实现某些算法呢？<br>可以将这些数排序后映射到从0或1开始的自然数 称为 <strong><em>离散化</em></strong><br>实现离散化有两个关键步骤： </p>
-<ol>
-<li>这些数字中有重复需要 去重 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">sort(a.begin(), a.end());</span><br><span class="line"></span><br><span class="line">a.erase(unique(a.begin(), a.end()), a.end());</span><br></pre></td></tr></table></figure>
-这里unique实现的操作是将a容器中的重复元素放置于容器的后面，并且返回去重后容器的尾端点<br>代码实现unique（没有实现放置重复元素于后的功能）（双指针）：<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::<span class="function">iterator <span class="title">unique</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!i  a[i] != a[i - <span class="number">1</span>])</span><br><span class="line">            a[j++] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a.begin() + j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>如何快速求出这些数字离散化后映射的数字  （使用二分）<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = a.size() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (a[mid] &gt;= x)</span><br><span class="line">            r = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            l = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;<span class="comment">//映射到从0开始的自然数</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>基础算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>基础算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>邻接表 与 邻接矩阵</title>
-    <url>/2020/11/02/641.html</url>
-    <content><![CDATA[<p>邻接表 —— 稀疏图使用的图的储存结构</p>
-<p>邻接矩阵 —— 稠密图使用的图的储存结构</p>
-<a id="more"></a>
-
-<p><strong>数据结构课代码实现 之 邻接表 与 邻接矩阵</strong></p>
-<h2 id="简要理解"><a href="#简要理解" class="headerlink" title="简要理解"></a>简要理解</h2><p>邻接表 —— 链式储存结构 对图中每个顶点建立一个单链表来表示依附于该节点的边</p>
-<p>邻接矩阵 —— 使用两个数组分别储存数据元素 (顶点) 的信息 和 数据元素之间的关系 (边或弧) 的信息</p>
-<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> adjvex;                    <span class="comment">// 该弧指向的顶点的位置</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">nextarc</span>;</span>       <span class="comment">// 指向下一条弧的指针</span></span><br><span class="line">    <span class="comment">//InfoType *info;                 该弧相关信息的指针</span></span><br><span class="line">&#125;ArcNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">VNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;                      <span class="comment">// 顶点信息</span></span><br><span class="line">    ArcNode *firstarc;             <span class="comment">// 指向第一条依附该顶点的弧的指针</span></span><br><span class="line">&#125;VNode, AdjList[MAX_VERTEX_NUM];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    AdjList vertices;              </span><br><span class="line">    <span class="keyword">int</span> vexnum, arcnum;            <span class="comment">// 图的当前 顶点数 和 弧数</span></span><br><span class="line">    <span class="keyword">int</span> kind;                      <span class="comment">// 图的种类标志</span></span><br><span class="line">&#125;ALGraph;</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建邻接表"><a href="#创建邻接表" class="headerlink" title="创建邻接表"></a>创建邻接表</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateGraph</span><span class="params">(ALGraph &amp;G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;输入图的点数 与 弧数：&quot;</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; G.vexnum &gt;&gt; G.arcnum;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;输入第 &quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot; 号节点的data&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; G.vertices[i].data;</span><br><span class="line">        G.vertices[i].firstarc = (ArcNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ArcNode));</span><br><span class="line">        ArcNode* temp = G.vertices[i].firstarc;</span><br><span class="line">        <span class="keyword">char</span> x;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;输入第 &quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot; 号节点的邻接点，空格分开，#结束&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">        <span class="keyword">if</span>(x != <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">            temp-&gt;adjvex = x - <span class="number">48</span>;</span><br><span class="line">        <span class="keyword">while</span>(x != <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            temp-&gt;nextarc = (ArcNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ArcNode));</span><br><span class="line">            temp = temp-&gt;nextarc;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">            <span class="keyword">if</span>(x != <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">                temp-&gt;adjvex = x - <span class="number">48</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        temp-&gt;nextarc = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><h4 id="结构-1"><a href="#结构-1" class="headerlink" title="结构"></a>结构</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span>&#123;</span>DG, DN, UDG, UDN&#125; GraphKind;          <span class="comment">// &#123;有向图，有向网，无向图，无向网&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ArcCell</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> adj;                                       <span class="comment">// 有权图 表顶点之间的权值 </span></span><br><span class="line">    											   <span class="comment">// 无权图用 0 或 1 表是否相邻</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 可储存一些与弧相关的信息</span></span><br><span class="line">&#125;ArcCell, AdjMatrix[MAX_VERTEX_NUM][MAX_VERTEX_NUM];  </span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> vexs[MAX_VERTEX_NUM];                      <span class="comment">// 顶点向量        </span></span><br><span class="line">    AdjMatrix arcs;                                <span class="comment">// 邻接矩阵</span></span><br><span class="line">    <span class="keyword">int</span> vexnum, arcnum;                            <span class="comment">// 图的 顶点数 和 弧数</span></span><br><span class="line">    GraphKind kind;                                <span class="comment">// 图的种类</span></span><br><span class="line">&#125;MGraph;</span><br></pre></td></tr></table></figure>
-
-<h4 id="LocateVex操作"><a href="#LocateVex操作" class="headerlink" title="LocateVex操作"></a>LocateVex操作</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LocateVex</span><span class="params">(MGraph g, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; g.vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(g.vexs[i] == x)           <span class="comment">// 输入顶点向量值 求 顶点坐标</span></span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建矩阵"><a href="#创建矩阵" class="headerlink" title="创建矩阵"></a>创建矩阵</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CreateUDN</span><span class="params">(MGraph &amp;G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;输入图的点数 与 弧数：&quot;</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; G.vexnum &gt;&gt; G.arcnum;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;依次输入图的各点的 值：&quot;</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; G.vexs[i];</span><br><span class="line">	&#125; 	</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; G.vexnum; j++)</span><br><span class="line">            G.arcs[i][j].adj = INFINITY;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; G.arcnum; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v1, v2, w;</span><br><span class="line">        <span class="keyword">int</span> i, j;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;依次输入每条弧的 起点 与 终点(输入点的值 不是坐标) 与 权值：&quot;</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v1 &gt;&gt; v2 &gt;&gt; w;</span><br><span class="line">        i = LocateVex(G, v1);</span><br><span class="line">        j = LocateVex(G, v2);</span><br><span class="line">        G.arcs[i][j].adj = w;</span><br><span class="line">        G.arcs[j][i] = G.arcs[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CreateGraph</span><span class="params">(MGraph &amp;G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> a;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;输入图的类型：&quot;</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">    <span class="keyword">if</span>(a == <span class="string">&quot;DG&quot;</span>) G.kind = DG;</span><br><span class="line">    <span class="keyword">if</span>(a == <span class="string">&quot;DN&quot;</span>) G.kind = DN;</span><br><span class="line">    <span class="keyword">if</span>(a == <span class="string">&quot;UDG&quot;</span>) G.kind = UDG;</span><br><span class="line">    <span class="keyword">if</span>(a == <span class="string">&quot;UDN&quot;</span>) G.kind = UDN;</span><br><span class="line">    <span class="keyword">switch</span>(G.kind)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> DG: <span class="keyword">return</span> CreateDG(G);</span><br><span class="line">        <span class="keyword">case</span> DN: <span class="keyword">return</span> CreateDN(G);</span><br><span class="line">        <span class="keyword">case</span> UDN: <span class="keyword">return</span> CreateUDN(G);</span><br><span class="line">        <span class="keyword">case</span> UDG: <span class="keyword">return</span> CreateUDG(G);</span><br><span class="line">        <span class="keyword">default</span> : <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>无向图的 弧 相当于是有向图 给相应起点与终点间 建立两个方向的 弧</p>
-<p>有向图 有向网 无向图就不写了，图的种类 决定了 创图时是否正反建边 或者 是否存在权值</p>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -3826,6 +3794,38 @@
       </tags>
   </entry>
   <entry>
+    <title>邻接表 与 邻接矩阵</title>
+    <url>/2020/11/02/641.html</url>
+    <content><![CDATA[<p>邻接表 —— 稀疏图使用的图的储存结构</p>
+<p>邻接矩阵 —— 稠密图使用的图的储存结构</p>
+<a id="more"></a>
+
+<p><strong>数据结构课代码实现 之 邻接表 与 邻接矩阵</strong></p>
+<h2 id="简要理解"><a href="#简要理解" class="headerlink" title="简要理解"></a>简要理解</h2><p>邻接表 —— 链式储存结构 对图中每个顶点建立一个单链表来表示依附于该节点的边</p>
+<p>邻接矩阵 —— 使用两个数组分别储存数据元素 (顶点) 的信息 和 数据元素之间的关系 (边或弧) 的信息</p>
+<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> adjvex;                    <span class="comment">// 该弧指向的顶点的位置</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span> *<span class="title">nextarc</span>;</span>       <span class="comment">// 指向下一条弧的指针</span></span><br><span class="line">    <span class="comment">//InfoType *info;                 该弧相关信息的指针</span></span><br><span class="line">&#125;ArcNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">VNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;                      <span class="comment">// 顶点信息</span></span><br><span class="line">    ArcNode *firstarc;             <span class="comment">// 指向第一条依附该顶点的弧的指针</span></span><br><span class="line">&#125;VNode, AdjList[MAX_VERTEX_NUM];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    AdjList vertices;              </span><br><span class="line">    <span class="keyword">int</span> vexnum, arcnum;            <span class="comment">// 图的当前 顶点数 和 弧数</span></span><br><span class="line">    <span class="keyword">int</span> kind;                      <span class="comment">// 图的种类标志</span></span><br><span class="line">&#125;ALGraph;</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建邻接表"><a href="#创建邻接表" class="headerlink" title="创建邻接表"></a>创建邻接表</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateGraph</span><span class="params">(ALGraph &amp;G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;输入图的点数 与 弧数：&quot;</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; G.vexnum &gt;&gt; G.arcnum;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;输入第 &quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot; 号节点的data&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; G.vertices[i].data;</span><br><span class="line">        G.vertices[i].firstarc = (ArcNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ArcNode));</span><br><span class="line">        ArcNode* temp = G.vertices[i].firstarc;</span><br><span class="line">        <span class="keyword">char</span> x;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;输入第 &quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot; 号节点的邻接点，空格分开，#结束&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">        <span class="keyword">if</span>(x != <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">            temp-&gt;adjvex = x - <span class="number">48</span>;</span><br><span class="line">        <span class="keyword">while</span>(x != <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            temp-&gt;nextarc = (ArcNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ArcNode));</span><br><span class="line">            temp = temp-&gt;nextarc;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">            <span class="keyword">if</span>(x != <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">                temp-&gt;adjvex = x - <span class="number">48</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        temp-&gt;nextarc = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><h4 id="结构-1"><a href="#结构-1" class="headerlink" title="结构"></a>结构</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span>&#123;</span>DG, DN, UDG, UDN&#125; GraphKind;          <span class="comment">// &#123;有向图，有向网，无向图，无向网&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ArcCell</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> adj;                                       <span class="comment">// 有权图 表顶点之间的权值 </span></span><br><span class="line">    											   <span class="comment">// 无权图用 0 或 1 表是否相邻</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 可储存一些与弧相关的信息</span></span><br><span class="line">&#125;ArcCell, AdjMatrix[MAX_VERTEX_NUM][MAX_VERTEX_NUM];  </span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> vexs[MAX_VERTEX_NUM];                      <span class="comment">// 顶点向量        </span></span><br><span class="line">    AdjMatrix arcs;                                <span class="comment">// 邻接矩阵</span></span><br><span class="line">    <span class="keyword">int</span> vexnum, arcnum;                            <span class="comment">// 图的 顶点数 和 弧数</span></span><br><span class="line">    GraphKind kind;                                <span class="comment">// 图的种类</span></span><br><span class="line">&#125;MGraph;</span><br></pre></td></tr></table></figure>
+
+<h4 id="LocateVex操作"><a href="#LocateVex操作" class="headerlink" title="LocateVex操作"></a>LocateVex操作</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LocateVex</span><span class="params">(MGraph g, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; g.vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(g.vexs[i] == x)           <span class="comment">// 输入顶点向量值 求 顶点坐标</span></span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建矩阵"><a href="#创建矩阵" class="headerlink" title="创建矩阵"></a>创建矩阵</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CreateUDN</span><span class="params">(MGraph &amp;G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;输入图的点数 与 弧数：&quot;</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; G.vexnum &gt;&gt; G.arcnum;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;依次输入图的各点的 值：&quot;</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; G.vexs[i];</span><br><span class="line">	&#125; 	</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; G.vexnum; j++)</span><br><span class="line">            G.arcs[i][j].adj = INFINITY;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; G.arcnum; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v1, v2, w;</span><br><span class="line">        <span class="keyword">int</span> i, j;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;依次输入每条弧的 起点 与 终点(输入点的值 不是坐标) 与 权值：&quot;</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v1 &gt;&gt; v2 &gt;&gt; w;</span><br><span class="line">        i = LocateVex(G, v1);</span><br><span class="line">        j = LocateVex(G, v2);</span><br><span class="line">        G.arcs[i][j].adj = w;</span><br><span class="line">        G.arcs[j][i] = G.arcs[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CreateGraph</span><span class="params">(MGraph &amp;G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> a;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;输入图的类型：&quot;</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">    <span class="keyword">if</span>(a == <span class="string">&quot;DG&quot;</span>) G.kind = DG;</span><br><span class="line">    <span class="keyword">if</span>(a == <span class="string">&quot;DN&quot;</span>) G.kind = DN;</span><br><span class="line">    <span class="keyword">if</span>(a == <span class="string">&quot;UDG&quot;</span>) G.kind = UDG;</span><br><span class="line">    <span class="keyword">if</span>(a == <span class="string">&quot;UDN&quot;</span>) G.kind = UDN;</span><br><span class="line">    <span class="keyword">switch</span>(G.kind)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> DG: <span class="keyword">return</span> CreateDG(G);</span><br><span class="line">        <span class="keyword">case</span> DN: <span class="keyword">return</span> CreateDN(G);</span><br><span class="line">        <span class="keyword">case</span> UDN: <span class="keyword">return</span> CreateUDN(G);</span><br><span class="line">        <span class="keyword">case</span> UDG: <span class="keyword">return</span> CreateUDG(G);</span><br><span class="line">        <span class="keyword">default</span> : <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>无向图的 弧 相当于是有向图 给相应起点与终点间 建立两个方向的 弧</p>
+<p>有向图 有向网 无向图就不写了，图的种类 决定了 创图时是否正反建边 或者 是否存在权值</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>高精度</title>
     <url>/2019/12/23/110.html</url>
     <content><![CDATA[<p>高精度算法 四则运算模板</p>
@@ -3844,6 +3844,11 @@
       </tags>
   </entry>
   <entry>
+    <title>分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>关于我</title>
     <url>/about/index.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -3859,11 +3864,6 @@
 <li>Blizzard: Wool#5502</li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>标签</title>
