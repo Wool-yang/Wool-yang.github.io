@@ -22,21 +22,19 @@
     var CONFIG = {"hostname":"woolym.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
   </script>
 
-  <meta name="description" content="迷茫，懒惰，轻易放手的我习以为常 昨夜的你曾在枕旁 于我耳边呢喃着你那肆意的向往 今晨的我踏上了寻找的征途 在这尘埃一隅，记录沿途星芒">
+  <meta name="description" content="庸人自扰">
 <meta property="og:type" content="article">
-<meta property="og:title" content="往昔的你有所盼望，如今的我仍在梦想">
-<meta property="og:url" content="https://woolym.com/2001/09/02/54.html">
+<meta property="og:title" content="图的拓扑排序与关键路径">
+<meta property="og:url" content="https://woolym.com/2020/11/13/ckhg80x1j002h2cvbfplh12fz.html">
 <meta property="og:site_name" content="Wool&#39;s Blog">
-<meta property="og:description" content="迷茫，懒惰，轻易放手的我习以为常 昨夜的你曾在枕旁 于我耳边呢喃着你那肆意的向往 今晨的我踏上了寻找的征途 在这尘埃一隅，记录沿途星芒">
+<meta property="og:description" content="庸人自扰">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2001-09-02T04:21:18.000Z">
-<meta property="article:modified_time" content="2020-10-23T11:30:34.387Z">
+<meta property="article:published_time" content="2020-11-13T12:06:08.000Z">
+<meta property="article:modified_time" content="2020-11-13T12:06:08.285Z">
 <meta property="article:author" content="Wool">
-<meta property="article:tag" content="随笔">
-<meta property="article:tag" content="Life">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://woolym.com/2001/09/02/54.html">
+<link rel="canonical" href="https://woolym.com/2020/11/13/ckhg80x1j002h2cvbfplh12fz.html">
 
 
 <script id="page-configurations">
@@ -49,7 +47,7 @@
   };
 </script>
 
-  <title>往昔的你有所盼望，如今的我仍在梦想 | Wool's Blog</title>
+  <title>图的拓扑排序与关键路径 | Wool's Blog</title>
   
 
 
@@ -207,7 +205,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://woolym.com/2001/09/02/54.html">
+    <link itemprop="mainEntityOfPage" href="https://woolym.com/2020/11/13/ckhg80x1j002h2cvbfplh12fz.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://s.gravatar.com/avatar/6344b695ce01a4459d438750972af51f?s=80">
@@ -220,7 +218,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          往昔的你有所盼望，如今的我仍在梦想
+          图的拓扑排序与关键路径
         </h1>
 
         <div class="post-meta">
@@ -230,31 +228,11 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2001-09-02 12:21:18" itemprop="dateCreated datePublished" datetime="2001-09-02T12:21:18+08:00">2001-09-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-23 19:30:34" itemprop="dateModified" datetime="2020-10-23T19:30:34+08:00">2020-10-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/me/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/me/life/" itemprop="url" rel="index"><span itemprop="name">Life</span></a>
-                </span>
+              <time title="创建时间：2020-11-13 20:06:08" itemprop="dateCreated datePublished" datetime="2020-11-13T20:06:08+08:00">2020-11-13</time>
             </span>
 
           
-            <span id="/2001/09/02/54.html" class="post-meta-item leancloud_visitors" data-flag-title="往昔的你有所盼望，如今的我仍在梦想" title="阅读次数">
+            <span id="/2020/11/13/ckhg80x1j002h2cvbfplh12fz.html" class="post-meta-item leancloud_visitors" data-flag-title="图的拓扑排序与关键路径" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -269,8 +247,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2001/09/02/54.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2001/09/02/54.html" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/11/13/ckhg80x1j002h2cvbfplh12fz.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/13/ckhg80x1j002h2cvbfplh12fz.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -280,7 +258,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>63 字</span>
+              <span>0 字</span>
             </span>
 
         </div>
@@ -292,12 +270,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>迷茫，懒惰，轻易放手的我习以为常</p>
-<p>昨夜的你曾在枕旁</p>
-<p>于我耳边呢喃着你那肆意的向往</p>
-<p>今晨的我踏上了寻找的征途</p>
-<p>在这尘埃一隅，记录沿途星芒</p>
-
+        
     </div>
 
     
@@ -320,10 +293,6 @@
 
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/me/" rel="tag"># 随笔</a>
-              <a href="/tags/life/" rel="tag"># Life</a>
-          </div>
 
         
 
@@ -331,13 +300,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/1998/10/23/313.html" rel="prev" title="The Real Folk Blues">
-      <i class="fa fa-chevron-left"></i> The Real Folk Blues
+    <a href="/2020/11/10/651.html" rel="prev" title="图的最短路问题">
+      <i class="fa fa-chevron-left"></i> 图的最短路问题
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2019/12/22/57.html" rel="next" title="WP Setting Up">
-      WP Setting Up <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
