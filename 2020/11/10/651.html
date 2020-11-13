@@ -30,7 +30,7 @@
 <meta property="og:description" content="若网络中的每条边都有一个数值（长度、成本、时间等），则找出两节点之间总权和最小的路径就是最短路问题">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-10T05:49:29.000Z">
-<meta property="article:modified_time" content="2020-11-13T05:13:56.715Z">
+<meta property="article:modified_time" content="2020-11-13T12:02:19.019Z">
 <meta property="article:author" content="Wool">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="图论">
@@ -237,7 +237,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-13 13:13:56" itemprop="dateModified" datetime="2020-11-13T13:13:56+08:00">2020-11-13</time>
+                <time title="修改时间：2020-11-13 20:02:19" itemprop="dateModified" datetime="2020-11-13T20:02:19+08:00">2020-11-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -302,7 +302,7 @@
 <p>初始化时将 dist数组中每个 dist[j] 初始化为起点到 j点的边长 （无边则初始化为INFINITY）</p>
 <p>之后每次选择 dist数组 中最小的元素 将其对应点设置为已确定最短路径</p>
 <p>并用其更新其余所有未确定最短路径的点的最短路长度</p>
-<p><code>n - 1 </code>次操作后即可更新所有点的最短路</p>
+<p><code>n - 1</code> 次操作后即可更新所有点的最短路</p>
 <h3 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h3><p>用中转点 k 更新 点 i 到 点 j 的最短路径</p>
 <p><code>d[i][j] = d[i][k] + d[k][j] </code></p>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>用邻接矩阵存图</p>
