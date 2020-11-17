@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://woolym.com/2020/11/13/655.html</loc>
+    
+    <lastmod>2020-11-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://woolym.com/2020/10/20/633.html</loc>
     
     <lastmod>2020-11-17</lastmod>
@@ -475,14 +482,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/grammar/c-c/</loc>
+    <loc>https://woolym.com/categories/algorithm/data-structure/</loc>
     <lastmod>2020-11-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/algorithm/data-structure/</loc>
+    <loc>https://woolym.com/categories/grammar/c-c/</loc>
     <lastmod>2020-11-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -503,14 +510,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/me/status-update/</loc>
+    <loc>https://woolym.com/categories/me/anime/</loc>
     <lastmod>2020-11-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/me/anime/</loc>
+    <loc>https://woolym.com/categories/algorithm/number-theory/</loc>
     <lastmod>2020-11-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -524,7 +531,7 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/algorithm/number-theory/</loc>
+    <loc>https://woolym.com/categories/me/status-update/</loc>
     <lastmod>2020-11-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
