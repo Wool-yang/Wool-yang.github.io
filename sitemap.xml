@@ -445,14 +445,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/tags/search/</loc>
+    <loc>https://woolym.com/tags/basic-algorithm/</loc>
     <lastmod>2020-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/tags/basic-algorithm/</loc>
+    <loc>https://woolym.com/tags/search/</loc>
     <lastmod>2020-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -545,14 +545,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/algorithm/search/</loc>
+    <loc>https://woolym.com/categories/algorithm/basic-algorithm/</loc>
     <lastmod>2020-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/algorithm/basic-algorithm/</loc>
+    <loc>https://woolym.com/categories/algorithm/search/</loc>
     <lastmod>2020-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
