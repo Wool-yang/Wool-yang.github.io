@@ -445,14 +445,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/tags/basic-algorithm/</loc>
+    <loc>https://woolym.com/tags/linux-unix/</loc>
     <lastmod>2020-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/tags/linux-unix/</loc>
+    <loc>https://woolym.com/tags/basic-algorithm/</loc>
     <lastmod>2020-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -545,14 +545,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/algorithm/basic-algorithm/</loc>
+    <loc>https://woolym.com/categories/linux-unix/</loc>
     <lastmod>2020-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/linux-unix/</loc>
+    <loc>https://woolym.com/categories/algorithm/basic-algorithm/</loc>
     <lastmod>2020-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -566,21 +566,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/me/anime/</loc>
-    <lastmod>2020-11-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://woolym.com/categories/me/status-update/</loc>
-    <lastmod>2020-11-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://woolym.com/categories/me/life/</loc>
+    <lastmod>2020-11-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://woolym.com/categories/me/anime/</loc>
     <lastmod>2020-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -594,7 +587,7 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/me/status-update/self-iteration/</loc>
+    <loc>https://woolym.com/categories/me/status-update/</loc>
     <lastmod>2020-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -602,6 +595,13 @@
   
   <url>
     <loc>https://woolym.com/categories/me/status-update/article-update/</loc>
+    <lastmod>2020-11-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://woolym.com/categories/me/status-update/self-iteration/</loc>
     <lastmod>2020-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
