@@ -3958,6 +3958,11 @@
       </tags>
   </entry>
   <entry>
+    <title>分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>关于我</title>
     <url>/about/index.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -3977,11 +3982,6 @@
   <entry>
     <title>标签</title>
     <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>分类</title>
-    <url>/categories/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
