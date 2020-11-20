@@ -1289,7 +1289,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: Noto Serif SC, Noto Sans SC, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: Noto Sans SC, "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   margin: 0;
@@ -2910,7 +2910,7 @@ mark.search-keyword {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff064d;
+  background: #ff4926;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
