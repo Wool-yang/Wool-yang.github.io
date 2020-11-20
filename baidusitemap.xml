@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://woolym.com/me/status-update/article-update/657.html</loc>
+    <lastmod>2020-11-20</lastmod>
+  </url>
+  <url>
     <loc>https://woolym.com/algorithm/search/659.html</loc>
+    <lastmod>2020-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://woolym.com/algorithm/graph-theory/655.html</loc>
+    <lastmod>2020-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://woolym.com/algorithm/data-structure/637.html</loc>
+    <lastmod>2020-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://woolym.com/algorithm/graph-theory/647.html</loc>
+    <lastmod>2020-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://woolym.com/algorithm/graph-theory/645.html</loc>
     <lastmod>2020-11-20</lastmod>
   </url>
   <url>
@@ -9,15 +29,7 @@
     <lastmod>2020-11-18</lastmod>
   </url>
   <url>
-    <loc>https://woolym.com/algorithm/graph-theory/655.html</loc>
-    <lastmod>2020-11-18</lastmod>
-  </url>
-  <url>
     <loc>https://woolym.com/me/status-update/self-iteration/635.html</loc>
-    <lastmod>2020-11-18</lastmod>
-  </url>
-  <url>
-    <loc>https://woolym.com/me/status-update/article-update/657.html</loc>
     <lastmod>2020-11-18</lastmod>
   </url>
   <url>
@@ -25,16 +37,8 @@
     <lastmod>2020-11-17</lastmod>
   </url>
   <url>
-    <loc>https://woolym.com/algorithm/graph-theory/647.html</loc>
-    <lastmod>2020-11-17</lastmod>
-  </url>
-  <url>
     <loc>https://woolym.com/algorithm/graph-theory/651.html</loc>
     <lastmod>2020-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://woolym.com/algorithm/graph-theory/645.html</loc>
-    <lastmod>2020-11-08</lastmod>
   </url>
   <url>
     <loc>https://woolym.com/algorithm/graph-theory/473.html</loc>
@@ -47,10 +51,6 @@
   <url>
     <loc>https://woolym.com/algorithm/data-structure/641.html</loc>
     <lastmod>2020-11-04</lastmod>
-  </url>
-  <url>
-    <loc>https://woolym.com/algorithm/data-structure/637.html</loc>
-    <lastmod>2020-11-01</lastmod>
   </url>
   <url>
     <loc>https://woolym.com/algorithm/graph-theory/425.html</loc>
