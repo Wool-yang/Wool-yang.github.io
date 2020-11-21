@@ -26,15 +26,15 @@
     var CONFIG = {"hostname":"woolym.com","root":"/","scheme":"Muse","version":"8.0.2","exturl":false,"sidebar":{"position":"left","width":260,"display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/./public/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="庸人自扰">
+  <meta name="description" content="平衡二叉树 —— 任意节点的子树的高度差都小于等于1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="平衡二叉树 (AVL)">
 <meta property="og:url" content="https://woolym.com/algorithm/search/661.html">
 <meta property="og:site_name" content="Wool&#39;s Blog">
-<meta property="og:description" content="庸人自扰">
+<meta property="og:description" content="平衡二叉树 —— 任意节点的子树的高度差都小于等于1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-18T04:29:19.000Z">
-<meta property="article:modified_time" content="2020-11-18T05:17:30.115Z">
+<meta property="article:modified_time" content="2020-11-20T18:07:48.475Z">
 <meta property="article:author" content="Wool">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="查找">
@@ -217,7 +217,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -230,6 +230,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%A6%81%E7%90%86%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">简要理解</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -335,10 +336,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2020-11-18 12:29:19 / 修改时间：13:17:30" itemprop="dateCreated datePublished" datetime="2020-11-18T12:29:19+08:00">2020-11-18</time>
+      <time title="创建时间：2020-11-18 12:29:19" itemprop="dateCreated datePublished" datetime="2020-11-18T12:29:19+08:00">2020-11-18</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-21 02:07:48" itemprop="dateModified" datetime="2020-11-21T02:07:48+08:00">2020-11-21</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -382,7 +389,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>48</span>
     </span>
 </div>
 
@@ -393,7 +400,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <p>平衡二叉树 —— 任意节点的子树的高度差都小于等于1</p>
+<a id="more"></a>
+
+<p><strong>数据结构课代码实现 之 平衡二叉树</strong></p>
+<h2 id="简要理解"><a href="#简要理解" class="headerlink" title="简要理解"></a>简要理解</h2><p>二叉搜索树</p>
+
     </div>
 
     
@@ -545,7 +557,7 @@
 <script>
 NexT.utils.loadComments('#valine-comments', () => {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
-    new Valine(Object.assign({"enable":true,"appId":"Vu6gkoTDDcuhcmzRHoIUG7o8-MdYXbMMI","appKey":"1GpGfcp915NCjTdP5jtPV9g9","serverURLs":"https://vu6gkotd.api.lncldglobal.com","placeholder":"千思万绪 落笔留痕&#10;若昵称填写QQ号可获取用户名与头像&#10;填写邮箱可以收到回复通知哦！","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":true,"comment_count":true,"recordIP":false,"enableQQ":true,"requiredFields":["nick","mail"]}, {
+    new Valine(Object.assign({"enable":true,"appId":"Vu6gkoTDDcuhcmzRHoIUG7o8-MdYXbMMI","appKey":"1GpGfcp915NCjTdP5jtPV9g9","serverURLs":"https://vu6gkotd.api.lncldglobal.com","placeholder":"👆昵称填写QQ号可自动获取QQ昵称与头像 并自动填写QQ邮箱 &#10;填写邮箱可以收到回复通知📧哦！&#10; &#10;千思万绪 落笔留痕","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":true,"comment_count":true,"recordIP":false,"enableQQ":true,"requiredFields":["nick","mail"]}, {
       el: '#valine-comments',
       path: "/algorithm/search/661.html",
       serverURLs: "https://vu6gkotd.api.lncldglobal.com"
