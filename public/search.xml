@@ -42,7 +42,7 @@
 <p>我们可以对这个最小不平衡子树进行 “旋转” 操作来使其恢复 “平衡” 并且不破坏其排序性</p>
 <h3 id="四个旋转操作"><a href="#四个旋转操作" class="headerlink" title="四个旋转操作"></a>四个旋转操作</h3><h4 id="单向右旋（LL-型）："><a href="#单向右旋（LL-型）：" class="headerlink" title="单向右旋（LL 型）："></a>单向右旋（LL 型）：</h4><p><img src="https://wool-yang.github.io/images/AVL/LL.jpg"></p>
 <h4 id="单向左旋（RR-型）："><a href="#单向左旋（RR-型）：" class="headerlink" title="单向左旋（RR  型）："></a>单向左旋（RR  型）：</h4><p><img src="https://wool-yang.github.io/images/AVL/RR.jpg"></p>
-<h4 id="先左旋后右旋（LR-型）："><a href="#先左旋后右旋（LR-型）：" class="headerlink" title="先左旋后右旋（LR 型）："></a>先左旋后右旋（LR 型）：</h4><p><img src="https://wool-yang.github.io/images/AVL/LR.jpg"></p>
+<h4 id="先左旋后右旋（LR-型）："><a href="#先左旋后右旋（LR-型）：" class="headerlink" title="先左旋后右旋（LR 型）："></a>先左旋后右旋（LR 型）：</h4><p><img src="/images/AVL/LR.jpg"></p>
 <h4 id="先后旋后左旋（RL-型）："><a href="#先后旋后左旋（RL-型）：" class="headerlink" title="先后旋后左旋（RL 型）："></a>先后旋后左旋（RL 型）：</h4><p><img src="https://wool-yang.github.io/images/AVL/RL.jpg"></p>
 <h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
       <categories>
@@ -1321,6 +1321,11 @@
 ]]></content>
   </entry>
   <entry>
+    <title>留言板</title>
+    <url>/guestbook/index.html</url>
+    <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
+  </entry>
+  <entry>
     <title>分类</title>
     <url>/categories/index.html</url>
     <content><![CDATA[]]></content>
@@ -1329,10 +1334,5 @@
     <title>标签</title>
     <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>留言板</title>
-    <url>/guestbook/index.html</url>
-    <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
   </entry>
 </search>
