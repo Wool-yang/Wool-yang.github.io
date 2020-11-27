@@ -9,13 +9,6 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/html/first/index.html</loc>
-    
-    <lastmod>2020-11-27</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://woolym.com/algorithm/search/661.html</loc>
     
     <lastmod>2020-11-25</lastmod>
@@ -459,14 +452,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/tags/linux-unix/</loc>
+    <loc>https://woolym.com/tags/basic-algorithm/</loc>
     <lastmod>2020-11-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/tags/basic-algorithm/</loc>
+    <loc>https://woolym.com/tags/linux-unix/</loc>
     <lastmod>2020-11-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -559,14 +552,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/linux-unix/</loc>
+    <loc>https://woolym.com/categories/algorithm/basic-algorithm/</loc>
     <lastmod>2020-11-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/algorithm/basic-algorithm/</loc>
+    <loc>https://woolym.com/categories/linux-unix/</loc>
     <lastmod>2020-11-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
