@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://woolym.com/algorithm/data-structure/442.html</loc>
+    <lastmod>2020-11-27</lastmod>
+  </url>
+  <url>
     <loc>https://woolym.com/algorithm/search/661.html</loc>
     <lastmod>2020-11-25</lastmod>
   </url>
@@ -146,10 +150,6 @@
   </url>
   <url>
     <loc>https://woolym.com/algorithm/basic-algorithm/112.html</loc>
-    <lastmod>2020-10-23</lastmod>
-  </url>
-  <url>
-    <loc>https://woolym.com/algorithm/data-structure/442.html</loc>
     <lastmod>2020-10-23</lastmod>
   </url>
   <url>
