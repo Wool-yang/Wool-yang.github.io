@@ -3,10 +3,13 @@
 <head>
 <meta charset="utf-8">
 <title>我的课程表</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
 <style type = "text/css">
 	html, body{
     	width: 100%;
     	height: 100%;
+		background-color: whitesmoke;
 	}
 	#div1{
 		display:flex;
@@ -15,31 +18,74 @@
 		width: 100%;
 		height: 100%;
 		flex-direction: column;
-		background-color: aqua;
 	}
 	#table1{
-		position: relative;
+		position: absolute;
+		top:250px;
 		z-index: 1;
-		top:-10px;
 		border-collapse:collapse;
 		width: 75%;
 		height: 50%;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 17px;
+		font-weight:500;
 	}
-	table,th,td{
-		border:2px solid green;
-		border-collapse:collapse;
+	table1,th,td{
+		table-layout:fixed;
+		width: 14.28%
+	}
+	table1,tr{
+		height: 20%;
 	}
 	#form1{
 		position: absolute;
-		top: 100px;
+		top: 200px;
+		width: 75%;
 		z-index: 2;
-		height: 100%;
+	}
+	#select1{
+		width: 100%;
+		padding: 0 46%;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 20px;
+		background-color: skyblue;
+		color: white;
+		font-weight:bolder;
+	}
+	option{
+		text-align: center;
+		color: white;
+		font-weight:bolder;
+	}
+	#caption{
+		position: relative;
+		top: -250px;
+		left: -11px;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 55px;
+		color: steelblue;
+	}
+	#back{
+		position:absolute;
+		bottom: 10px;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 20px;
+	}
+	.a{
+		background-color: steelblue;
+		color: whitesmoke;
+	}
+	.b{
+		background-color: skyblue;
+		color: black;
 	}
 </style>
 </head>
 
 <body>
 	<div id = "div1">
+		<p id = "caption">课程表</p>
+		<p id = "back">返回我的博客&nbsp;<a href="https://coding-pages-bucket-3398676-7980601-5467-380889-1304275404.cos-website.ap-beijing.myqcloud.com/">Wool's Blog</a></p>
 		<form id = "form1">
 			<select id = "select1" onmousedown = "if(this.options.length>6){this.size=7}" onblur = "this.size = 0" onchange = "this.size = 0;setKecheng(this.options[this.options.selectedIndex].value);">
 				<option selected value ="0">--------</option>
@@ -62,46 +108,45 @@
 			</select>
 		</form>
 		<table id = "table1">
-			<caption>课程表</caption>
 			<tr>
-				<th> </th>
-				<th>星期一</th>
-				<th>星期二</th>
-				<th>星期三</th>
-				<th>星期四</th>
-				<th>星期五</th>
+				<th class = "a"> </th>
+				<th class = "a">星期一</th>
+				<th class = "a">星期二</th>
+				<th class = "a">星期三</th>
+				<th class = "a">星期四</th>
+				<th class = "a">星期五</th>
 			</tr>
 			<tr>
-				<th>第一节</th>
-				<td id = ""></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<th class = "b">第一节</th>
+				<td class = "b"></td>
+				<td class = "b"></td>
+				<td class = "b"></td>
+				<td class = "b"></td>
+				<td class = "b"></td>
 			</tr>
 			<tr>
-				<th>第二节</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<th class = "a">第二节</th>
+				<td class = "a"></td>
+				<td class = "a"></td>
+				<td class = "a"></td>
+				<td class = "a"></td>
+				<td class = "a"></td>
 			</tr>
 			<tr>
-				<th>第三节</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<th class = "b">第三节</th>
+				<td class = "b"></td>
+				<td class = "b"></td>
+				<td class = "b"></td>
+				<td class = "b"></td>
+				<td class = "b"></td>
 			</tr>
 			<tr>
-				<th>第四节</th>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<th class = "a">第四节</th>
+				<td class = "a"></td>
+				<td class = "a"></td>
+				<td class = "a"></td>
+				<td class = "a"></td>
+				<td class = "a"></td>
 			</tr>
 		</table>
 	</div>
