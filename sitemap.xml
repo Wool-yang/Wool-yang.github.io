@@ -459,14 +459,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/tags/basic-algorithm/</loc>
+    <loc>https://woolym.com/tags/search/</loc>
     <lastmod>2020-11-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/tags/search/</loc>
+    <loc>https://woolym.com/tags/basic-algorithm/</loc>
     <lastmod>2020-11-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -538,14 +538,14 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/grammar/c-c/</loc>
+    <loc>https://woolym.com/categories/algorithm/data-structure/</loc>
     <lastmod>2020-11-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/algorithm/data-structure/</loc>
+    <loc>https://woolym.com/categories/grammar/c-c/</loc>
     <lastmod>2020-11-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -559,13 +559,6 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/algorithm/basic-algorithm/</loc>
-    <lastmod>2020-11-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://woolym.com/categories/algorithm/search/</loc>
     <lastmod>2020-11-29</lastmod>
     <changefreq>daily</changefreq>
@@ -573,7 +566,7 @@
   </url>
   
   <url>
-    <loc>https://woolym.com/categories/me/life/</loc>
+    <loc>https://woolym.com/categories/algorithm/basic-algorithm/</loc>
     <lastmod>2020-11-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -581,6 +574,13 @@
   
   <url>
     <loc>https://woolym.com/categories/me/anime/</loc>
+    <lastmod>2020-11-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://woolym.com/categories/me/life/</loc>
     <lastmod>2020-11-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
