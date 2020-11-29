@@ -18,26 +18,22 @@
   		background-color:#292929;
   	}
 	.text{
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+	}
+	#sentence{
 		font-family: 'Noto Serif SC', serif;
 		color:gainsboro;
 		font-size:5em;
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		display:flex;
-		justify-content:center;
-		align-items:center;
 	}
-	.text1{
+	#sentence1{
 		font-family: 'Noto Serif SC', serif;
 		color:lightgrey;
 		font-size: 2em;
-		position: absolute;
-		width: 100%;
-		height: 70%;
-		display:flex;
-		justify-content:center;
-		align-items:center;
 	}
 </style>
 
@@ -95,11 +91,8 @@
 </script>
 	
 <div class ="text" >
-	<div id ="sentence"></div>
-</div>
-	
-<div class = "text1">
-	<p>正式域名备案中：www.woolym.com</p>
+	<p id = "sentence">&nbsp;</p>
+	<p id = "sentence1" >正式域名备案中：www.woolym.com</p>
 </div>
 	
 </body>
