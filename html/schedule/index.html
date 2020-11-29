@@ -59,9 +59,18 @@
 	}
 	#caption{
 		position: absolute;
-		top: 30px;
+		top: -25px;
 		font-family:  'Noto Serif SC', serif;
 		font-size: 55px;
+		color: steelblue;
+	}
+	#week{
+		position: absolute;
+		top: 120px;
+		left: 200px;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 30px;
+		font-weight: lighter;
 		color: steelblue;
 	}
 	#back{
@@ -83,11 +92,12 @@
 
 <body>
 	<div id = "div1">
+		<p id = "week">周数：</p>
 		<p id = "caption">课程表</p>
 		<p id = "back">返回我的博客&nbsp;<a href="https://coding-pages-bucket-3398676-7980601-5467-380889-1304275404.cos-website.ap-beijing.myqcloud.com/">Wool's Blog</a></p>
 		<form id = "form1">
 			<select id = "select1" onmousedown = "if(this.options.length>6){this.size=7}" onblur = "this.size = 0" onchange = "this.size = 0;setKecheng(this.options[this.options.selectedIndex].value);">
-				<option selected value ="0">--------</option>
+				<option selected value ="0">选择周数</option>
 				<option value="1">第1周</option>
 				<option value="2">第2周</option>
 				<option value="3">第3周</option>
