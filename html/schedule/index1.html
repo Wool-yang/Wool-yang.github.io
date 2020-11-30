@@ -2,11 +2,13 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>我的课程表</title>
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
 <style type = "text/css">
-	html, body{
+@media screen and (min-width: 960px){
+   html, body{
     	width: 100%;
     	height: 100%;
 		background-color: whitesmoke;
@@ -26,7 +28,7 @@
 		width: 75%;
 		height: 50%;
 		font-family:  'Noto Serif SC', serif;
-		font-size: 17px;
+		font-size: 1.0625em;
 		font-weight:500;
 	}
 	table1,th,td{
@@ -46,7 +48,7 @@
 		width: 100%;
 		padding: 0 41% 0 41%;
 		font-family:  'Noto Serif SC', serif;
-		font-size: 20px;
+		font-size: 1.25em;
 		background-color: skyblue;
 		color: white;
 		font-weight:bolder;
@@ -60,14 +62,14 @@
 		position: absolute;
 		top: 2%;
 		font-family:  'Noto Serif SC', serif;
-		font-size: 55px;
+		font-size: 3.4375em;
 		color: steelblue;
 	}
 	#back{
 		position: absolute;
 		top: 90%;
 		font-family:  'Noto Serif SC', serif;
-		font-size: 20px;
+		font-size: 1.25em;
 	}
 	.a{
 		background-color: steelblue;
@@ -77,6 +79,82 @@
 		background-color: skyblue;
 		color: black;
 	}
+}
+
+@media screen and (max-width: 960px){
+   html, body{
+    	width: 100%;
+    	height: 100%;
+		background-color: whitesmoke;
+	}
+	#div1{
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+	}
+	#table1{
+		position: absolute;
+		top: 40%;
+		border-collapse:collapse;
+		width: 75%;
+		height: 50%;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 1.0625em;
+		font-weight:500;
+	}
+	table1,th,td{
+		table-layout:fixed;
+		width: 14.28%
+	}
+	table1,tr{
+		height: 20%;
+	}
+	#form1{
+		position: absolute;
+		z-index: 2;
+		top: 35%;
+		width: 75%;
+	}
+	#select1{
+		width: 100%;
+		padding: 0 41% 0 41%;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 1.25em;
+		background-color: skyblue;
+		color: white;
+		font-weight:bolder;
+	}
+	option{
+		text-align: center;
+		color: white;
+		font-weight:bolder;
+	}
+	#caption{
+		position: absolute;
+		top: 30%;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 3.4375em;
+		color: steelblue;
+	}
+	#back{
+		position: absolute;
+		top: 60%;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 1.25em;
+	}
+	.a{
+		background-color: steelblue;
+		color: whitesmoke;
+	}
+	.b{
+		background-color: skyblue;
+		color: black;
+	}
+}
+	
 </style>
 </head>
 
