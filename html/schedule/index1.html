@@ -20,9 +20,6 @@
 		flex-direction: column;
 	}
 	#table1{
-		position: absolute;
-		top:250px;
-		z-index: 1;
 		border-collapse:collapse;
 		width: 75%;
 		height: 50%;
@@ -39,9 +36,8 @@
 	}
 	#form1{
 		position: absolute;
-		top: 200px;
+		top: 195px;
 		width: 75%;
-		z-index: 2;
 	}
 	#select1{
 		width: 100%;
@@ -58,15 +54,15 @@
 		font-weight:bolder;
 	}
 	#caption{
-		position: absolute;
-		top: 30px;
+		position: relative;
+		top: -30px;
 		font-family:  'Noto Serif SC', serif;
 		font-size: 55px;
 		color: steelblue;
 	}
 	#back{
 		position: relative;
-		bottom: -300px;
+		top: 25px;
 		font-family:  'Noto Serif SC', serif;
 		font-size: 20px;
 	}
@@ -84,7 +80,6 @@
 <body>
 	<div id = "div1">
 		<p id = "caption">2020-2021学年第1学期1918班课程表</p>
-		<p id = "back">返回我的博客&nbsp;<a href="https://coding-pages-bucket-3398676-7980601-5467-380889-1304275404.cos-website.ap-beijing.myqcloud.com/">Wool's Blog</a></p>
 		<form id = "form1">
 			<select id = "select1" onmousedown = "if(this.options.length>6){this.size=7}" onblur = "this.size = 0" onchange = "this.size = 0;setKecheng(this.options[this.options.selectedIndex].value);">
 				<option selected value ="0">选择周数</option>
@@ -148,6 +143,7 @@
 				<td class = "a"></td>
 			</tr>
 		</table>
+		<p id = "back">返回我的博客&nbsp;<a href="https://coding-pages-bucket-3398676-7980601-5467-380889-1304275404.cos-website.ap-beijing.myqcloud.com/">Wool's Blog</a></p>
 	</div>
 	<script>
 		var kecheng3 = new Array();
