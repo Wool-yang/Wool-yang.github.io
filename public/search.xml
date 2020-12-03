@@ -869,9 +869,9 @@
 <p>首先合数都能表示成都能表示成若干质数的积，所以每个合数都有一个最小质因子，我们只用每个合数的最小值因子来筛去合数</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e8</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> primes[N], n, cnt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!primes[i])</span><br><span class="line">            primes[++cnt] = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; i * primes[j] &lt;= n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            primes[i * primes[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % primes[j] == <span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cnt; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; primes[j] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; cnt;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><ol>
-<li> i % primes[j] == 0 时，primes[j] 是i的最小质因子，所以 primes[j] 也是 i * primes[j] 的最小质因子</li>
-<li> i % primes[j] != 0 时 ，primes[j] 小于i的所有质因子，所以 primes[j] 也是 i * primes[j] 的最小质因子</li>
-<li> 对于任意合数 x ，假设 primes[j] 为 x 的最小值因子，当枚举到 x / primes[j] 时 x 会被筛去</li>
+<li> <code>i % primes[j] == 0</code> 时，<code>primes[j]</code> 是 <code>i</code> 的最小质因子，所以 <code>primes[j]</code> 也是 <code>i * primes[j]</code> 的最小质因子</li>
+<li> <code>i % primes[j] != 0</code> 时 ，<code>primes[j]</code> 小于 <code>i</code> 的所有质因子，所以 <code>primes[j]</code> 也是 <code>i * primes[j]</code> 的最小质因子</li>
+<li> 对于任意合数 <code>x</code> ，假设 <code>primes[j]</code> 为 <code>x</code> 的最小值因子，当枚举到 <code>x / primes[j]</code> 时 <code>x</code> 会被筛去</li>
 </ol>
 ]]></content>
       <categories>
@@ -1319,9 +1319,23 @@
       </tags>
   </entry>
   <entry>
+    <title>留言板</title>
+    <url>/guestbook/index.html</url>
+    <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
+  </entry>
+  <entry>
     <title>分类</title>
     <url>/categories/index.html</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>前端实验</title>
+    <url>/html/index.html</url>
+    <content><![CDATA[<h1 id="写的一些html页面"><a href="#写的一些html页面" class="headerlink" title="写的一些html页面"></a>写的一些html页面</h1><ul>
+<li><a href="/html/first/index.html">第一个网页</a></li>
+<li><a href="/html/schedule/index.html">课程表</a></li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>关于我</title>
@@ -1344,19 +1358,5 @@
     <title>标签</title>
     <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>留言板</title>
-    <url>/guestbook/index.html</url>
-    <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
-  </entry>
-  <entry>
-    <title>前端实验</title>
-    <url>/html/index.html</url>
-    <content><![CDATA[<h1 id="写的一些html页面"><a href="#写的一些html页面" class="headerlink" title="写的一些html页面"></a>写的一些html页面</h1><ul>
-<li><a href="/html/first/index.html">第一个网页</a></li>
-<li><a href="/html/schedule/index.html">课程表</a></li>
-</ul>
-]]></content>
   </entry>
 </search>
