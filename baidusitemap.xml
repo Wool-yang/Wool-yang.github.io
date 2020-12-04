@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.woolym.com/algorithm/graph-theory/645.html</loc>
+    <lastmod>2020-12-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.woolym.com/algorithm/graph-theory/647.html</loc>
+    <lastmod>2020-12-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.woolym.com/me/status-update/self-iteration/635.html</loc>
+    <lastmod>2020-12-04</lastmod>
+  </url>
+  <url>
     <loc>https://www.woolym.com/algorithm/number-theory/387.html</loc>
     <lastmod>2020-12-03</lastmod>
   </url>
@@ -31,18 +43,6 @@
   <url>
     <loc>https://www.woolym.com/algorithm/data-structure/637.html</loc>
     <lastmod>2020-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://www.woolym.com/algorithm/graph-theory/647.html</loc>
-    <lastmod>2020-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://www.woolym.com/algorithm/graph-theory/645.html</loc>
-    <lastmod>2020-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://www.woolym.com/me/status-update/self-iteration/635.html</loc>
-    <lastmod>2020-11-18</lastmod>
   </url>
   <url>
     <loc>https://www.woolym.com/algorithm/data-structure/633.html</loc>
