@@ -585,7 +585,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2020-12-09 00:13:25 / 修改时间：00:36:50" itemprop="dateCreated datePublished" datetime="2020-12-09T00:13:25+08:00">2020-12-09</time>
+      <time title="创建时间：2020-12-09 00:13:25 / 修改时间：00:42:41" itemprop="dateCreated datePublished" datetime="2020-12-09T00:13:25+08:00">2020-12-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -637,40 +637,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="LeetCode-842-将数组拆分成斐波那契序列-回溯-剪枝"><a href="#LeetCode-842-将数组拆分成斐波那契序列-回溯-剪枝" class="headerlink" title="LeetCode 842. 将数组拆分成斐波那契序列 回溯 + 剪枝"></a>LeetCode 842. 将数组拆分成斐波那契序列 回溯 + 剪枝</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/split-array-into-fibonacci-sequence/">https://leetcode-cn.com/problems/split-array-into-fibonacci-sequence/</a></p>
-<h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>给定一个数字字符串 <code>S</code>，比如 <code>S = &quot;123456579&quot;</code>，我们可以将它分成斐波那契式的序列 <code>[123, 456, 579]</code>。</p>
-<p>形式上，斐波那契式序列是一个非负整数列表 <code>F</code>，且满足：</p>
-<ul>
-<li><code>0 &lt;= F[i] &lt;= 2^31 - 1</code>，（也就是说，每个整数都符合 32 位有符号整数类型）；</li>
-<li><code>F.length &gt;= 3</code>；</li>
-<li>对于所有的<code>0 &lt;= i &lt; F.length - 2</code>，都有 <code>F[i] + F[i+1] = F[i+2]</code> 成立。<br>另外，请注意，将字符串拆分成小块时，每个块的数字一定不要以零开头，除非这个块是数字 0 本身。</li>
-</ul>
-<p>返回从 <code>S</code> 拆分出来的任意一组斐波那契式的序列块，如果不能拆分则返回 <code>[]</code>。</p>
-<p>示例 1：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;123456579&quot;</span><br><span class="line">输出：[123,456,579]</span><br></pre></td></tr></table></figure>
-
-<p>示例 2：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;11235813&quot;</span><br><span class="line">输出: [1,1,2,3,5,8,13]</span><br></pre></td></tr></table></figure>
-
-<p>示例 3：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;112358130&quot;</span><br><span class="line">输出: []</span><br><span class="line">解释: 这项任务无法完成。</span><br></pre></td></tr></table></figure>
-
-<p>示例 4：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;0123&quot;</span><br><span class="line">输出：[]</span><br><span class="line">解释：每个块的数字不能以零开头，因此 &quot;01&quot;，&quot;2&quot;，&quot;3&quot; 不是有效答案。</span><br></pre></td></tr></table></figure>
-
-<p>示例 5：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;1101111&quot;</span><br><span class="line">输出: [110, 1, 111]</span><br><span class="line">解释: 输出 [11,0,11,11] 也同样被接受。</span><br></pre></td></tr></table></figure>
-
-
-<p>提示：</p>
-<ol>
-<li><code>1 &lt;= S.length &lt;= 200</code></li>
-<li>字符串 <code>S</code> 中只含有数字。</li>
-</ol>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">backTrack</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;ans, <span class="built_in">string</span> S, <span class="keyword">int</span> index, <span class="keyword">long</span> <span class="keyword">long</span> sum, <span class="keyword">int</span> prev)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index == S.length())</span><br><span class="line">            <span class="keyword">return</span> (ans.size() &gt;= <span class="number">3</span>); <span class="comment">// 数组中有三个或三个以上元素则满足条件</span></span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> cur = <span class="number">0</span>; <span class="comment">// 当前切割数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = index;i &lt; S.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            cur = cur * <span class="number">10</span> + S[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span>(i &gt; index &amp;&amp; S[index] == <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">//当前切割数 长度大于一 且为 0 开头 剪枝</span></span><br><span class="line">            <span class="keyword">if</span>(cur &gt; INT_MAX)</span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">//不符合 32位 有符号整数类型 剪枝</span></span><br><span class="line">            <span class="keyword">if</span>(ans.size() &gt;= <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(cur &gt; sum)</span><br><span class="line">                    <span class="keyword">break</span>; <span class="comment">// 大于则剪枝</span></span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(cur &lt; sum)</span><br><span class="line">                    <span class="keyword">continue</span>; <span class="comment">// 小于继续增加当前分割数位数</span></span><br><span class="line">            &#125;</span><br><span class="line">            ans.push_back(cur); <span class="comment">// 两种情况 数组中元素小于2 或 当前分割数等于前两个数字和</span></span><br><span class="line">            <span class="keyword">if</span>(backTrack(ans, S, i + <span class="number">1</span>, cur + prev, cur)) <span class="comment">// 递归满足条件返回 true</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            ans.pop_back(); <span class="comment">// 不满足条件则回溯</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">splitIntoFibonacci</span><span class="params">(<span class="built_in">string</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        backTrack(ans, S, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>记得把板子背会！</p>
-
+          <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/split-array-into-fibonacci-sequence/">https://leetcode-cn.com/problems/split-array-into-fibonacci-sequence/</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/leetcode/663.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
