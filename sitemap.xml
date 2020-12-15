@@ -508,14 +508,14 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/tags/search/</loc>
+    <loc>https://www.woolym.com/tags/basic-algorithm/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.woolym.com/tags/basic-algorithm/</loc>
+    <loc>https://www.woolym.com/tags/search/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -608,6 +608,13 @@
   </url>
   
   <url>
+    <loc>https://www.woolym.com/categories/algorithm/basic-algorithm/</loc>
+    <lastmod>2020-12-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.woolym.com/categories/grammar/c-c/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
@@ -616,13 +623,6 @@
   
   <url>
     <loc>https://www.woolym.com/categories/algorithm/search/</loc>
-    <lastmod>2020-12-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.woolym.com/categories/algorithm/basic-algorithm/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
