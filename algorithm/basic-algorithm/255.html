@@ -26,15 +26,15 @@
     var CONFIG = {"hostname":"www.woolym.com","root":"/","scheme":"Muse","version":"8.0.2","exturl":false,"sidebar":{"position":"left","width":260,"display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/./public/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="位运算操作符介绍，源码、反码、补码相关，位运算常用操作">
+  <meta name="description" content="位运算操作符介绍，原码、反码、补码相关，位运算常用操作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="位运算">
 <meta property="og:url" content="https://www.woolym.com/algorithm/basic-algorithm/255.html">
 <meta property="og:site_name" content="Wool&#39;s Blog">
-<meta property="og:description" content="位运算操作符介绍，源码、反码、补码相关，位运算常用操作">
+<meta property="og:description" content="位运算操作符介绍，原码、反码、补码相关，位运算常用操作">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-12-26T12:21:46.000Z">
-<meta property="article:modified_time" content="2020-10-24T14:02:34.469Z">
+<meta property="article:modified_time" content="2020-12-15T01:15:38.410Z">
 <meta property="article:author" content="Wool">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="基础算法">
@@ -235,7 +235,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">1.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">源码、反码、补码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">常用的几个操作</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">1.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">原码、反码、补码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">常用的几个操作</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -349,7 +349,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-24 22:02:34" itemprop="dateModified" datetime="2020-10-24T22:02:34+08:00">2020-10-24</time>
+        <time title="修改时间：2020-12-15 09:15:38" itemprop="dateModified" datetime="2020-12-15T09:15:38+08:00">2020-12-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -394,7 +394,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>742</span>
+      <span>717</span>
     </span>
 </div>
 
@@ -405,23 +405,51 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>位运算操作符介绍，源码、反码、补码相关，位运算常用操作</p>
+        <p>位运算操作符介绍，原码、反码、补码相关，位运算常用操作</p>
 <a id="more"></a>
-<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>&amp; 按位与：同1则1 其余0 </p>
-<p>| 按位或：有1则1 都0则0 </p>
-<p>^ 按位异或：同0 异1 </p>
-<p>~ 按位取反：0变1 1变0 （符号位不变） </p>
-<p>&lt;&lt; 左移：左移n位 = * 2^n</p>
-<p>&gt;&gt; 带符号右移 右移n位 = / 2^n （带符号右移 正数右移后高位补0 负数右移后高位补1）</p>
-<p>&gt;&gt;&gt; 无符号右移 右移n位 （无符号右移 正负数高位均补0）</p>
-<h2 id="源码、反码、补码"><a href="#源码、反码、补码" class="headerlink" title="源码、反码、补码"></a>源码、反码、补码</h2><p>计算储存整型数时 最高位0代表正数 1代表负数 int 型可以储存 [-2^32,2^32-1] （c语言规定10000000000000000000000000000000为-2147483648的补码） 源码：二进制数 反码：二进制数各位取反 补码：二进制数各位取反后加1 注：在计算机底层没有减法操作，因此计算机用补码的方式储存负数 例：设x二进制数为 00000000000000000000000000000001 ~x为 11111111111111111111111111111110 又 -x = 0 - x 0的二进制数为 00000000000000000000000000000000 假设可以加一高位1 100000000000000000000000000000000 - x = ~x + 1 （超出范围的高位舍去）</p>
-<h2 id="常用的几个操作"><a href="#常用的几个操作" class="headerlink" title="常用的几个操作"></a>常用的几个操作</h2><p>1.求n的二进制数最后一位</p>
+
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><ul>
+<li>&amp; 按位与：同1则1 其余0 </li>
+<li>| 按位或：有1则1 都0则0</li>
+<li>^ 按位异或：同0 异1 </li>
+<li>~ 按位取反：0变1 1变0</li>
+<li>&lt;&lt; 左移：<code>左移 n位 = \* 2^n</code></li>
+<li>&gt;&gt; 右移：<code>右移 n位 = / 2^n</code> （带符号右移 正数右移后高位补0 负数右移后高位补1）</li>
+</ul>
+<h2 id="原码、反码、补码"><a href="#原码、反码、补码" class="headerlink" title="原码、反码、补码"></a>原码、反码、补码</h2><p>计算储存整型数时 符号位（最高位）0代表正数 1代表负数 </p>
+<p><code>int</code> 型可以储存 <code>[-2^32, 2^32-1]</code></p>
+<p>原码：符号位 + 真值绝对值的二进制数</p>
+<p>反码：</p>
+<ol>
+<li>正整数的反码是它本身</li>
+<li>负整数的反码是 符号位为 1 + 真值绝对值的二进制数各位取反 </li>
+</ol>
+<p>补码：</p>
+<ol>
+<li>正整数的补码是它本身</li>
+<li>负整数的补码是 符号位为 1 + 真值绝对值的二进制数各位取反再加一 （即在反码的基础上+1）</li>
+</ol>
+<p>注：在计算机底层没有减法操作，因此计算机用补码的方式储存负数 </p>
+<p>例：设 <code>x = 1</code> 原码为 <code>00000000000000000000000000000001</code></p>
+<p><code>~x</code> 为 <code>11111111111111111111111111111110</code></p>
+<p><code>-x = 0 - x</code> </p>
+<p>0的二进制数为 <code>00000000000000000000000000000000</code> </p>
+<p>（在不存在的高一位 借1） <code>-x = 100000000000000000000000000000000 - x = ~x + 1</code></p>
+<h2 id="常用的几个操作"><a href="#常用的几个操作" class="headerlink" title="常用的几个操作"></a>常用的几个操作</h2><ol>
+<li><p>求n的二进制数最后一位</p>
 <p>n &amp; 1</p>
-<p>2.求n的二进制数第k位是多少</p>
-<p>n &gt;&gt; k &amp; 1<br>/* n的第k位指从右往左由0开始计位 */</p>
-<p>3.lowbit (x) 操作 返回x的最后一位1 （100100 则返回 100）</p>
+</li>
+<li><p>求n的二进制数第k位是多少</p>
+<p>n &gt;&gt; k &amp; 1<br>/* n的第k位指从右往左由 0 开始计位 */</p>
+</li>
+<li><p>lowbit (x) 操作 返回x的最后一位1 （100100 则返回 100）</p>
 <p>x &amp; -x<br>/* x &amp; (~x + 1) */</p>
-<p>假设 x 为 1010…10000 ~x = 0101…01111 ~x + 1 = 0101…10000 x &amp; ~x+1 后 为 0000…10000</p>
+</li>
+</ol>
+<p>假设 x 为 1010…10000 </p>
+<p>~x = 0101…01111 </p>
+<p>~x + 1 = 0101…10000 </p>
+<p>x &amp; ~x+1 后 为 0000…10000</p>
 
     </div>
 
