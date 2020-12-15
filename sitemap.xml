@@ -424,28 +424,7 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/tags/graph-theory/</loc>
-    <lastmod>2020-12-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.woolym.com/tags/leetcode/</loc>
-    <lastmod>2020-12-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.woolym.com/tags/memory-search/</loc>
-    <lastmod>2020-12-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.woolym.com/tags/dp/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -460,6 +439,27 @@
   
   <url>
     <loc>https://www.woolym.com/tags/pruning/</loc>
+    <lastmod>2020-12-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.woolym.com/tags/graph-theory/</loc>
+    <lastmod>2020-12-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.woolym.com/tags/memory-search/</loc>
+    <lastmod>2020-12-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.woolym.com/tags/dp/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -559,6 +559,13 @@
 
   
   <url>
+    <loc>https://www.woolym.com/categories/leetcode/</loc>
+    <lastmod>2020-12-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.woolym.com/categories/algorithm/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
@@ -566,7 +573,7 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/leetcode/</loc>
+    <loc>https://www.woolym.com/categories/grammar/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -580,7 +587,7 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/grammar/</loc>
+    <loc>https://www.woolym.com/categories/grammar/c-c/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -608,13 +615,6 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/grammar/c-c/</loc>
-    <lastmod>2020-12-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.woolym.com/categories/algorithm/basic-algorithm/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
@@ -636,14 +636,14 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/me/life/</loc>
+    <loc>https://www.woolym.com/categories/algorithm/number-theory/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/algorithm/number-theory/</loc>
+    <loc>https://www.woolym.com/categories/me/life/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
