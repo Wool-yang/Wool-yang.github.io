@@ -636,13 +636,6 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/me/status-update/</loc>
-    <lastmod>2020-12-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.woolym.com/categories/me/life/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
@@ -657,7 +650,7 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/me/status-update/self-iteration/</loc>
+    <loc>https://www.woolym.com/categories/me/status-update/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -665,6 +658,13 @@
   
   <url>
     <loc>https://www.woolym.com/categories/me/status-update/article-update/</loc>
+    <lastmod>2020-12-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.woolym.com/categories/me/status-update/self-iteration/</loc>
     <lastmod>2020-12-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
