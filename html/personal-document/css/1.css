@@ -106,9 +106,6 @@
 		font-size: 1.5em;
 		font-family: 'Noto Serif SC', serif;
 	}
-	#th1{
-		font-size: 0.95em;
-	}
 }
 @media screen and (max-width: 960px){
 	html, body{
