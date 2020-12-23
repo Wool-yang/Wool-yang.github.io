@@ -24,7 +24,7 @@ html, body{
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
-	background-image: url(/img/bg.jpg);
+	background-image: url(/html/personal-document/img/bg.jpg);
 	background-color: lightblue;
 	background-size: cover;
 	background-repeat: no-repeat;
