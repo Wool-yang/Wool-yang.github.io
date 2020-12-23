@@ -85,3 +85,4 @@ td{
 .input1{
 	width: 45%;
 }
+table,table tr th, table tr td { border:1px solid #0094ff; }

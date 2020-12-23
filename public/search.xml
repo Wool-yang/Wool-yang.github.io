@@ -1568,6 +1568,6 @@ td{
 .input1{
 	width: 45%;
 }
-]]></content>
+table,table tr th, table tr td { border:1px solid #0094ff; }]]></content>
   </entry>
 </search>
