@@ -1454,18 +1454,19 @@
 ]]></content>
   </entry>
   <entry>
+    <title>分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>前端实验</title>
     <url>/html/index.html</url>
     <content><![CDATA[<h1 id="写的一些html页面"><a href="#写的一些html页面" class="headerlink" title="写的一些html页面"></a>写的一些html页面</h1><ul>
 <li><a href="/html/first/index.html">第一个网页</a></li>
 <li><a href="/html/schedule/index.html">课程表</a></li>
+<li><a href="/html/personal-document/index.html">个人资料表单</a></li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>留言板</title>
@@ -1476,5 +1477,199 @@
     <title>标签</title>
     <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/html/personal-document/index.html</url>
+    <content><![CDATA[<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>个人资料</title>
+<link href = "css/1.css" rel = "stylesheet" type = "text/css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div id = "div0">
+		<p id = "caption">请留下个人资料</p>
+		<div id = "div1"></div>
+		<form>
+			<table id = "main">
+				<tr>
+					<th>姓名:</th>
+					<td><input type = "text" name = "name" class = "input1"/></td>
+				</tr>
+				<tr>
+					<th>E-mail:</th>
+					<td><input type = "email" name = "email" class = "input2"/></td>
+				</tr>
+				<tr>
+					<th>电话:</th>
+					<td><input type = "text" name = "tel" class = "input2" pattern = "^1(3[0-9]|5[0-35-9]|4[57]|7[035-8]|8[0-9]|66|9[89]|47)\d{8}$"></td>
+				</tr>
+				<tr>
+					<th>性别:</th>
+					<td>
+						<table>
+							<td class = "sexwidth">
+								<input type = "radio" name = "sex" id = "woman" checked = "true"/><label for = "woman"> 女</label>
+							</td>
+							<td class = "sexwidth">
+								<input type = "radio" name = "sex" id = "man"/><label for = "man"> 男</label>
+							</td>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<th>年龄:</th>
+					<td>
+						<select>
+  							<option value ="20-" selected = "true">20以下</option>
+  							<option value ="20">20</option>
+  							<option value = "21">21</option>
+  							<option value = "22">22</option>
+							<option value = "23">23</option>
+							<option value = "24">24</option>
+							<option value = "25">25</option>
+							<option value = "25+">25以上</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>留言板:</th>
+					<td id = "guesttd">
+						<textarea wrap = "hard" placeholder = "写一些你想说的话吧！" id = "guestbook"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<th>您的爱好:</th>
+					<td>
+						<input type = "checkbox" name = "hobby" value = "sports" id = "sports"/>
+						<label for = "sports">运动</label>
+						<br/>
+						<input type = "checkbox" name = "hobby" value = "read" id = "read"/>
+						<label for = "read">阅读</label>
+						<br/>
+						<input type = "checkbox" name = "hobby" value = "music" id = "music"/>
+						<label for = "music">听音乐</label>
+						<br/>
+						<input type = "checkbox" name = "hobby" value = "travel" id = "travel"/>
+						<label for = "travel">旅游</label>
+						<br/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<table>
+						
+							<tr>
+								<td class = "buttontd"><input type="submit" value = "提交" class = "button"/></td>
+								<td class = "buttontd"><input type="reset" value = "全部重写" class = "button"/></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/html/personal-document/css/1.css</url>
+    <content><![CDATA[@charset "utf-8";
+/* CSS Document */
+html, body{
+    width: 100%;
+    height: 100%;
+	margin: 0;
+}
+*{
+	padding: 0;
+	margin: 0;
+}
+#guestbook{
+	height: 100%;
+	width: 100%;
+	resize: none;
+}
+#guesttd{
+	height: 120px;
+}
+#div0{
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	background-image: url(/img/bg.jpg);
+	background-color: lightblue;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position:center;
+}
+#div1{
+	z-index: 1;
+	background-color: white;
+	height: 79%;
+	width: 30%;
+	position: absolute;
+	opacity: 0.1;
+	border-radius: 20px;
+}
+#main{
+	position: relative;
+	z-index: 10;
+	border-collapse: separate;
+	border-spacing: 25px 12px;
+	top: 7px;
+	
+}
+th{
+	text-align: right;
+	font-family: 'Noto Serif SC', serif;
+	color: azure;
+}
+td{
+	color: azure;
+}
+.sexwidth{
+	width: 50px;
+}
+.buttontd{
+	width: 150px;
+	text-align: center;
+}
+.button{
+	height: 30px;
+	width: 60px;
+	position: relative;
+	top: 10px;
+}
+*{
+	font-family: 'Noto Sans SC', sans-serif;
+}
+#caption{
+	z-index: 10;
+	position: relative;
+	bottom: 15px;
+	font-size: 2em;
+	font-family: 'Noto Serif SC', serif;
+	color: aliceblue;
+}
+.input2{
+	width: 80;
+}
+.input1{
+	width: 45%;
+}
+]]></content>
   </entry>
 </search>
