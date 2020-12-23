@@ -45,7 +45,16 @@ html, body{
 	border-collapse: separate;
 	border-spacing: 25px 12px;
 	top: 7px;
-	
+	height: 100%;
+	width: 100%;
+}
+#table1{
+	height: 100%;
+	width: 100%;
+}
+form{
+	height: 70%;
+	width: 30%;
 }
 th{
 	text-align: right;
@@ -73,16 +82,17 @@ td{
 }
 #caption{
 	z-index: 10;
+	text-decoration:underline;
 	position: relative;
 	bottom: 15px;
-	font-size: 2em;
+	font-size: 1.9em;
 	font-family: 'Noto Serif SC', serif;
 	color: aliceblue;
+	left: 10px;
 }
 .input2{
-	width: 80;
+	width: 80%;
 }
 .input1{
 	width: 45%;
 }
-table,table tr th, table tr td { border:1px solid #0094ff; }
