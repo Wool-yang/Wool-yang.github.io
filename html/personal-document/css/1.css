@@ -109,6 +109,7 @@
 	#th1{
 		font-size: 0.95em;
 	}
+	table,table tr th, table tr td { border:1px solid #0094ff; }
 }
 @media screen and (max-width: 960px){
 	html, body{
@@ -219,4 +220,5 @@
 	#th1{
 		font-size: 0.95em;
 	}
+	table,table tr th, table tr td { border:1px solid #0094ff; }
 }
