@@ -1437,6 +1437,11 @@
       </tags>
   </entry>
   <entry>
+    <title>分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>关于我</title>
     <url>/about/index.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1459,6 +1464,11 @@
     <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
   </entry>
   <entry>
+    <title>标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>前端实验</title>
     <url>/html/index.html</url>
     <content><![CDATA[<h1 id="写的一些html页面"><a href="#写的一些html页面" class="headerlink" title="写的一些html页面"></a>写的一些html页面</h1><ul>
@@ -1468,16 +1478,6 @@
 <li><a href="/html/layout-design/index.html">页面布局</a></li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title></title>
@@ -1702,19 +1702,19 @@
 		border-radius: 1em;
 	}
 	#title1{
-		font-size: 1.5em;
+		font-size: 0.8em;
 		color: aliceblue;
 		font-weight: bold;
 	}
 	.title0{
-		font-size: 2em;
+		font-size: 1.7em;
 		color:rgba(207,80,20,1.00);
 		position: relative;
 		bottom: 2%;
 		font-weight: bolder;
 	}
 	a{
-		font-size: 2em;
+		font-size: 1em;
 		list-style: none;
 		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
 		border-radius: 1em;
@@ -1727,12 +1727,17 @@
 		background-color:rgba(78,124,221,1.00);
 	}
 	#gun{
-		font-size: 2.7em;
+		font-size: 2em;
 		color:rgba(244,61,249,1.00);
 	}
 	#article1{
-		font-size: 1.5em;
+		font-size: 0.8em;
 		color:rgba(14,58,9,1.00);
+		font-weight: bold;
+	}
+	#article2{
+		font-size: 0.8em;
+		color:rgba(20,45,105,1.00);
 		font-weight: bold;
 	}
 }]]></content>
