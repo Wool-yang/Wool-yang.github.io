@@ -1437,16 +1437,6 @@
       </tags>
   </entry>
   <entry>
-    <title>分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>留言板</title>
-    <url>/guestbook/index.html</url>
-    <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
-  </entry>
-  <entry>
     <title>关于我</title>
     <url>/about/index.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1464,14 +1454,25 @@
 ]]></content>
   </entry>
   <entry>
+    <title>留言板</title>
+    <url>/guestbook/index.html</url>
+    <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
+  </entry>
+  <entry>
     <title>前端实验</title>
     <url>/html/index.html</url>
     <content><![CDATA[<h1 id="写的一些html页面"><a href="#写的一些html页面" class="headerlink" title="写的一些html页面"></a>写的一些html页面</h1><ul>
 <li><a href="/html/first/index.html">第一个网页</a></li>
 <li><a href="/html/schedule/index.html">课程表</a></li>
 <li><a href="/html/personal-document/index.html">个人资料表单</a></li>
+<li><a href="/html/layout-design/index.html">页面布局</a></li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>标签</title>
@@ -1480,132 +1481,260 @@
   </entry>
   <entry>
     <title></title>
-    <url>/html/layout-design/index.html</url>
-    <content><![CDATA[<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>我的网页设计布局</title>
-<link href = "css/1.css" rel = "stylesheet" type = "text/css">
-</head>
-
-<body>
-	<div id = "div0">
-		<header>
-			<p class = "title0">荒木飞吕彦&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-			<p class = "title0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——自成一派的日本漫画家</p>
-		</header>
-		<nav>				
-				<p class = "li1"><a href = "https://www.woolym.com" target="_blank">我的博客</a></p>
-  				<p class = "li1"><a href = "https://baike.baidu.com/item/%E8%8D%92%E6%9C%A8%E9%A3%9E%E5%90%95%E5%BD%A6" target="_blank">百度百科简介</a></p>
-  				<p class = "li1"><a href = "https://search.bilibili.com/bangumi?keyword=jojo" target="_blank">JOJO 番剧作品</a></p>
-				<p class = "li1"><a href = "https://www.bilibili.com/video/BV1f7411r7sK" target="_blank">B站UP视频简介</a></p>
-		</nav>
-		<main>
-			<aside>
-				<p id = "title1">不老神话</p>
-				<img alt="荒木的照片" id = "img1" src="https://pic2.zhimg.com/v2-728143e5dd83841fc0610e34221cdf9e_r.jpg?source=1940ef5c">
-			</aside>
-			<article></article>
-			<aside></aside>
-		</main>
-		<footer></footer>
-	</div>
-</body>
-</html>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>/html/layout-design/css/1.css</url>
     <content><![CDATA[@charset "utf-8";
 /* CSS Document */
-*{
-	padding: 0;
-	margin: 0;
-}
-html, body{
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	background-image: url(file:///G:/Blog/source/html/layout-design/img/bg.jpg);
+@media screen and (min-width: 960px){
+	*{
+		padding: 0;
+		margin: 0;
+		font-family: 'Noto Serif SC', serif;
+	}
+	html, body{
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		background-image: url(file:///G:/Blog/source/html/layout-design/img/bg.jpg);
 		background-color: lightblue;
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position:center;
 		background-attachment: fixed;
+	}
+	#div0{
+		height: 100%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	header{
+		text-align: center;
+		height: 12%;
+		width: 100%;
+		position: relative;
+		top: 5%;
+		background-color: white;
+		opacity: 0.8;
+	}
+	main{
+		width: 100%;
+		height: 66%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+	article{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 30%;
+		height: 90%;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+	}
+	aside{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 30%;
+		height: 90%;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+	}
+	nav{
+		text-align: center;
+		width: 100%;
+		height: 12%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		position: relative;
+		top: 4.5%;
+	}
+	footer{
+		width: 97%;
+		height: 10%;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+		position: relative;
+		bottom: 1.5%;
+	}
+	.li1{
+		font-size: 2em;
+		list-style: none;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+	}
+	#img1{
+		height: 90%;
+		width: 90%;
+		border-radius: 1em;
+	}
+	#title1{
+		font-size: 1.5em;
+		color: aliceblue;
+		font-weight: bold;
+	}
+	.title0{
+		font-size: 2em;
+		color:rgba(207,80,20,1.00);
+		position: relative;
+		bottom: 2%;
+		font-weight: bolder;
+	}
+	a{
+		font-size: 2em;
+		list-style: none;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+		color:rgba(128,0,197,1.00);
+		font-weight: bold;
+	}
+	a:hover{
+		background-image: none;
+		color:aqua;
+		background-color:rgba(78,124,221,1.00);
+	}
+	#gun{
+		font-size: 2.7em;
+		color:rgba(244,61,249,1.00);
+	}
+	#article1{
+		font-size: 1.5em;
+		color:rgba(14,58,9,1.00);
+		font-weight: bold;
+	}
+	#article2{
+		font-size: 1.5em;
+		color:rgba(20,45,105,1.00);
+		font-weight: bold;
+	}
 }
-#div0{
-	height: 100%;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
-header{
-	text-align: center;
-	height: 12%;
-	width: 100%;
-	background-image: url(https://www.woolym.com/html/personal-document/img/bg1.png);
-	border-radius: 1em;
-}
-main{
-	width: 100%;
-	height: 66%;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	flex-direction: row;
-	flex-wrap: nowrap;
-}
-article{
-	width: 30%;
-	height: 90%;
-	background-image: url(https://www.woolym.com/html/personal-document/img/bg1.png);
-	border-radius: 1em;
-}
-aside{
-	text-align: center;
-	width: 30%;
-	height: 90%;
-	background-image: url(https://www.woolym.com/html/personal-document/img/bg1.png);
-	border-radius: 1em;
-}
-nav{
-	text-align: center;
-	width: 100%;
-	height: 12%;
-	background-image: url(https://www.woolym.com/html/personal-document/img/bg1.png);
-	border-radius: 1em;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	flex-direction: row;
-	flex-wrap: nowrap;
-}
-footer{
-	width: 100%;
-	height: 10%;
-	background-image: url(https://www.woolym.com/html/personal-document/img/bg1.png);
-	border-radius: 1em;
-}
-.li1{
-	font-size: 1.5em;
-	list-style: none;
-}
-#img1{
-	height: 90%;
-	width: 90%;
-	border-radius: 1em;
-}
-#title1{
-	font-size: 1.7em;
-	color: aliceblue;
-}
-.title0{
-	font-size: 1.7em;
-	color: aliceblue;
+@media screen and (max-width: 960px){
+	*{
+		padding: 0;
+		margin: 0;
+		font-family: 'Noto Serif SC', serif;
+	}
+	html, body{
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		background-image: url(file:///G:/Blog/source/html/layout-design/img/bg.jpg);
+		background-color: lightblue;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position:center;
+		background-attachment: fixed;
+	}
+	#div0{
+		height: 100%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	header{
+		text-align: center;
+		height: 12%;
+		width: 100%;
+		position: relative;
+		top: 5%;
+		background-color: white;
+		opacity: 0.8;
+	}
+	main{
+		width: 100%;
+		height: 66%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+	article{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 30%;
+		height: 90%;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+	}
+	aside{
+		text-align: center;
+		width: 30%;
+		height: 90%;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+	}
+	nav{
+		text-align: center;
+		width: 100%;
+		height: 12%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		position: relative;
+		top: 4.5%;
+	}
+	footer{
+		width: 97%;
+		height: 10%;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+		position: relative;
+		bottom: 1.5%;
+	}
+	#img1{
+		height: 90%;
+		width: 90%;
+		border-radius: 1em;
+	}
+	#title1{
+		font-size: 1.5em;
+		color: aliceblue;
+		font-weight: bold;
+	}
+	.title0{
+		font-size: 2em;
+		color:rgba(207,80,20,1.00);
+		position: relative;
+		bottom: 2%;
+		font-weight: bolder;
+	}
+	a{
+		font-size: 2em;
+		list-style: none;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+		color:rgba(128,0,197,1.00);
+		font-weight: bold;
+	}
+	a:hover{
+		background-image: none;
+		color:aqua;
+		background-color:rgba(78,124,221,1.00);
+	}
+	#gun{
+		font-size: 2.7em;
+		color:rgba(244,61,249,1.00);
+	}
+	#article1{
+		font-size: 1.5em;
+		color:rgba(14,58,9,1.00);
+		font-weight: bold;
+	}
 }]]></content>
   </entry>
   <entry>
@@ -1720,6 +1849,9 @@ footer{
 	#th1{
 		font-size: 0.8em;
 	}
+	marquee{
+		font-size: 2em;
+	}
 }
 @media screen and (max-width: 960px){
 	html, body{
@@ -1828,6 +1960,9 @@ footer{
 	}
 	#th1{
 		font-size: 0.8em;
+	}
+	marquee{
+		font-size: 2em;
 	}
 }]]></content>
   </entry>

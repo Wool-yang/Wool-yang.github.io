@@ -107,6 +107,9 @@
 	#th1{
 		font-size: 0.8em;
 	}
+	marquee{
+		font-size: 2em;
+	}
 }
 @media screen and (max-width: 960px){
 	html, body{
@@ -215,5 +218,8 @@
 	}
 	#th1{
 		font-size: 0.8em;
+	}
+	marquee{
+		font-size: 2em;
 	}
 }
