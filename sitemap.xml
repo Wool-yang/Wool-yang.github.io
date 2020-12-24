@@ -601,13 +601,6 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/grammar/c-c/</loc>
-    <lastmod>2020-12-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.woolym.com/categories/linux-unix/</loc>
     <lastmod>2020-12-24</lastmod>
     <changefreq>daily</changefreq>
@@ -616,6 +609,13 @@
   
   <url>
     <loc>https://www.woolym.com/categories/algorithm/basic-algorithm/</loc>
+    <lastmod>2020-12-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.woolym.com/categories/grammar/c-c/</loc>
     <lastmod>2020-12-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
