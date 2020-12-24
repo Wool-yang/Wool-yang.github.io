@@ -82,12 +82,6 @@
 		position: relative;
 		bottom: 1.5%;
 	}
-	.li1{
-		font-size: 2em;
-		list-style: none;
-		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
-		border-radius: 1em;
-	}
 	#img1{
 		height: 90%;
 		width: 90%;
@@ -186,7 +180,10 @@
 		border-radius: 1em;
 	}
 	aside{
-		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
 		width: 30%;
 		height: 90%;
 		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
@@ -226,7 +223,6 @@
 		font-size: 1.7em;
 		color:rgba(207,80,20,1.00);
 		position: relative;
-		bottom: 2%;
 		font-weight: bolder;
 	}
 	a{
@@ -243,6 +239,8 @@
 		background-color:rgba(78,124,221,1.00);
 	}
 	#gun{
+		position: relative;
+		top: 9%;
 		font-size: 2em;
 		color:rgba(244,61,249,1.00);
 	}
