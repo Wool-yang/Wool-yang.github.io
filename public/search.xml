@@ -1437,23 +1437,6 @@
       </tags>
   </entry>
   <entry>
-    <title>关于我</title>
-    <url>/about/index.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<h1 id="在追寻自我的路上迷路的人"><a href="#在追寻自我的路上迷路的人" class="headerlink" title="在追寻自我的路上迷路的人"></a>在追寻自我的路上迷路的人</h1><h2 id="性格"><a href="#性格" class="headerlink" title="性格"></a>性格</h2><ol>
-<li>情绪控制差，易怒</li>
-<li>喜欢阴阳别人</li>
-<li>三分钟热度</li>
-<li>极度自恋</li>
-</ol>
-<h2 id="联系我"><a href="#联系我" class="headerlink" title="联系我"></a>联系我</h2><ul>
-<li>QQ: 1007950695</li>
-<li>WeChat: ymzyangmaozhen</li>
-<li>Blizzard: Wool#5502</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>分类</title>
     <url>/categories/index.html</url>
     <content><![CDATA[]]></content>
@@ -1475,6 +1458,23 @@
 <li><a href="/html/first/index.html">第一个网页</a></li>
 <li><a href="/html/schedule/index.html">课程表</a></li>
 <li><a href="/html/personal-document/index.html">个人资料表单</a></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>关于我</title>
+    <url>/about/index.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<h1 id="在追寻自我的路上迷路的人"><a href="#在追寻自我的路上迷路的人" class="headerlink" title="在追寻自我的路上迷路的人"></a>在追寻自我的路上迷路的人</h1><h2 id="性格"><a href="#性格" class="headerlink" title="性格"></a>性格</h2><ol>
+<li>情绪控制差，易怒</li>
+<li>喜欢阴阳别人</li>
+<li>三分钟热度</li>
+<li>极度自恋</li>
+</ol>
+<h2 id="联系我"><a href="#联系我" class="headerlink" title="联系我"></a>联系我</h2><ul>
+<li>QQ: 1007950695</li>
+<li>WeChat: ymzyangmaozhen</li>
+<li>Blizzard: Wool#5502</li>
 </ul>
 ]]></content>
   </entry>
@@ -1515,6 +1515,12 @@
     	width: 100%;
     	height: 100%;
 		margin: 0;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg.jpg);
+		background-color: lightblue;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position:center;
+		background-attachment: fixed;
 	}
 	*{
 		padding: 0;
@@ -1535,11 +1541,6 @@
 		flex-direction: column;
 		width: 100%;
 		height: 100%;
-		background-image: url(https://www.woolym.com/html/personal-document/img/bg.jpg);
-		background-color: lightblue;
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position:center;
 	}
 	#main{
 		position: relative;
@@ -1549,7 +1550,7 @@
 		top: 0.44em;
 		height: 100%;
 		width: 100%;
-		background-image: url(https://www.woolym.com/html/personal-document/img/bg.jpg);
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg1.png);
 		border-radius: 1.25em;
 	}
 	#table1{
@@ -1600,12 +1601,18 @@
 		width: 45%;
 	}
 	#div2{
-		color: aliceblue;
+		color: whitesmoke;
 		position: absolute;
-		bottom: 0.5em;
 		z-index: 10;
-		font-size: 1.5em;
+		font-size: 1.2em;
+		bottom: 1.5em;
 		font-family: 'Noto Serif SC', serif;
+	}
+	a{
+		color: aqua;
+	}
+	span{
+		color: aliceblue;
 	}
 	#th1{
 		font-size: 0.8em;
@@ -1616,6 +1623,12 @@
     	width: 100%;
     	height: 100%;
 		margin: 0;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg.jpg);
+		background-color: lightblue;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position:center;
+		background-attachment: fixed;
 	}
 	*{
 		padding: 0;
@@ -1636,20 +1649,6 @@
 		flex-direction: column;
 		width: 100%;
 		height: 100%;
-		background-image: url(https://www.woolym.com/html/personal-document/img/bg.jpg);
-		background-color: lightblue;
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position:center;
-	}
-	#div1{
-		z-index: 1;
-		background-color: white;
-		height: 85%;
-		width: 80%;
-		position: absolute;
-		opacity: 0.1;
-		border-radius: 1.25em;
 	}
 	#main{
 		position: relative;
@@ -1659,6 +1658,8 @@
 		bottom: 0.5em;
 		height: 100%;
 		width: 100%;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg1.png);
+		border-radius: 1.25em;
 	}
 	#table1{
 		height: 100%;
@@ -1688,8 +1689,6 @@
 	.button{
 		height: 1.875em;
 		width: 4.5em;
-		position: relative;
-		top: 2.5em;
 	}
 	*{
 		font-family: 'Noto Sans SC', sans-serif;
@@ -1712,10 +1711,17 @@
 	#div2{
 		color: whitesmoke;
 		position: absolute;
-		bottom: 0.5em;
 		z-index: 10;
-		font-size: 1.5em;
+		font-size: 1.2em;
+		top: 0.5em;
+		left: 0.5em;
 		font-family: 'Noto Serif SC', serif;
+	}
+	a{
+		color: lightsteelblue;
+	}
+	span{
+		color: aliceblue;
 	}
 	#th1{
 		font-size: 0.8em;
