@@ -220,13 +220,14 @@
 		font-weight: bold;
 	}
 	.title0{
+		top: 3%;
 		font-size: 1.7em;
 		color:rgba(207,80,20,1.00);
 		position: relative;
 		font-weight: bolder;
 	}
 	a{
-		font-size: 1em;
+		font-size: 0.8em;
 		list-style: none;
 		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
 		border-radius: 1em;
