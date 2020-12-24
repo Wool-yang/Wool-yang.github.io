@@ -8,44 +8,82 @@ html, body{
 	height: 100%;
 	width: 100%;
 	margin: 0;
+	background-image: url(file:///G:/Blog/source/html/layout-design/img/bg.jpg);
+		background-color: lightblue;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position:center;
+		background-attachment: fixed;
 }
 #div0{
 	height: 100%;
 	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 header{
-	height: 20%;
+	text-align: center;
+	height: 12%;
 	width: 100%;
-	background-color: orchid;
+	background-image: url(https://www.woolym.com/html/personal-document/img/bg1.png);
+	border-radius: 1em;
 }
 main{
 	width: 100%;
-	height: 50%;
-	background-color: springgreen;
+	height: 66%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: row;
+	flex-wrap: nowrap;
 }
 article{
-	float: left;
 	width: 30%;
 	height: 90%;
-	background-color: aqua;
-	margin: 1.2% 1.6% 1.2% 1.6%;
+	background-image: url(https://www.woolym.com/html/personal-document/img/bg1.png);
+	border-radius: 1em;
 }
 aside{
-	float: left;
+	text-align: center;
 	width: 30%;
 	height: 90%;
-	background-color: purple;
-	margin: 1.2% 1.6% 1.2% 1.6%;
+	background-image: url(https://www.woolym.com/html/personal-document/img/bg1.png);
+	border-radius: 1em;
 }
 nav{
+	text-align: center;
 	width: 100%;
-	height: 20%;
-	background-color: yellow;
+	height: 12%;
+	background-image: url(https://www.woolym.com/html/personal-document/img/bg1.png);
+	border-radius: 1em;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: row;
+	flex-wrap: nowrap;
 }
 footer{
-	clear: left;
 	width: 100%;
 	height: 10%;
-	background-color: red;
+	background-image: url(https://www.woolym.com/html/personal-document/img/bg1.png);
+	border-radius: 1em;
 }
-
+.li1{
+	font-size: 1.5em;
+	list-style: none;
+}
+#img1{
+	height: 90%;
+	width: 90%;
+	border-radius: 1em;
+}
+#title1{
+	font-size: 1.7em;
+	color: aliceblue;
+}
+.title0{
+	font-size: 1.7em;
+	color: aliceblue;
+}
