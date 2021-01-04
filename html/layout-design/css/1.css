@@ -54,6 +54,8 @@
 		height: 90%;
 		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
 		border-radius: 1em;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 	aside{
 		display: flex;
