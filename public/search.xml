@@ -1447,6 +1447,23 @@
     <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
   </entry>
   <entry>
+    <title>关于我</title>
+    <url>/about/index.html</url>
+    <content><![CDATA[<p>&nbsp;</p>
+<h1 id="在追寻自我的路上迷路的人"><a href="#在追寻自我的路上迷路的人" class="headerlink" title="在追寻自我的路上迷路的人"></a>在追寻自我的路上迷路的人</h1><h2 id="性格"><a href="#性格" class="headerlink" title="性格"></a>性格</h2><ol>
+<li>情绪控制差，易怒</li>
+<li>喜欢阴阳别人</li>
+<li>三分钟热度</li>
+<li>极度自恋</li>
+</ol>
+<h2 id="联系我"><a href="#联系我" class="headerlink" title="联系我"></a>联系我</h2><ul>
+<li>QQ: 1007950695</li>
+<li>WeChat: ymzyangmaozhen</li>
+<li>Blizzard: Wool#5502</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>前端实验</title>
     <url>/html/index.html</url>
     <content><![CDATA[<h1 id="写的一些html页面"><a href="#写的一些html页面" class="headerlink" title="写的一些html页面"></a>写的一些html页面</h1><ul>
@@ -1475,21 +1492,22 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>关于我</title>
-    <url>/about/index.html</url>
-    <content><![CDATA[<p>&nbsp;</p>
-<h1 id="在追寻自我的路上迷路的人"><a href="#在追寻自我的路上迷路的人" class="headerlink" title="在追寻自我的路上迷路的人"></a>在追寻自我的路上迷路的人</h1><h2 id="性格"><a href="#性格" class="headerlink" title="性格"></a>性格</h2><ol>
-<li>情绪控制差，易怒</li>
-<li>喜欢阴阳别人</li>
-<li>三分钟热度</li>
-<li>极度自恋</li>
-</ol>
-<h2 id="联系我"><a href="#联系我" class="headerlink" title="联系我"></a>联系我</h2><ul>
-<li>QQ: 1007950695</li>
-<li>WeChat: ymzyangmaozhen</li>
-<li>Blizzard: Wool#5502</li>
-</ul>
-]]></content>
+    <title></title>
+    <url>/html/jump/js/1.js</url>
+    <content><![CDATA[// JavaScript Document
+function jump(){
+	var select = document.getElementById("list");
+	var num = select.selectedIndex;
+	var text = document.getElementById("site");
+	text.value = select[num].value;
+}
+
+
+
+function jump1() {
+	var site = document.getElementById("site");
+	window.open(site.value, "_self");
+}]]></content>
   </entry>
   <entry>
     <title></title>
@@ -1767,20 +1785,132 @@
   </entry>
   <entry>
     <title></title>
-    <url>/html/jump/js/1.js</url>
-    <content><![CDATA[// JavaScript Document
-function jump(){
-	var select = document.getElementById("list");
-	var num = select.selectedIndex;
-	var text = document.getElementById("site");
-	text.value = select[num].value;
+    <url>/html/css-div/css/1.css</url>
+    <content><![CDATA[*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Noto Serif SC', serif;
 }
-
-
-
-function jump1() {
-	var site = document.getElementById("site");
-	window.open(site.value, "_self");
+html, body{
+	height: 100%;
+	width: 100%;
+}
+#main{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+#mainhd{
+	position: relative;
+	bottom: 5%;
+	font-size: 1.9em;
+}
+#nav{
+	position: relative;
+	bottom: 2%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	width: 100%;
+	height: 5%;
+	background-color: deepskyblue;
+	font-size: 1.2em;
+}
+#ul{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	list-style: none;
+	width: 100%;
+	height: auto;
+	margin-right: 30%;
+}
+li{
+	margin: 0 7%;
+	width: 5;
+}
+li:hover{
+	background-color: lightblue;
+}
+#art{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	height: 70%;
+	width: 100%;
+}
+#mainart{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+	width: 60%;
+}
+.content{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	height: 45%;
+	border-bottom-style: dashed;
+	border-style: solid;
+	border-color: deepskyblue;
+	margin: 2%;
+}
+.h{
+	width: 90%;
+	padding: 2%;
+	border-bottom-style: dashed;
+	border-color: deepskyblue;
+	font-size: 1.1em;
+}
+.art1{
+	font-size: 0.9em;
+	width: 90%;
+	padding: 2%;
+	border-bottom-style: solid;
+	border-color: deepskyblue;
+}
+.foot1{
+	font-size: 0.5em;
+	padding: 2%;
+	width: 90%;
+}
+aside{
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-direction: column;
+	height: 98%;
+	width: 15%;
+	margin-left: 2%;
+	background-color: lightgrey;
+}
+#as1{
+	font-size: 1.2em;
+	margin: 5% 0 0 5%;	
+}
+#as2{
+	margin: 5% 0 0 5%;	
+}
+#mainfoot{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	top:3%;
+	width: 100%;
+	height: 5%;
+	border-top-style: solid;
+	border-top-color: cadetblue;
 }]]></content>
   </entry>
   <entry>
@@ -2010,136 +2140,6 @@ function jump1() {
 	marquee{
 		font-size: 2em;
 	}
-}]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/html/css-div/css/1.css</url>
-    <content><![CDATA[*{
-	margin: 0;
-	padding: 0;
-	font-family: 'Noto Serif SC', serif;
-}
-html, body{
-	height: 100%;
-	width: 100%;
-}
-#main{
-	height: 100%;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
-#mainhd{
-	position: relative;
-	bottom: 5%;
-	font-size: 1.9em;
-}
-#nav{
-	position: relative;
-	bottom: 2%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: row;
-	width: 100%;
-	height: 5%;
-	background-color: deepskyblue;
-	font-size: 1.2em;
-}
-#ul{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: row;
-	list-style: none;
-	width: 100%;
-	height: auto;
-	margin-right: 30%;
-}
-li{
-	margin: 0 7%;
-	width: 5;
-}
-li:hover{
-	background-color: lightblue;
-}
-#art{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: row;
-	height: 70%;
-	width: 100%;
-}
-#mainart{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	height: 100%;
-	width: 60%;
-}
-.content{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-direction: column;
-	width: 100%;
-	height: 45%;
-	border-bottom-style: dashed;
-	border-style: solid;
-	border-color: deepskyblue;
-	margin: 2%;
-}
-.h{
-	width: 90%;
-	padding: 2%;
-	border-bottom-style: dashed;
-	border-color: deepskyblue;
-	font-size: 1.1em;
-}
-.art1{
-	font-size: 0.9em;
-	width: 90%;
-	padding: 2%;
-	border-bottom-style: solid;
-	border-color: deepskyblue;
-}
-.foot1{
-	font-size: 0.5em;
-	padding: 2%;
-	width: 90%;
-}
-aside{
-	display: flex;
-	justify-content: flex-start;
-	align-items: flex-start;
-	flex-direction: column;
-	height: 98%;
-	width: 15%;
-	margin-left: 2%;
-	background-color: lightgrey;
-}
-#as1{
-	font-size: 1.2em;
-	margin: 5% 0 0 5%;	
-}
-#as2{
-	margin: 5% 0 0 5%;	
-}
-#mainfoot{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	top:3%;
-	width: 100%;
-	height: 5%;
-	border-top-style: solid;
-	border-top-color: cadetblue;
 }]]></content>
   </entry>
   <entry>
