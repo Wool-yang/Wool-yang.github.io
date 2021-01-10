@@ -1,0 +1,126 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Noto Serif SC', serif;
+}
+html, body{
+	height: 100%;
+	width: 100%;
+}
+#main{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+#mainhd{
+	position: relative;
+	bottom: 5%;
+	font-size: 1.9em;
+}
+#nav{
+	position: relative;
+	bottom: 2%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	width: 100%;
+	height: 5%;
+	background-color: deepskyblue;
+	font-size: 1.2em;
+}
+#ul{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	list-style: none;
+	width: 100%;
+	height: auto;
+	margin-right: 30%;
+}
+li{
+	margin: 0 7%;
+	width: 5;
+}
+li:hover{
+	background-color: lightblue;
+}
+#art{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	height: 70%;
+	width: 100%;
+}
+#mainart{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+	width: 60%;
+}
+.content{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	height: 45%;
+	border-bottom-style: dashed;
+	border-style: solid;
+	border-color: deepskyblue;
+	margin: 2%;
+}
+.h{
+	width: 90%;
+	padding: 2%;
+	border-bottom-style: dashed;
+	border-color: deepskyblue;
+	font-size: 1.1em;
+}
+.art1{
+	font-size: 0.9em;
+	width: 90%;
+	padding: 2%;
+	border-bottom-style: solid;
+	border-color: deepskyblue;
+}
+.foot1{
+	font-size: 0.5em;
+	padding: 2%;
+	width: 90%;
+}
+aside{
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-direction: column;
+	height: 98%;
+	width: 15%;
+	margin-left: 2%;
+	background-color: lightgrey;
+}
+#as1{
+	font-size: 1.2em;
+	margin: 5% 0 0 5%;	
+}
+#as2{
+	margin: 5% 0 0 5%;	
+}
+#mainfoot{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	top:3%;
+	width: 100%;
+	height: 5%;
+	border-top-style: solid;
+	border-top-color: cadetblue;
+}
