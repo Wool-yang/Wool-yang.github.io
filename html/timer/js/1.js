@@ -9,7 +9,6 @@ var flag = 0;
 function start1(){
 	a = document.getElementById("count");
 	if(flag == 0){
-		time0 = 0;
 		start2(1);
 		flag = 1;
 	}

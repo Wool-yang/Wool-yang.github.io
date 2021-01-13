@@ -15,47 +15,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode 62. 不同路径 记忆化搜索 动态规划</title>
-    <url>/leetcode/665.html</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/unique-paths/">https://leetcode-cn.com/problems/unique-paths/</a></p>
-<a id="more"></a>
-
-<h2 id="LeetCode-62-不同路径-记忆化搜索-动态规划"><a href="#LeetCode-62-不同路径-记忆化搜索-动态规划" class="headerlink" title="LeetCode 62. 不同路径 记忆化搜索 动态规划"></a>LeetCode 62. 不同路径 记忆化搜索 动态规划</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>一个机器人位于一个 <code>m x n</code> 网格的左上角 （起始点在下图中标记为 “Start” ）。</p>
-<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。</p>
-<p>问总共有多少条不同的路径？</p>
-<p>示例 1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：m &#x3D; 3, n &#x3D; 7</span><br><span class="line">输出：28</span><br></pre></td></tr></table></figure>
-
-<p>示例 2：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：m &#x3D; 3, n &#x3D; 2</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">从左上角开始，总共有 3 条路径可以到达右下角。</span><br><span class="line">1. 向右 -&gt; 向右 -&gt; 向下</span><br><span class="line">2. 向右 -&gt; 向下 -&gt; 向右</span><br><span class="line">3. 向下 -&gt; 向右 -&gt; 向右</span><br></pre></td></tr></table></figure>
-
-<p>示例 3：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：m &#x3D; 7, n &#x3D; 3</span><br><span class="line">输出：28</span><br></pre></td></tr></table></figure>
-
-<p>示例 4：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：m &#x3D; 3, n &#x3D; 3</span><br><span class="line">输出：6</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>1 &lt;= m, n &lt;= 100</code></li>
-<li>题目数据保证答案小于等于 <code>2e9</code></li>
-</ul>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="记忆化搜索"><a href="#记忆化搜索" class="headerlink" title="记忆化搜索"></a>记忆化搜索</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> num[<span class="number">110</span>][<span class="number">110</span>];</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span> nowm, <span class="keyword">int</span> nown)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nowm == m &amp;&amp; nown == n)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(num[nowm][nown])</span><br><span class="line">            <span class="keyword">return</span> num[nowm][nown];</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(nowm + <span class="number">1</span> &lt;= m)</span><br><span class="line">            sum += dfs(m, n, nowm + <span class="number">1</span>, nown);</span><br><span class="line">        <span class="keyword">if</span>(nown + <span class="number">1</span> &lt;= n)</span><br><span class="line">            sum += dfs(m, n, nowm, nown + <span class="number">1</span>);</span><br><span class="line">        num[nowm][nown] = sum;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">        ans = dfs(m, n, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h4 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">f</span><span class="params">(m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n))</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)</span><br><span class="line">            f[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)</span><br><span class="line">            f[<span class="number">0</span>][j] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; m;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt; n;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                f[i][j] = f[i - <span class="number">1</span>][j] + f[i][j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> f[m - <span class="number">1</span>][n - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>LeetCode</tag>
-        <tag>记忆化搜索</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode 842. 将数组拆分成斐波那契序列 回溯 + 剪枝</title>
     <url>/leetcode/663.html</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/split-array-into-fibonacci-sequence/">https://leetcode-cn.com/problems/split-array-into-fibonacci-sequence/</a></p>
@@ -102,6 +61,47 @@
         <tag>LeetCode</tag>
         <tag>回溯</tag>
         <tag>剪枝</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode 62. 不同路径 记忆化搜索 动态规划</title>
+    <url>/leetcode/665.html</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/unique-paths/">https://leetcode-cn.com/problems/unique-paths/</a></p>
+<a id="more"></a>
+
+<h2 id="LeetCode-62-不同路径-记忆化搜索-动态规划"><a href="#LeetCode-62-不同路径-记忆化搜索-动态规划" class="headerlink" title="LeetCode 62. 不同路径 记忆化搜索 动态规划"></a>LeetCode 62. 不同路径 记忆化搜索 动态规划</h2><h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>一个机器人位于一个 <code>m x n</code> 网格的左上角 （起始点在下图中标记为 “Start” ）。</p>
+<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。</p>
+<p>问总共有多少条不同的路径？</p>
+<p>示例 1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：m &#x3D; 3, n &#x3D; 7</span><br><span class="line">输出：28</span><br></pre></td></tr></table></figure>
+
+<p>示例 2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：m &#x3D; 3, n &#x3D; 2</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">从左上角开始，总共有 3 条路径可以到达右下角。</span><br><span class="line">1. 向右 -&gt; 向右 -&gt; 向下</span><br><span class="line">2. 向右 -&gt; 向下 -&gt; 向右</span><br><span class="line">3. 向下 -&gt; 向右 -&gt; 向右</span><br></pre></td></tr></table></figure>
+
+<p>示例 3：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：m &#x3D; 7, n &#x3D; 3</span><br><span class="line">输出：28</span><br></pre></td></tr></table></figure>
+
+<p>示例 4：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：m &#x3D; 3, n &#x3D; 3</span><br><span class="line">输出：6</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= m, n &lt;= 100</code></li>
+<li>题目数据保证答案小于等于 <code>2e9</code></li>
+</ul>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="记忆化搜索"><a href="#记忆化搜索" class="headerlink" title="记忆化搜索"></a>记忆化搜索</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> num[<span class="number">110</span>][<span class="number">110</span>];</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span> nowm, <span class="keyword">int</span> nown)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nowm == m &amp;&amp; nown == n)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(num[nowm][nown])</span><br><span class="line">            <span class="keyword">return</span> num[nowm][nown];</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(nowm + <span class="number">1</span> &lt;= m)</span><br><span class="line">            sum += dfs(m, n, nowm + <span class="number">1</span>, nown);</span><br><span class="line">        <span class="keyword">if</span>(nown + <span class="number">1</span> &lt;= n)</span><br><span class="line">            sum += dfs(m, n, nowm, nown + <span class="number">1</span>);</span><br><span class="line">        num[nowm][nown] = sum;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">        ans = dfs(m, n, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">f</span><span class="params">(m, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n))</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)</span><br><span class="line">            f[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)</span><br><span class="line">            f[<span class="number">0</span>][j] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; m;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt; n;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                f[i][j] = f[i - <span class="number">1</span>][j] + f[i][j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> f[m - <span class="number">1</span>][n - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>LeetCode</tag>
+        <tag>记忆化搜索</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -197,25 +197,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Dijkstra算法</title>
-    <url>/algorithm/graph-theory/512.html</url>
-    <content><![CDATA[<p>Dijkstra算法的浅要理解</p>
-<a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>初始化距离数组 dist[N]，起点 dist[1] 为 0，其余所有点为0x3f3f3f3f 使用一个集合来存储已经确定最短路的点， 每次先找到一个不在集合中的 dist 最短的点 t，将其放入集合并用其更新其余所有点的 dist</p>
-<p><code>dist[j] = min(dist[j], dist[t] + g[t][j]);</code></p>
-<p>即可求出起点到点n的最短路</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="朴素版-O-n-2"><a href="#朴素版-O-n-2" class="headerlink" title="朴素版 O(n^2)"></a>朴素版 O(n^2)</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">510</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> g[N][N], dist[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dijkstra</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="keyword">if</span> (!st[j] &amp;&amp; (t == <span class="number">-1</span>  dist[t] &gt; dist[j]))</span><br><span class="line">                t = j;</span><br><span class="line">        st[t] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (dist[j] &gt; dist[t] + g[t][j])</span><br><span class="line">                dist[j] = dist[t] + g[t][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (dist[n] == <span class="number">0x3f3f3f3f</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> dist[n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(g, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> g);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> a, b, c;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line">        g[a][b] = min(g[a][b], c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, dijkstra());</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="堆优化版-O-mlogn"><a href="#堆优化版-O-mlogn" class="headerlink" title="堆优化版 O(mlogn)"></a>堆优化版 O(mlogn)</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> h[N], e[N], ne[N], idx, w[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dist[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[++idx] = y;</span><br><span class="line">    ne[idx] = h[x];</span><br><span class="line">    h[x] = idx;</span><br><span class="line">    w[idx] = z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dijkstra</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    <span class="built_in">priority_queue</span>&lt;PII, <span class="built_in">vector</span>&lt;PII&gt;, greater&lt;PII&gt;&gt; heap;</span><br><span class="line">    heap.push(&#123;<span class="number">0</span>, <span class="number">1</span>&#125;);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (heap.size())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">auto</span> t = heap.top();</span><br><span class="line">        heap.pop();</span><br><span class="line">        <span class="keyword">int</span> distance = t.first, ver = t.second;</span><br><span class="line">        <span class="keyword">if</span> (st[ver])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        st[ver] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[ver]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            <span class="keyword">if</span> (dist[j] &gt; distance + w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j] = distance + w[i];</span><br><span class="line">                heap.push(&#123;dist[j], j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (dist[n] == <span class="number">0x3f3f3f3f</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> dist[n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(h, <span class="number">-1</span>, <span class="keyword">sizeof</span> h);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x, y, z;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;x, &amp;y, &amp;z);</span><br><span class="line">        add(x, y, z);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; dijkstra() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>图论</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>图论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>DFS（深度优先遍历） 与 BFS（广度优先遍历）</title>
     <url>/algorithm/graph-theory/458.html</url>
     <content><![CDATA[<p>DFS 与 BFS 的思想</p>
@@ -235,6 +216,25 @@
 <li>  重复第二步直到遍历结束(队列为空)</li>
 </ul>
 <h3 id="代码实现：-1"><a href="#代码实现：-1" class="headerlink" title="代码实现："></a>代码实现：</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">st[<span class="number">1</span>] = <span class="literal">true</span>; <span class="comment">// 表示1号点已经被遍历过</span></span><br><span class="line">q.push(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (q.size())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> t = q.front();</span><br><span class="line">    q.pop();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = e[i];</span><br><span class="line">        <span class="keyword">if</span> (!s[j])</span><br><span class="line">        &#123;</span><br><span class="line">            st[j] = <span class="literal">true</span>; <span class="comment">// 表示点j已经被遍历过</span></span><br><span class="line">            q.push(j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Dijkstra算法</title>
+    <url>/algorithm/graph-theory/512.html</url>
+    <content><![CDATA[<p>Dijkstra算法的浅要理解</p>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>初始化距离数组 dist[N]，起点 dist[1] 为 0，其余所有点为0x3f3f3f3f 使用一个集合来存储已经确定最短路的点， 每次先找到一个不在集合中的 dist 最短的点 t，将其放入集合并用其更新其余所有点的 dist</p>
+<p><code>dist[j] = min(dist[j], dist[t] + g[t][j]);</code></p>
+<p>即可求出起点到点n的最短路</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="朴素版-O-n-2"><a href="#朴素版-O-n-2" class="headerlink" title="朴素版 O(n^2)"></a>朴素版 O(n^2)</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">510</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> g[N][N], dist[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dijkstra</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="keyword">if</span> (!st[j] &amp;&amp; (t == <span class="number">-1</span>  dist[t] &gt; dist[j]))</span><br><span class="line">                t = j;</span><br><span class="line">        st[t] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (dist[j] &gt; dist[t] + g[t][j])</span><br><span class="line">                dist[j] = dist[t] + g[t][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (dist[n] == <span class="number">0x3f3f3f3f</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> dist[n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(g, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> g);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> a, b, c;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line">        g[a][b] = min(g[a][b], c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, dijkstra());</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="堆优化版-O-mlogn"><a href="#堆优化版-O-mlogn" class="headerlink" title="堆优化版 O(mlogn)"></a>堆优化版 O(mlogn)</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> h[N], e[N], ne[N], idx, w[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dist[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[++idx] = y;</span><br><span class="line">    ne[idx] = h[x];</span><br><span class="line">    h[x] = idx;</span><br><span class="line">    w[idx] = z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dijkstra</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    <span class="built_in">priority_queue</span>&lt;PII, <span class="built_in">vector</span>&lt;PII&gt;, greater&lt;PII&gt;&gt; heap;</span><br><span class="line">    heap.push(&#123;<span class="number">0</span>, <span class="number">1</span>&#125;);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (heap.size())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">auto</span> t = heap.top();</span><br><span class="line">        heap.pop();</span><br><span class="line">        <span class="keyword">int</span> distance = t.first, ver = t.second;</span><br><span class="line">        <span class="keyword">if</span> (st[ver])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        st[ver] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[ver]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            <span class="keyword">if</span> (dist[j] &gt; distance + w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j] = distance + w[i];</span><br><span class="line">                heap.push(&#123;dist[j], j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (dist[n] == <span class="number">0x3f3f3f3f</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> dist[n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(h, <span class="number">-1</span>, <span class="keyword">sizeof</span> h);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x, y, z;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;x, &amp;y, &amp;z);</span><br><span class="line">        add(x, y, z);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; dijkstra() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>算法</category>
         <category>图论</category>
@@ -412,33 +412,6 @@
       </tags>
   </entry>
   <entry>
-    <title>二分图</title>
-    <url>/algorithm/graph-theory/617.html</url>
-    <content><![CDATA[<ul>
-<li>  染色法判定二分图</li>
-<li>  匈牙利算法求二分图最大匹配<a id="more"></a>
-<h2 id="二分图概念"><a href="#二分图概念" class="headerlink" title="二分图概念"></a>二分图概念</h2></li>
-</ul>
-<p>可以将所有点分至两个集合，所有的边都存在于两个集合之间，集合内部不存在边（二分图中不含奇数环）</p>
-<h2 id="染色法（二染色）判定二分图"><a href="#染色法（二染色）判定二分图" class="headerlink" title="染色法（二染色）判定二分图"></a>染色法（二染色）判定二分图</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>通过DFS或BFS实现 依次判断每个点是否被染过色，如果没有染过色则将其染色，并将与其相连的所有点通过DFS或BFS的方式染色，在染色的过程中如果出现冲突则证明不是二分图</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 染色过程</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> color)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    st[x] = color;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[x]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = e[i];</span><br><span class="line">        <span class="keyword">if</span> (!st[j])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!dfs(j, <span class="number">3</span> - color))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (st[j] == color)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历所有点</span></span><br><span class="line"><span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (!st[i])</span><br><span class="line">        <span class="keyword">if</span> (!dfs(i, <span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>给定一个二分图，求其最大匹配数（匹配成功为二分图中不存在两条边共用一个点，最大匹配数则是求满足上述条件最多有多少条边） 匈牙利算法具体思路为，选择一个集合，建立 match[N]（用于储存另一个集合匹配到所选集合中的哪一个点） 和 st[N] （用于标记第二个集合中的点在匹配过程中是否被遍历过） 遍历所选集合的所有点进行匹配操作，遍历过程中每次都要将 st 数组全部初始化为 false 匹配过程中要检查是否存在与其相连的另一个集合中的点可以匹配成功 检查过程大致为：如果一个点的 st 为 false，则标记为 true，并且检查其 match</p>
-<ul>
-<li>  如果match为 0，则更新 match 为当前被选集合中的点，返回匹配成功</li>
-<li>  如果match不为 0，则使用递归的方式检查 match 储存的点是否还有其他可选择的与其相连的另一个集合中的点，如果存在则更新 match数组，并返回匹配成功</li>
-</ul>
-<p>如果检查所有的点都不满足匹配成功的条件则匹配失败</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">510</span>, M = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n1, n2, m;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> res;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> h[N], e[M], ne[M], idx;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> st[N], match[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[++idx] = b;</span><br><span class="line">    ne[idx] = h[a];</span><br><span class="line">    h[a] = idx;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">hungary</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[x]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = e[i];</span><br><span class="line">        <span class="keyword">if</span> (!st[j])</span><br><span class="line">        &#123;</span><br><span class="line">            st[j] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (match[j] == <span class="number">0</span>  hungary(match[j]))</span><br><span class="line">            &#123;</span><br><span class="line">                match[j] = x;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(h, <span class="number">-1</span>, <span class="keyword">sizeof</span> h);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;n1, &amp;n2, &amp;m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u, v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;u, &amp;v);</span><br><span class="line">        add(u, v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(st, <span class="literal">false</span>, <span class="keyword">sizeof</span> st);</span><br><span class="line">        <span class="keyword">if</span> (hungary(i))</span><br><span class="line">            res++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>图论</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>图论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>二叉排序树</title>
     <url>/algorithm/search/659.html</url>
     <content><![CDATA[<p>二叉排序树 —— 具有特殊性质的二叉树</p>
@@ -482,54 +455,30 @@
       </tags>
   </entry>
   <entry>
-    <title>差分</title>
-    <url>/algorithm/basic-algorithm/118.html</url>
-    <content><![CDATA[<p>差分法的一二维实例与理解</p>
-<a id="more"></a>
-<h2 id="一维差分"><a href="#一维差分" class="headerlink" title="一维差分"></a>一维差分</h2><p>前缀和与差分为<strong>逆运算</strong></p>
-<p>数组a[N]为数据组</p>
-<p>数组b[N],s[N]进行两种运算</p>
-<p>前缀和运算:</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">&#123; </span><br><span class="line">    s[i] += a[i] + a[i - <span class="number">1</span>]; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>差分运算：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    b[i] = a[i] - a[i - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>（大概是这个意思吧···）</p>
-<hr>
-<p>两个数组a[N],b[N]</p>
-<p>满足a[i]=b[1]+b[2]+b[3]+···+b[i]，则称a数组为b数组前缀和数组，b为a差分数组</p>
-<p>（构造方法：b[1]=a[1],b[2]=a[2]-a[1],b[3]=a[3]-a[2]···）</p>
-<p>但是构造差分数组的过程并不重要(存在).</p>
-<hr>
-<p>实现若干次将一个数组a[N]的[l,r]区间内的数加c</p>
-<p>不使用前缀和 差分需要O(n)复杂度 使用则只需要O(1)时间复杂度</p>
-<p>将a[N]数组的每一个数字假设为0,b[N]也同理</p>
-<p>将原先a[N]中每一个数字如：a[i]，都看作是在b[i,i]插入了a[i]，因此差分数组的构造则可省略</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    b[l] += c;</span><br><span class="line">    b[r + <span class="number">1</span>] -= c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>只需要这样一个插入函数，即可实现算法.</p>
-<hr>
-<p>综上所述</p>
-<p>我习惯于构造一个全零记录数组.</p>
-<p>记录[l,r]区间上放c的操作</p>
-<p>最后前缀和运算后与数据数组相加</p>
-<h2 id="二维差分"><a href="#二维差分" class="headerlink" title="二维差分"></a>二维差分</h2><p>同理于一维差分.</p>
-<p>仍为创建一个全0数组假设其为差分数组 b[N][N]</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x1, <span class="keyword">int</span> y1, <span class="keyword">int</span> x2, <span class="keyword">int</span> y2, <span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    b[x1][y1] += c;</span><br><span class="line">    b[x1][y2 + <span class="number">1</span>] -= c;</span><br><span class="line">    b[x2 + <span class="number">1</span>][y1] -= c;</span><br><span class="line">    b[x2 + <span class="number">1</span>][y2 + <span class="number">1</span>] += c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>将数据读入a[N][N]中，同样以一维数组的方式insert入b[N][N]中</p>
-<p>再实现若干次将[x1,x2]到[x2,y2]作为两个对角的矩形区间内的数加c的操作</p>
-<p>最后同样是将差分数组b进行前缀和运算</p>
-<hr>
-<p>综上所述</p>
-<p>我习惯创建一个记录数组</p>
-<p>记录操作</p>
-<p>最后再将记录数组求前缀和与原数据数组相加</p>
-]]></content>
+    <title>二分图</title>
+    <url>/algorithm/graph-theory/617.html</url>
+    <content><![CDATA[<ul>
+<li>  染色法判定二分图</li>
+<li>  匈牙利算法求二分图最大匹配<a id="more"></a>
+<h2 id="二分图概念"><a href="#二分图概念" class="headerlink" title="二分图概念"></a>二分图概念</h2></li>
+</ul>
+<p>可以将所有点分至两个集合，所有的边都存在于两个集合之间，集合内部不存在边（二分图中不含奇数环）</p>
+<h2 id="染色法（二染色）判定二分图"><a href="#染色法（二染色）判定二分图" class="headerlink" title="染色法（二染色）判定二分图"></a>染色法（二染色）判定二分图</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>通过DFS或BFS实现 依次判断每个点是否被染过色，如果没有染过色则将其染色，并将与其相连的所有点通过DFS或BFS的方式染色，在染色的过程中如果出现冲突则证明不是二分图</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 染色过程</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> color)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    st[x] = color;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[x]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = e[i];</span><br><span class="line">        <span class="keyword">if</span> (!st[j])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!dfs(j, <span class="number">3</span> - color))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (st[j] == color)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历所有点</span></span><br><span class="line"><span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (!st[i])</span><br><span class="line">        <span class="keyword">if</span> (!dfs(i, <span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>给定一个二分图，求其最大匹配数（匹配成功为二分图中不存在两条边共用一个点，最大匹配数则是求满足上述条件最多有多少条边） 匈牙利算法具体思路为，选择一个集合，建立 match[N]（用于储存另一个集合匹配到所选集合中的哪一个点） 和 st[N] （用于标记第二个集合中的点在匹配过程中是否被遍历过） 遍历所选集合的所有点进行匹配操作，遍历过程中每次都要将 st 数组全部初始化为 false 匹配过程中要检查是否存在与其相连的另一个集合中的点可以匹配成功 检查过程大致为：如果一个点的 st 为 false，则标记为 true，并且检查其 match</p>
+<ul>
+<li>  如果match为 0，则更新 match 为当前被选集合中的点，返回匹配成功</li>
+<li>  如果match不为 0，则使用递归的方式检查 match 储存的点是否还有其他可选择的与其相连的另一个集合中的点，如果存在则更新 match数组，并返回匹配成功</li>
+</ul>
+<p>如果检查所有的点都不满足匹配成功的条件则匹配失败</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">510</span>, M = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n1, n2, m;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> res;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> h[N], e[M], ne[M], idx;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> st[N], match[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[++idx] = b;</span><br><span class="line">    ne[idx] = h[a];</span><br><span class="line">    h[a] = idx;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">hungary</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[x]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = e[i];</span><br><span class="line">        <span class="keyword">if</span> (!st[j])</span><br><span class="line">        &#123;</span><br><span class="line">            st[j] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (match[j] == <span class="number">0</span>  hungary(match[j]))</span><br><span class="line">            &#123;</span><br><span class="line">                match[j] = x;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(h, <span class="number">-1</span>, <span class="keyword">sizeof</span> h);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;n1, &amp;n2, &amp;m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u, v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;u, &amp;v);</span><br><span class="line">        add(u, v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(st, <span class="literal">false</span>, <span class="keyword">sizeof</span> st);</span><br><span class="line">        <span class="keyword">if</span> (hungary(i))</span><br><span class="line">            res++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>算法</category>
-        <category>基础算法</category>
+        <category>图论</category>
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>基础算法</tag>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -591,19 +540,47 @@
       </tags>
   </entry>
   <entry>
-    <title>区间合并问题</title>
-    <url>/algorithm/basic-algorithm/295.html</url>
-    <content><![CDATA[<p>区间合并问题思路</p>
+    <title>差分</title>
+    <url>/algorithm/basic-algorithm/118.html</url>
+    <content><![CDATA[<p>差分法的一二维实例与理解</p>
 <a id="more"></a>
-<p>已知若干闭区间，将其中存在重复的区间合并的方法（一个区间右端点与另一个区间的左端点重合也视为重复） 例：[2,4]、[4,7]、[7,10]、[8,9]、[8,15]、[17,21]进行区间合并 结果应为[2,15]、[17,21]两个区间 我们可以将所有区间按照左端点进行排序（从小到大） 之后从第一个区间开始维护 第二个区间与第一个区间有如下几种关系：//称区间左端点为st 右端点为ed</p>
-<ul>
-<li>  st1&lt;st2&lt;ed2&lt;ed1</li>
-<li>  st1&lt;st2&lt;ed1&lt;ed2</li>
-<li>  st1&lt;ed1=st2&lt;ed2</li>
-<li>  st1&lt;ed1&lt;st2&lt;ed2</li>
-</ul>
-<p>在遍历区间时，前三种情况只需要不断更新维护区间的ed 第四种情况我们需要将当前维护的区间放入记录容器中，更新维护区间的st，ed为新的st与ed c++代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;PII&gt; a;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;PII&gt; a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;PII&gt; res;</span><br><span class="line">    <span class="keyword">int</span> st = a[<span class="number">0</span>].first, ed = a[<span class="number">0</span>].second;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> item : a)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (ed &lt; item.first)</span><br><span class="line">        &#123;</span><br><span class="line">            res.push_back(&#123;st, ed&#125;);</span><br><span class="line">            st = item.first;</span><br><span class="line">        &#125;</span><br><span class="line">        ed = max(ed, item.second);</span><br><span class="line">    &#125;</span><br><span class="line">    res.push_back(&#123;st, ed&#125;);</span><br><span class="line">    <span class="keyword">return</span> res.size();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<h2 id="一维差分"><a href="#一维差分" class="headerlink" title="一维差分"></a>一维差分</h2><p>前缀和与差分为<strong>逆运算</strong></p>
+<p>数组a[N]为数据组</p>
+<p>数组b[N],s[N]进行两种运算</p>
+<p>前缀和运算:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">&#123; </span><br><span class="line">    s[i] += a[i] + a[i - <span class="number">1</span>]; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>差分运算：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    b[i] = a[i] - a[i - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（大概是这个意思吧···）</p>
+<hr>
+<p>两个数组a[N],b[N]</p>
+<p>满足a[i]=b[1]+b[2]+b[3]+···+b[i]，则称a数组为b数组前缀和数组，b为a差分数组</p>
+<p>（构造方法：b[1]=a[1],b[2]=a[2]-a[1],b[3]=a[3]-a[2]···）</p>
+<p>但是构造差分数组的过程并不重要(存在).</p>
+<hr>
+<p>实现若干次将一个数组a[N]的[l,r]区间内的数加c</p>
+<p>不使用前缀和 差分需要O(n)复杂度 使用则只需要O(1)时间复杂度</p>
+<p>将a[N]数组的每一个数字假设为0,b[N]也同理</p>
+<p>将原先a[N]中每一个数字如：a[i]，都看作是在b[i,i]插入了a[i]，因此差分数组的构造则可省略</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    b[l] += c;</span><br><span class="line">    b[r + <span class="number">1</span>] -= c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只需要这样一个插入函数，即可实现算法.</p>
+<hr>
+<p>综上所述</p>
+<p>我习惯于构造一个全零记录数组.</p>
+<p>记录[l,r]区间上放c的操作</p>
+<p>最后前缀和运算后与数据数组相加</p>
+<h2 id="二维差分"><a href="#二维差分" class="headerlink" title="二维差分"></a>二维差分</h2><p>同理于一维差分.</p>
+<p>仍为创建一个全0数组假设其为差分数组 b[N][N]</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x1, <span class="keyword">int</span> y1, <span class="keyword">int</span> x2, <span class="keyword">int</span> y2, <span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    b[x1][y1] += c;</span><br><span class="line">    b[x1][y2 + <span class="number">1</span>] -= c;</span><br><span class="line">    b[x2 + <span class="number">1</span>][y1] -= c;</span><br><span class="line">    b[x2 + <span class="number">1</span>][y2 + <span class="number">1</span>] += c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将数据读入a[N][N]中，同样以一维数组的方式insert入b[N][N]中</p>
+<p>再实现若干次将[x1,x2]到[x2,y2]作为两个对角的矩形区间内的数加c的操作</p>
+<p>最后同样是将差分数组b进行前缀和运算</p>
+<hr>
+<p>综上所述</p>
+<p>我习惯创建一个记录数组</p>
+<p>记录操作</p>
+<p>最后再将记录数组求前缀和与原数据数组相加</p>
+]]></content>
       <categories>
         <category>算法</category>
         <category>基础算法</category>
@@ -627,6 +604,48 @@
       <tags>
         <tag>算法</tag>
         <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>区间合并问题</title>
+    <url>/algorithm/basic-algorithm/295.html</url>
+    <content><![CDATA[<p>区间合并问题思路</p>
+<a id="more"></a>
+<p>已知若干闭区间，将其中存在重复的区间合并的方法（一个区间右端点与另一个区间的左端点重合也视为重复） 例：[2,4]、[4,7]、[7,10]、[8,9]、[8,15]、[17,21]进行区间合并 结果应为[2,15]、[17,21]两个区间 我们可以将所有区间按照左端点进行排序（从小到大） 之后从第一个区间开始维护 第二个区间与第一个区间有如下几种关系：//称区间左端点为st 右端点为ed</p>
+<ul>
+<li>  st1&lt;st2&lt;ed2&lt;ed1</li>
+<li>  st1&lt;st2&lt;ed1&lt;ed2</li>
+<li>  st1&lt;ed1=st2&lt;ed2</li>
+<li>  st1&lt;ed1&lt;st2&lt;ed2</li>
+</ul>
+<p>在遍历区间时，前三种情况只需要不断更新维护区间的ed 第四种情况我们需要将当前维护的区间放入记录容器中，更新维护区间的st，ed为新的st与ed c++代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;PII&gt; a;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;PII&gt; a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;PII&gt; res;</span><br><span class="line">    <span class="keyword">int</span> st = a[<span class="number">0</span>].first, ed = a[<span class="number">0</span>].second;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> item : a)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (ed &lt; item.first)</span><br><span class="line">        &#123;</span><br><span class="line">            res.push_back(&#123;st, ed&#125;);</span><br><span class="line">            st = item.first;</span><br><span class="line">        &#125;</span><br><span class="line">        ed = max(ed, item.second);</span><br><span class="line">    &#125;</span><br><span class="line">    res.push_back(&#123;st, ed&#125;);</span><br><span class="line">    <span class="keyword">return</span> res.size();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>基础算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单链表</title>
+    <url>/algorithm/data-structure/297.html</url>
+    <content><![CDATA[<p>数组实现单链表</p>
+<a id="more"></a>
+<p>e[N]储存每个节点的value，ne[N]储存每个节点的next指针 变量head储存头节点，idx储存当前使用到的地址</p>
+<h2 id="初始化操作"><a href="#初始化操作" class="headerlink" title="初始化操作"></a>初始化操作</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    head = <span class="number">-1</span>;</span><br><span class="line">    idx = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="在头节点后增加一个节点"><a href="#在头节点后增加一个节点" class="headerlink" title="在头节点后增加一个节点"></a>在头节点后增加一个节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">headadd</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    ne[idx] = head;</span><br><span class="line">    head = idx++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="在地址为k的节点后增加一个节点"><a href="#在地址为k的节点后增加一个节点" class="headerlink" title="在地址为k的节点后增加一个节点"></a>在地址为k的节点后增加一个节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    ne[idx] = ne[k];</span><br><span class="line">    ne[k] = idx++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="删除地址为k的节点"><a href="#删除地址为k的节点" class="headerlink" title="删除地址为k的节点"></a>删除地址为k的节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ne[k] = ne[ne[k]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -654,25 +673,6 @@
       </tags>
   </entry>
   <entry>
-    <title>单链表</title>
-    <url>/algorithm/data-structure/297.html</url>
-    <content><![CDATA[<p>数组实现单链表</p>
-<a id="more"></a>
-<p>e[N]储存每个节点的value，ne[N]储存每个节点的next指针 变量head储存头节点，idx储存当前使用到的地址</p>
-<h2 id="初始化操作"><a href="#初始化操作" class="headerlink" title="初始化操作"></a>初始化操作</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    head = <span class="number">-1</span>;</span><br><span class="line">    idx = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="在头节点后增加一个节点"><a href="#在头节点后增加一个节点" class="headerlink" title="在头节点后增加一个节点"></a>在头节点后增加一个节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">headadd</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    ne[idx] = head;</span><br><span class="line">    head = idx++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="在地址为k的节点后增加一个节点"><a href="#在地址为k的节点后增加一个节点" class="headerlink" title="在地址为k的节点后增加一个节点"></a>在地址为k的节点后增加一个节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    ne[idx] = ne[k];</span><br><span class="line">    ne[k] = idx++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="删除地址为k的节点"><a href="#删除地址为k的节点" class="headerlink" title="删除地址为k的节点"></a>删除地址为k的节点</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ne[k] = ne[ne[k]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>双指针算法</title>
     <url>/algorithm/basic-algorithm/157.html</url>
     <content><![CDATA[<p>双指针算法的思路</p>
@@ -697,19 +697,6 @@
       </tags>
   </entry>
   <entry>
-    <title>哈哈</title>
-    <url>/me/life/625.html</url>
-    <content><![CDATA[<p>好臭 是什么腐烂了？</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-        <category>Life</category>
-      </categories>
-      <tags>
-        <tag>Life</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>双链表</title>
     <url>/algorithm/data-structure/299.html</url>
     <content><![CDATA[<p>数组实现双链表</p>
@@ -726,6 +713,19 @@
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈哈</title>
+    <url>/me/life/625.html</url>
+    <content><![CDATA[<p>好臭 是什么腐烂了？</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+        <category>Life</category>
+      </categories>
+      <tags>
+        <tag>Life</tag>
       </tags>
   </entry>
   <entry>
@@ -910,6 +910,60 @@
       </tags>
   </entry>
   <entry>
+    <title>图的深度优先遍历(DFS) 与 广度优先遍历(BFS)</title>
+    <url>/algorithm/graph-theory/645.html</url>
+    <content><![CDATA[<p>DFS —— 在一条路上一路到底的遍历</p>
+<p>BFS —— 层层递进的遍历</p>
+<a id="more"></a>
+
+<p><strong>数据结构课代码实现 之 深度优先遍历(DFS) 与 广度优先遍历(BFS)</strong></p>
+<h2 id="简要理解"><a href="#简要理解" class="headerlink" title="简要理解"></a>简要理解</h2><p>附之前的三篇文章：</p>
+<p><a href="/algorithm/graph-theory/458.html">DFS（深度优先遍历） 与 BFS（广度优先遍历）</a></p>
+<p><a href="/algorithm/graph-theory/470.html">DFS经典问题</a></p>
+<p><a href="/algorithm/graph-theory/473.html">BFS经典问题</a></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>这里提供的代码默认都是从 0 号地址的结点开始的，请自行修改</p>
+<p>请区分点的 地址 与 储存的数据！</p>
+<h3 id="邻接表存图"><a href="#邻接表存图" class="headerlink" title="邻接表存图"></a>邻接表存图</h3><h4 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">bool</span> visited[MAX_VERTEX_NUM];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(ALGraph g, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;BFS顺序遍历下当前点的储存值为：&quot;</span>; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; g.vertices[i].data &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFSTraverse</span><span class="params">(ALGraph G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++)</span><br><span class="line">        visited[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">queue</span>&lt;ArcNode *&gt; q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!visited[i])</span><br><span class="line">        &#123;</span><br><span class="line">            visited[i] = <span class="literal">true</span>;</span><br><span class="line">            visit(G, i);</span><br><span class="line">            <span class="keyword">if</span>(G.vertices[i].firstarc != <span class="literal">NULL</span>)</span><br><span class="line">                q.push(G.vertices[i].firstarc);</span><br><span class="line">            <span class="keyword">while</span>(!q.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                ArcNode* t = q.front();</span><br><span class="line">                q.pop();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = t-&gt;adjvex;t-&gt;nextarc != <span class="literal">NULL</span>;t = t-&gt;nextarc, j = t-&gt;adjvex)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(!visited[j])</span><br><span class="line">                    &#123;</span><br><span class="line">                        visited[j] = <span class="literal">true</span>;</span><br><span class="line">                        visit(G, j);</span><br><span class="line">                        q.push(G.vertices[j].firstarc);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ALGraph g;</span><br><span class="line">    CreateGraph(g);</span><br><span class="line">    BFSTraverse(g);   </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">bool</span> visited[MAX_VERTEX_NUM];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(ALGraph g, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;DFS顺序遍历下当前点的储存值为： &quot;</span>; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; g.vertices[i].data &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(ALGraph g, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    visited[i] = <span class="literal">true</span>; </span><br><span class="line">    visit(g, i);</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    ArcNode* k;</span><br><span class="line">    <span class="keyword">for</span>(j = g.vertices[i].firstarc-&gt;adjvex, k = g.vertices[i].firstarc;k-&gt;nextarc != <span class="literal">NULL</span>;k = k-&gt;nextarc, j = k-&gt;adjvex)</span><br><span class="line">        <span class="keyword">if</span>(!visited[j])</span><br><span class="line">			DFS(g, j);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTraverse</span><span class="params">(ALGraph g)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; g.vexnum;i++)</span><br><span class="line">        visited[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; g.vexnum;i++)</span><br><span class="line">        <span class="keyword">if</span>(!visited[i])</span><br><span class="line">            DFS(g, i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ALGraph g;</span><br><span class="line">    CreateGraph(g);</span><br><span class="line">    DFSTraverse(g);   </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="邻接矩阵存图"><a href="#邻接矩阵存图" class="headerlink" title="邻接矩阵存图"></a>邻接矩阵存图</h3><h4 id="BFS-1"><a href="#BFS-1" class="headerlink" title="BFS"></a>BFS</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">bool</span> visited[MAX_VERTEX_NUM];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(MGraph g, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;BFS顺序遍历下当前点的储存值为： &quot;</span>; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; g.vexs[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFSTraverse</span><span class="params">(MGraph G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++) </span><br><span class="line">        visited[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!visited[i])</span><br><span class="line">        &#123;</span><br><span class="line">            visited[i] = <span class="literal">true</span>;</span><br><span class="line">            visit(G, i);</span><br><span class="line">            q.push(i);</span><br><span class="line">            <span class="keyword">while</span>(!q.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> t = q.front();</span><br><span class="line">                q.pop();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; G.vexnum;j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(G.arcs[t][j].adj != INFINITY &amp;&amp; !visited[j])</span><br><span class="line">                    &#123;</span><br><span class="line">                        visited[j] = <span class="literal">true</span>;</span><br><span class="line">                        visit(G, j);</span><br><span class="line">                        q.push(j);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    MGraph a;</span><br><span class="line">    CreateGraph(a);</span><br><span class="line">    BFSTraverse(a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="DFS-1"><a href="#DFS-1" class="headerlink" title="DFS"></a>DFS</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">bool</span> visited[MAX_VERTEX_NUM];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(MGraph g, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;DFS顺序遍历下当前点的储存值为： &quot;</span>; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; g.vexs[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(MGraph G, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    visited[i] = <span class="literal">true</span>;</span><br><span class="line">    visit(G, i);</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>;k &lt; G.vexnum;k++)</span><br><span class="line">        <span class="keyword">if</span>(!visited[k] &amp;&amp; G.arcs[i][k].adj != INFINITY)</span><br><span class="line">            DFS(G, k);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTraverse</span><span class="params">(MGraph &amp;G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++)</span><br><span class="line">        visited[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++)</span><br><span class="line">        <span class="keyword">if</span>(!visited[i])</span><br><span class="line">            DFS(G, i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    MGraph a;</span><br><span class="line">    CreateGraph(a);</span><br><span class="line">    DFSTraverse(a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>埃氏筛法（埃拉托斯特尼筛法）</title>
+    <url>/algorithm/number-theory/378.html</url>
+    <content><![CDATA[<p>求n以内质数，筛掉不大于根号n的所有质数的倍数（合数）</p>
+<a id="more"></a>
+<p>《算法竞赛 入门到进阶》给的模板 ：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, cnt = <span class="number">0</span>, primes[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!st[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i * i; j &lt;= n; j += i) <span class="comment">//优化为i^2 以5为例5*2 5*3 5*4已经在i=2和3时筛掉了</span></span><br><span class="line">                st[j] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!st[i])</span><br><span class="line">        &#123;</span><br><span class="line">            primes[++cnt] = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; cnt;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>合并一下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, cnt = <span class="number">0</span>, primes[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!st[i])</span><br><span class="line">        &#123;</span><br><span class="line">            primes[++cnt]=i;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">long</span> <span class="keyword">long</span> j = (<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span>)i * (<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span>)i; j &lt;= n; j += i)</span><br><span class="line">                st[j] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; cnt;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(nloglogn)</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>数论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>堆（Heap）</title>
     <url>/algorithm/data-structure/442.html</url>
     <content><![CDATA[<p>通常看为一棵完全二叉树的数组对象</p>
@@ -988,60 +1042,6 @@
       </tags>
   </entry>
   <entry>
-    <title>埃氏筛法（埃拉托斯特尼筛法）</title>
-    <url>/algorithm/number-theory/378.html</url>
-    <content><![CDATA[<p>求n以内质数，筛掉不大于根号n的所有质数的倍数（合数）</p>
-<a id="more"></a>
-<p>《算法竞赛 入门到进阶》给的模板 ：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, cnt = <span class="number">0</span>, primes[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!st[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i * i; j &lt;= n; j += i) <span class="comment">//优化为i^2 以5为例5*2 5*3 5*4已经在i=2和3时筛掉了</span></span><br><span class="line">                st[j] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!st[i])</span><br><span class="line">        &#123;</span><br><span class="line">            primes[++cnt] = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; cnt;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>合并一下：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, cnt = <span class="number">0</span>, primes[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!st[i])</span><br><span class="line">        &#123;</span><br><span class="line">            primes[++cnt]=i;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">long</span> <span class="keyword">long</span> j = (<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span>)i * (<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span>)i; j &lt;= n; j += i)</span><br><span class="line">                st[j] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; cnt;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度：O(nloglogn)</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>数论</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图的深度优先遍历(DFS) 与 广度优先遍历(BFS)</title>
-    <url>/algorithm/graph-theory/645.html</url>
-    <content><![CDATA[<p>DFS —— 在一条路上一路到底的遍历</p>
-<p>BFS —— 层层递进的遍历</p>
-<a id="more"></a>
-
-<p><strong>数据结构课代码实现 之 深度优先遍历(DFS) 与 广度优先遍历(BFS)</strong></p>
-<h2 id="简要理解"><a href="#简要理解" class="headerlink" title="简要理解"></a>简要理解</h2><p>附之前的三篇文章：</p>
-<p><a href="/algorithm/graph-theory/458.html">DFS（深度优先遍历） 与 BFS（广度优先遍历）</a></p>
-<p><a href="/algorithm/graph-theory/470.html">DFS经典问题</a></p>
-<p><a href="/algorithm/graph-theory/473.html">BFS经典问题</a></p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>这里提供的代码默认都是从 0 号地址的结点开始的，请自行修改</p>
-<p>请区分点的 地址 与 储存的数据！</p>
-<h3 id="邻接表存图"><a href="#邻接表存图" class="headerlink" title="邻接表存图"></a>邻接表存图</h3><h4 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">bool</span> visited[MAX_VERTEX_NUM];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(ALGraph g, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;BFS顺序遍历下当前点的储存值为：&quot;</span>; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; g.vertices[i].data &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFSTraverse</span><span class="params">(ALGraph G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++)</span><br><span class="line">        visited[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">queue</span>&lt;ArcNode *&gt; q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!visited[i])</span><br><span class="line">        &#123;</span><br><span class="line">            visited[i] = <span class="literal">true</span>;</span><br><span class="line">            visit(G, i);</span><br><span class="line">            <span class="keyword">if</span>(G.vertices[i].firstarc != <span class="literal">NULL</span>)</span><br><span class="line">                q.push(G.vertices[i].firstarc);</span><br><span class="line">            <span class="keyword">while</span>(!q.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                ArcNode* t = q.front();</span><br><span class="line">                q.pop();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = t-&gt;adjvex;t-&gt;nextarc != <span class="literal">NULL</span>;t = t-&gt;nextarc, j = t-&gt;adjvex)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(!visited[j])</span><br><span class="line">                    &#123;</span><br><span class="line">                        visited[j] = <span class="literal">true</span>;</span><br><span class="line">                        visit(G, j);</span><br><span class="line">                        q.push(G.vertices[j].firstarc);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ALGraph g;</span><br><span class="line">    CreateGraph(g);</span><br><span class="line">    BFSTraverse(g);   </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">bool</span> visited[MAX_VERTEX_NUM];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(ALGraph g, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;DFS顺序遍历下当前点的储存值为： &quot;</span>; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; g.vertices[i].data &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(ALGraph g, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    visited[i] = <span class="literal">true</span>; </span><br><span class="line">    visit(g, i);</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    ArcNode* k;</span><br><span class="line">    <span class="keyword">for</span>(j = g.vertices[i].firstarc-&gt;adjvex, k = g.vertices[i].firstarc;k-&gt;nextarc != <span class="literal">NULL</span>;k = k-&gt;nextarc, j = k-&gt;adjvex)</span><br><span class="line">        <span class="keyword">if</span>(!visited[j])</span><br><span class="line">			DFS(g, j);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTraverse</span><span class="params">(ALGraph g)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; g.vexnum;i++)</span><br><span class="line">        visited[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; g.vexnum;i++)</span><br><span class="line">        <span class="keyword">if</span>(!visited[i])</span><br><span class="line">            DFS(g, i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ALGraph g;</span><br><span class="line">    CreateGraph(g);</span><br><span class="line">    DFSTraverse(g);   </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="邻接矩阵存图"><a href="#邻接矩阵存图" class="headerlink" title="邻接矩阵存图"></a>邻接矩阵存图</h3><h4 id="BFS-1"><a href="#BFS-1" class="headerlink" title="BFS"></a>BFS</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">bool</span> visited[MAX_VERTEX_NUM];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(MGraph g, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;BFS顺序遍历下当前点的储存值为： &quot;</span>; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; g.vexs[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFSTraverse</span><span class="params">(MGraph G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++) </span><br><span class="line">        visited[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!visited[i])</span><br><span class="line">        &#123;</span><br><span class="line">            visited[i] = <span class="literal">true</span>;</span><br><span class="line">            visit(G, i);</span><br><span class="line">            q.push(i);</span><br><span class="line">            <span class="keyword">while</span>(!q.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> t = q.front();</span><br><span class="line">                q.pop();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; G.vexnum;j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(G.arcs[t][j].adj != INFINITY &amp;&amp; !visited[j])</span><br><span class="line">                    &#123;</span><br><span class="line">                        visited[j] = <span class="literal">true</span>;</span><br><span class="line">                        visit(G, j);</span><br><span class="line">                        q.push(j);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    MGraph a;</span><br><span class="line">    CreateGraph(a);</span><br><span class="line">    BFSTraverse(a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="DFS-1"><a href="#DFS-1" class="headerlink" title="DFS"></a>DFS</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">bool</span> visited[MAX_VERTEX_NUM];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(MGraph g, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;DFS顺序遍历下当前点的储存值为： &quot;</span>; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; g.vexs[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(MGraph G, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    visited[i] = <span class="literal">true</span>;</span><br><span class="line">    visit(G, i);</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>;k &lt; G.vexnum;k++)</span><br><span class="line">        <span class="keyword">if</span>(!visited[k] &amp;&amp; G.arcs[i][k].adj != INFINITY)</span><br><span class="line">            DFS(G, k);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTraverse</span><span class="params">(MGraph &amp;G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++)</span><br><span class="line">        visited[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G.vexnum;i++)</span><br><span class="line">        <span class="keyword">if</span>(!visited[i])</span><br><span class="line">            DFS(G, i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    MGraph a;</span><br><span class="line">    CreateGraph(a);</span><br><span class="line">    DFSTraverse(a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>图论</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>图论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>往昔的你有所盼望，如今的我仍在梦想</title>
     <url>/me/life/54.html</url>
     <content><![CDATA[<p>迷茫，懒惰，轻易放手的我习以为常</p>
@@ -1091,23 +1091,6 @@
       </tags>
   </entry>
   <entry>
-    <title>排序</title>
-    <url>/algorithm/basic-algorithm/106.html</url>
-    <content><![CDATA[<p>几个排序方式的模板</p>
-<a id="more"></a>
-<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">100</span>],n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n - i; j++)</span><br><span class="line">            <span class="keyword">if</span> (a[j] &gt; a[j + <span class="number">1</span>])</span><br><span class="line">                swap(a[j], a[j + <span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[MAXN];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l == r)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> x = a[(l + r + <span class="number">1</span>) / <span class="number">2</span>], i = l - <span class="number">1</span>, j = r + <span class="number">1</span>; <span class="comment">//int x=a[(l+r)/2]</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (a[++i] &lt; x);</span><br><span class="line">        <span class="keyword">while</span> (a[--j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j)</span><br><span class="line">            swap(a[i], a[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    quicksort(l, i - <span class="number">1</span>); <span class="comment">//quicksort(l,j);</span></span><br><span class="line">    quicksort(i, r);     <span class="comment">//quicksort(j+1,r);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    quicksort(<span class="number">1</span>, n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[N], tem[N], n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergesort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">    mergesort(a, l, mid), mergesort(a, mid + <span class="number">1</span>, r);</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (a[i] &lt; a[j])</span><br><span class="line">            tem[k++] = a[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            tem[k++] = a[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid)</span><br><span class="line">        tem[k++] = a[i++];</span><br><span class="line">    <span class="keyword">while</span> (j &lt;= r)</span><br><span class="line">        tem[k++] = a[j++];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">        a[l + i] = tem[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    mergesort(a, <span class="number">1</span>, n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>基础算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>基础算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>整数划分问题</title>
     <url>/algorithm/basic-algorithm/622.html</url>
     <content><![CDATA[<p>整数划分问题思路简记</p>
@@ -1152,6 +1135,48 @@
       </tags>
   </entry>
   <entry>
+    <title>排序</title>
+    <url>/algorithm/basic-algorithm/106.html</url>
+    <content><![CDATA[<p>几个排序方式的模板</p>
+<a id="more"></a>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">100</span>],n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n - i; j++)</span><br><span class="line">            <span class="keyword">if</span> (a[j] &gt; a[j + <span class="number">1</span>])</span><br><span class="line">                swap(a[j], a[j + <span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[MAXN];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l == r)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> x = a[(l + r + <span class="number">1</span>) / <span class="number">2</span>], i = l - <span class="number">1</span>, j = r + <span class="number">1</span>; <span class="comment">//int x=a[(l+r)/2]</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (a[++i] &lt; x);</span><br><span class="line">        <span class="keyword">while</span> (a[--j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j)</span><br><span class="line">            swap(a[i], a[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    quicksort(l, i - <span class="number">1</span>); <span class="comment">//quicksort(l,j);</span></span><br><span class="line">    quicksort(i, r);     <span class="comment">//quicksort(j+1,r);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    quicksort(<span class="number">1</span>, n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[N], tem[N], n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergesort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">    mergesort(a, l, mid), mergesort(a, mid + <span class="number">1</span>, r);</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (a[i] &lt; a[j])</span><br><span class="line">            tem[k++] = a[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            tem[k++] = a[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid)</span><br><span class="line">        tem[k++] = a[i++];</span><br><span class="line">    <span class="keyword">while</span> (j &lt;= r)</span><br><span class="line">        tem[k++] = a[j++];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">        a[l + i] = tem[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    mergesort(a, <span class="number">1</span>, n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>基础算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最小生成树</title>
+    <url>/algorithm/graph-theory/425.html</url>
+    <content><![CDATA[<ul>
+<li>  Prim求最小生成树</li>
+<li>  Kruskal求最小生成树<a id="more"></a>
+<h2 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h2></li>
+</ul>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>算法流程类似于Dijkstra，Prim是建立一个集合st[N]，将所有点（起点初始化为0）到该集合距离 dist 初始化为0x3f3f3f3f </p>
+<p>n个点，一共遍历n次，每次寻找不在集合中距离集合最近的点（起点任意找），将其放入集合中，并用其更新其余所有点到集合的距离</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">prim</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="keyword">if</span> (!st[j] &amp;&amp; (t == <span class="number">-1</span>  dist[t] &gt; dist[j]))</span><br><span class="line">                t = j;</span><br><span class="line">        <span class="keyword">if</span> (dist[t] == <span class="number">0x3f3f3f3f</span>) <span class="comment">//如果距离集合最近的点与集合不连通，则不存在最小生成树</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        res += dist[t]; <span class="comment">//这里记录的是最小生成树的边权之和</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            dist[j] = min(dist[j], g[t][j]);</span><br><span class="line">        st[t] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><ol>
+<li> 将所有边按照权重从小到大排序（快排）</li>
+<li> 枚举每一条边，并检查边的起点与终点是否连通，如果不连通，则将这条边加入集合中（并查集）</li>
+</ol>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    p[i] = i;</span><br><span class="line">sort(edge, edge + m);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> a = edge[i].a, b = edge[i].b, w = edge[i].w;</span><br><span class="line">    a = find(a), b = find(b);</span><br><span class="line">    <span class="keyword">if</span> (a == b)</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        p[a] = b;</span><br><span class="line">        cnt++;</span><br><span class="line">        res += w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (cnt == n - <span class="number">1</span>) <span class="comment">//cnt记录边数, n 个点对应n - 1条边</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;impossible&quot;</span>);</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>最短路问题</title>
     <url>/algorithm/graph-theory/420.html</url>
     <content><![CDATA[<ul>
@@ -1188,48 +1213,6 @@
       </tags>
   </entry>
   <entry>
-    <title>最小生成树</title>
-    <url>/algorithm/graph-theory/425.html</url>
-    <content><![CDATA[<ul>
-<li>  Prim求最小生成树</li>
-<li>  Kruskal求最小生成树<a id="more"></a>
-<h2 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h2></li>
-</ul>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>算法流程类似于Dijkstra，Prim是建立一个集合st[N]，将所有点（起点初始化为0）到该集合距离 dist 初始化为0x3f3f3f3f </p>
-<p>n个点，一共遍历n次，每次寻找不在集合中距离集合最近的点（起点任意找），将其放入集合中，并用其更新其余所有点到集合的距离</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">prim</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="keyword">if</span> (!st[j] &amp;&amp; (t == <span class="number">-1</span>  dist[t] &gt; dist[j]))</span><br><span class="line">                t = j;</span><br><span class="line">        <span class="keyword">if</span> (dist[t] == <span class="number">0x3f3f3f3f</span>) <span class="comment">//如果距离集合最近的点与集合不连通，则不存在最小生成树</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        res += dist[t]; <span class="comment">//这里记录的是最小生成树的边权之和</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            dist[j] = min(dist[j], g[t][j]);</span><br><span class="line">        st[t] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h2><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><ol>
-<li> 将所有边按照权重从小到大排序（快排）</li>
-<li> 枚举每一条边，并检查边的起点与终点是否连通，如果不连通，则将这条边加入集合中（并查集）</li>
-</ol>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    p[i] = i;</span><br><span class="line">sort(edge, edge + m);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> a = edge[i].a, b = edge[i].b, w = edge[i].w;</span><br><span class="line">    a = find(a), b = find(b);</span><br><span class="line">    <span class="keyword">if</span> (a == b)</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        p[a] = b;</span><br><span class="line">        cnt++;</span><br><span class="line">        res += w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (cnt == n - <span class="number">1</span>) <span class="comment">//cnt记录边数, n 个点对应n - 1条边</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;impossible&quot;</span>);</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>图论</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>图论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>有向图的拓扑排序</title>
-    <url>/algorithm/graph-theory/502.html</url>
-    <content><![CDATA[<p>拓扑排序的简要理解</p>
-<a id="more"></a>
-<h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><p>拓扑排序只存在于有向无环图，排序后的序列满足对于图中任意一条边的起点在序列中一定在终点前（拓扑排序的序列不唯一）</p>
-<h2 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h2><p>BFS的方法实现，纪录每一个点的入度（作为几条边的终点），首先将入度为0的点入队（入度为0意味着该点之前的点已经被排入序列），然后开始BFS的过程，重复队头出队，将队头相连的点的入度减一，并检查更新后的入度是否为0，如果为0则将其扩展至队头的过程 (数组实现队列的话，数组则保存了拓扑序列，如果使用queue则需要使用另外的数组保存序列)</p>
-<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> h[N], e[N], ne[N], idx, d[N], q[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">topo</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (d[i] == <span class="number">0</span>)</span><br><span class="line">            q[++tt] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (hh &lt;= tt)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = q[hh++];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            d[j]--;</span><br><span class="line">            <span class="keyword">if</span> (d[j] == <span class="number">0</span>)</span><br><span class="line">                q[++tt] = j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tt == n - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(h, <span class="number">-1</span>, <span class="keyword">sizeof</span> h);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x, y;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        e[++idx] = y;</span><br><span class="line">        ne[idx] = h[x];</span><br><span class="line">        h[x] = idx;</span><br><span class="line">        d[y]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (topo())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, q[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>图论</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>图论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>模拟栈 与 单调栈</title>
     <url>/algorithm/data-structure/320.html</url>
     <content><![CDATA[<p>使用数组实现栈与单调栈的功能</p>
@@ -1251,6 +1234,23 @@
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>有向图的拓扑排序</title>
+    <url>/algorithm/graph-theory/502.html</url>
+    <content><![CDATA[<p>拓扑排序的简要理解</p>
+<a id="more"></a>
+<h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><p>拓扑排序只存在于有向无环图，排序后的序列满足对于图中任意一条边的起点在序列中一定在终点前（拓扑排序的序列不唯一）</p>
+<h2 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h2><p>BFS的方法实现，纪录每一个点的入度（作为几条边的终点），首先将入度为0的点入队（入度为0意味着该点之前的点已经被排入序列），然后开始BFS的过程，重复队头出队，将队头相连的点的入度减一，并检查更新后的入度是否为0，如果为0则将其扩展至队头的过程 (数组实现队列的话，数组则保存了拓扑序列，如果使用queue则需要使用另外的数组保存序列)</p>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> h[N], e[N], ne[N], idx, d[N], q[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">topo</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (d[i] == <span class="number">0</span>)</span><br><span class="line">            q[++tt] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (hh &lt;= tt)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = q[hh++];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            d[j]--;</span><br><span class="line">            <span class="keyword">if</span> (d[j] == <span class="number">0</span>)</span><br><span class="line">                q[++tt] = j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tt == n - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(h, <span class="number">-1</span>, <span class="keyword">sizeof</span> h);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x, y;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        e[++idx] = y;</span><br><span class="line">        ne[idx] = h[x];</span><br><span class="line">        h[x] = idx;</span><br><span class="line">        d[y]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (topo())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, q[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -1307,20 +1307,6 @@
       </tags>
   </entry>
   <entry>
-    <title>线段树</title>
-    <url>/algorithm/data-structure/418.html</url>
-    <content><![CDATA[<p>寒假更新</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>离散化</title>
     <url>/algorithm/basic-algorithm/268.html</url>
     <content><![CDATA[<p>关于离散化算法的理解</p>
@@ -1339,6 +1325,20 @@
       <tags>
         <tag>算法</tag>
         <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线段树</title>
+    <url>/algorithm/data-structure/418.html</url>
+    <content><![CDATA[<p>寒假更新</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -1437,16 +1437,6 @@
       </tags>
   </entry>
   <entry>
-    <title>分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>留言板</title>
-    <url>/guestbook/index.html</url>
-    <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
-  </entry>
-  <entry>
     <title>关于我</title>
     <url>/about/index.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1462,6 +1452,16 @@
 <li>Blizzard: Wool#5502</li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>留言板</title>
+    <url>/guestbook/index.html</url>
+    <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
+  </entry>
+  <entry>
+    <title>分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>前端实验</title>
@@ -1485,6 +1485,11 @@
 </li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title></title>
@@ -1891,29 +1896,6 @@ aside{
 }]]></content>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/html/jump/js/1.js</url>
-    <content><![CDATA[// JavaScript Document
-function jump(){
-	var select = document.getElementById("list");
-	var num = select.selectedIndex;
-	var text = document.getElementById("site");
-	text.value = select[num].value;
-}
-
-
-
-function jump1() {
-	var site = document.getElementById("site");
-	window.open(site.value, "_self");
-}]]></content>
-  </entry>
-  <entry>
     <title></title>
     <url>/html/timer/js/1.js</url>
     <content><![CDATA[// JavaScript Document
@@ -1927,7 +1909,6 @@ var flag = 0;
 function start1(){
 	a = document.getElementById("count");
 	if(flag == 0){
-		time0 = 0;
 		start2(1);
 		flag = 1;
 	}
@@ -1956,6 +1937,24 @@ function clear1(){
 }
 	
 ]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/html/jump/js/1.js</url>
+    <content><![CDATA[// JavaScript Document
+function jump(){
+	var select = document.getElementById("list");
+	var num = select.selectedIndex;
+	var text = document.getElementById("site");
+	text.value = select[num].value;
+}
+
+
+
+function jump1() {
+	var site = document.getElementById("site");
+	window.open(site.value, "_self");
+}]]></content>
   </entry>
   <entry>
     <title></title>
