@@ -1455,8 +1455,18 @@
       </tags>
   </entry>
   <entry>
+    <title>留言板</title>
+    <url>/guestbook/index.html</url>
+    <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
+  </entry>
+  <entry>
     <title>分类</title>
     <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
@@ -1496,13 +1506,10 @@
 </li>
 <li><p><a href="/html/personal-document/index.html">个人资料表单</a></p>
 </li>
+<li><p><a href="/html/countdown-to-school/index.html">给某人的开学倒计时</a></p>
+</li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>留言板</title>
-    <url>/guestbook/index.html</url>
-    <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
   </entry>
   <entry>
     <title></title>
@@ -1521,11 +1528,6 @@ function jump1() {
 	var site = document.getElementById("site");
 	window.open(site.value, "_self");
 }]]></content>
-  </entry>
-  <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title></title>
@@ -1888,49 +1890,6 @@ aside{
   </entry>
   <entry>
     <title></title>
-    <url>/html/timer/js/1.js</url>
-    <content><![CDATA[// JavaScript Document
-var time0 = 0;
-var timecount;
-
-var a;
-
-var flag = 0;
-
-function start1(){
-	a = document.getElementById("count");
-	if(flag == 0){
-		start2(1);
-		flag = 1;
-	}
-}
-
-function start2(x){
-	if(x == 1){
-		setTimeout("function(){time0 += 1;}", 1000);
-	}
-	else{
-		time0 += 1;
-	}
-	a.value = time0;
-	timecount = setTimeout("start2(0)", 1000);
-}
-
-function stop1(){
-	flag = 0;
-	clearTimeout(timecount);
-}
-	
-function clear1(){
-	stop1();
-	time0 = 0;
-	a.value = time0;
-}
-	
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>/html/layout-design/css/1.css</url>
     <content><![CDATA[@charset "utf-8";
 /* CSS Document */
@@ -2202,5 +2161,48 @@ function clear1(){
 		font-weight: bold;
 	}
 }]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/html/timer/js/1.js</url>
+    <content><![CDATA[// JavaScript Document
+var time0 = 0;
+var timecount;
+
+var a;
+
+var flag = 0;
+
+function start1(){
+	a = document.getElementById("count");
+	if(flag == 0){
+		start2(1);
+		flag = 1;
+	}
+}
+
+function start2(x){
+	if(x == 1){
+		setTimeout("function(){time0 += 1;}", 1000);
+	}
+	else{
+		time0 += 1;
+	}
+	a.value = time0;
+	timecount = setTimeout("start2(0)", 1000);
+}
+
+function stop1(){
+	flag = 0;
+	clearTimeout(timecount);
+}
+	
+function clear1(){
+	stop1();
+	time0 = 0;
+	a.value = time0;
+}
+	
+]]></content>
   </entry>
 </search>

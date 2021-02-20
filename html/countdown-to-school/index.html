@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>开学倒计时</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+<style>
+	*{
+		font-family: 'Noto Serif SC', serif;
+		color: white;
+	}
+	body{
+		background-color: lightpink;
+	}
+	html, body{
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	#main{
+		font-size: 1.5em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 100%;
+		width: 100%;
+	}
+	#div2{
+		position: absolute;
+		z-index: 10;
+		font-size: 1.1em;
+		bottom: 1em;
+		font-family: 'Noto Serif SC', serif;
+	}
+</style>
+<script>
+	var x;
+	var a;
+	var b;
+	var c;
+	var d,h,m,s;
+	var leftTime;
+	window.onload = function(){
+		a = document.getElementById("xianzai");
+		b = document.getElementById("jishi");
+		c = document.getElementById("zhufu");
+		timer1();
+		setInterval("timer1()", 1000);
+	}
+	function timer1(){
+		x = new Date();
+		a.innerHTML = "现在时刻北京时间：" + x.getFullYear().toString() + " 年 " + (x.getMonth() + 1).toString() + " 月 " + x.getDate().toString() + " 日 " + x.getHours().toString() + " 时 " + x.getMinutes().toString() + " 分 " + x.getSeconds().toString() + " 秒 ";
+		var temp = new Date("2021/2/28 00:00:00");
+		leftTime = temp.getTime() - x.getTime();
+		if(leftTime >= 0){  
+        	d = Math.floor(leftTime/1000/60/60/24);
+        	h = Math.floor(leftTime/1000/60/60%24);  
+        	m = Math.floor(leftTime/1000/60%60);
+        	s = Math.floor(leftTime/1000%60);      
+			b.innerHTML = "距开学还有：" + d.toString() + " 天 " + h.toString() + " 时 " + m.toString() + " 分 " + s.toString() + " 秒 ";
+        }  
+		else{
+			b.innerHTML = "愿有前程可奔赴, 亦有岁月可回首. 万事胜意"
+			c.innerHTML = "相遇即是缘."
+		}
+	}
+</script>
+</head>
+
+<body>
+	<div id = "main">
+		<p id = "xianzai"></p>
+		<p id = "jishi">距开学还有</p>
+		<p id = "zhufu">希望能够安心地度过剩余的假期</p>
+		<div id = "div2">
+			<p>👈<a href="https://www.woolym.com/"><span>返回</span>&nbsp;Wool's Blog</a></p>
+		</div>
+	</div>
+	<script color="255,20,147" opacity="1" zIndex="-1" count="129" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+</body>
+</html>
