@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.woolym.com/algorithm/basic-algorithm/112.html</loc>
+    <lastmod>2021-04-05</lastmod>
+  </url>
+  <url>
     <loc>https://www.woolym.com/develop/Java/JavaWeb/670.html</loc>
     <lastmod>2021-02-03</lastmod>
   </url>
@@ -158,10 +162,6 @@
   </url>
   <url>
     <loc>https://www.woolym.com/algorithm/graph-theory/617.html</loc>
-    <lastmod>2020-10-23</lastmod>
-  </url>
-  <url>
-    <loc>https://www.woolym.com/algorithm/basic-algorithm/112.html</loc>
     <lastmod>2020-10-23</lastmod>
   </url>
   <url>

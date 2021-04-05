@@ -1329,7 +1329,9 @@
     <url>/algorithm/basic-algorithm/112.html</url>
     <content><![CDATA[<p>二分整型与浮点模板</p>
 <a id="more"></a>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//整数二分模板</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> mid)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">//性质判断函数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch1</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (check(mid))</span><br><span class="line">            r = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            l = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125; <span class="comment">//[l,r]=&gt;[l,mid],[mid+1,r]</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch2</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r + <span class="number">1</span>) / <span class="number">2</span>; <span class="comment">//check ture为l = mid时mid = ( l + r + 1) / 2;</span></span><br><span class="line">        <span class="keyword">if</span> (check(mid))</span><br><span class="line">            l = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            r = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125; <span class="comment">//[l,r]=&gt;[l,mid-1],[mid,r]</span></span><br><span class="line"><span class="comment">//浮点数二分模板</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">double</span> mid)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">bsearch3</span><span class="params">(<span class="keyword">double</span> l, <span class="keyword">double</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (r - l &gt; eps)<span class="comment">//eps为题目所给精度 （可以往后推几位</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">double</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (check(mid))</span><br><span class="line">            r = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            l = mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l; <span class="comment">//r也可</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+
+<h3 id="2021-4-5-更新"><a href="#2021-4-5-更新" class="headerlink" title="2021.4.5 更新"></a>2021.4.5 更新</h3><p>重新复习，同样是 yxc 的整数二分模板（同样是二分条件可以将总区间一分为二，题目一般是查询左区间的右端点或者右区间的左端点），但特殊情况下不查询一个端点，查询的是一个区间，查询区间的左端点即查询一般情况下右区间的左端点，查询区间的右端点即查询一般情况下左区间的右端点</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//整数二分模板</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> mid)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">//性质判断函数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch1</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (check(mid))			<span class="comment">//mid 在右区间中</span></span><br><span class="line">            r = mid;</span><br><span class="line">        <span class="keyword">else</span>				   <span class="comment">//mid 在左区间中</span></span><br><span class="line">            l = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125; <span class="comment">//[l,r]=&gt;[l,mid],[mid+1,r]</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch2</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r + <span class="number">1</span>) / <span class="number">2</span>; <span class="comment">//check ture为l = mid时mid = ( l + r + 1) / 2;</span></span><br><span class="line">        <span class="keyword">if</span> (check(mid))		<span class="comment">//mid 在左区间中</span></span><br><span class="line">            l = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            r = mid - <span class="number">1</span>;	<span class="comment">//mid 在右区间中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125; <span class="comment">//[l,r]=&gt;[l,mid-1],[mid,r]</span></span><br><span class="line"><span class="comment">//浮点数二分模板</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">double</span> mid)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">bsearch3</span><span class="params">(<span class="keyword">double</span> l, <span class="keyword">double</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (r - l &gt; eps)<span class="comment">//eps为题目所给精度 （可以往后推几位</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">double</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (check(mid))</span><br><span class="line">            r = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            l = mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l; <span class="comment">//r也可</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>算法</category>
         <category>基础算法</category>
@@ -1455,6 +1457,11 @@
       </tags>
   </entry>
   <entry>
+    <title>分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>关于我</title>
     <url>/about/index.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1472,13 +1479,13 @@
 ]]></content>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
+    <title>留言板</title>
+    <url>/guestbook/index.html</url>
+    <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
   </entry>
   <entry>
-    <title>分类</title>
-    <url>/categories/index.html</url>
+    <title>标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
@@ -1633,11 +1640,6 @@ aside{
 	border-top-style: solid;
 	border-top-color: cadetblue;
 }]]></content>
-  </entry>
-  <entry>
-    <title>留言板</title>
-    <url>/guestbook/index.html</url>
-    <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
   </entry>
   <entry>
     <title></title>
@@ -1933,6 +1935,49 @@ function jump1() {
   </entry>
   <entry>
     <title></title>
+    <url>/html/timer/js/1.js</url>
+    <content><![CDATA[// JavaScript Document
+var time0 = 0;
+var timecount;
+
+var a;
+
+var flag = 0;
+
+function start1(){
+	a = document.getElementById("count");
+	if(flag == 0){
+		start2(1);
+		flag = 1;
+	}
+}
+
+function start2(x){
+	if(x == 1){
+		setTimeout("function(){time0 += 1;}", 1000);
+	}
+	else{
+		time0 += 1;
+	}
+	a.value = time0;
+	timecount = setTimeout("start2(0)", 1000);
+}
+
+function stop1(){
+	flag = 0;
+	clearTimeout(timecount);
+}
+	
+function clear1(){
+	stop1();
+	time0 = 0;
+	a.value = time0;
+}
+	
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/html/personal-document/css/1.css</url>
     <content><![CDATA[@charset "utf-8";
 /* CSS Document */
@@ -2159,48 +2204,5 @@ function jump1() {
 		font-size: 2em;
 	}
 }]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/html/timer/js/1.js</url>
-    <content><![CDATA[// JavaScript Document
-var time0 = 0;
-var timecount;
-
-var a;
-
-var flag = 0;
-
-function start1(){
-	a = document.getElementById("count");
-	if(flag == 0){
-		start2(1);
-		flag = 1;
-	}
-}
-
-function start2(x){
-	if(x == 1){
-		setTimeout("function(){time0 += 1;}", 1000);
-	}
-	else{
-		time0 += 1;
-	}
-	a.value = time0;
-	timecount = setTimeout("start2(0)", 1000);
-}
-
-function stop1(){
-	flag = 0;
-	clearTimeout(timecount);
-}
-	
-function clear1(){
-	stop1();
-	time0 = 0;
-	a.value = time0;
-}
-	
-]]></content>
   </entry>
 </search>
