@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.woolym.com/algorithm/number-theory/387.html</loc>
+    <lastmod>2021-04-17</lastmod>
+  </url>
+  <url>
     <loc>https://www.woolym.com/algorithm/dp/671.html</loc>
-    <lastmod>2021-04-09</lastmod>
+    <lastmod>2021-04-11</lastmod>
   </url>
   <url>
     <loc>https://www.woolym.com/leetcode/665.html</loc>
@@ -39,10 +43,6 @@
   <url>
     <loc>https://www.woolym.com/me/status-update/self-iteration/635.html</loc>
     <lastmod>2020-12-04</lastmod>
-  </url>
-  <url>
-    <loc>https://www.woolym.com/algorithm/number-theory/387.html</loc>
-    <lastmod>2020-12-03</lastmod>
   </url>
   <url>
     <loc>https://www.woolym.com/algorithm/search/659.html</loc>
