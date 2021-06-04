@@ -452,27 +452,6 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/tags/leetcode/</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.woolym.com/tags/backtracking/</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.woolym.com/tags/pruning/</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.woolym.com/tags/develop/</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>daily</changefreq>
@@ -501,7 +480,28 @@
   </url>
   
   <url>
+    <loc>https://www.woolym.com/tags/leetcode/</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.woolym.com/tags/memory-search/</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.woolym.com/tags/backtracking/</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.woolym.com/tags/pruning/</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -543,14 +543,14 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/tags/linux-unix/</loc>
+    <loc>https://www.woolym.com/tags/basic-algorithm/</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.woolym.com/tags/basic-algorithm/</loc>
+    <loc>https://www.woolym.com/tags/linux-unix/</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -601,14 +601,14 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/leetcode/</loc>
+    <loc>https://www.woolym.com/categories/develop/</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/develop/</loc>
+    <loc>https://www.woolym.com/categories/leetcode/</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -657,14 +657,14 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/linux-unix/</loc>
+    <loc>https://www.woolym.com/categories/algorithm/basic-algorithm/</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/algorithm/basic-algorithm/</loc>
+    <loc>https://www.woolym.com/categories/linux-unix/</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -706,14 +706,14 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/me/status-update/</loc>
+    <loc>https://www.woolym.com/categories/me/life/</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/me/life/</loc>
+    <loc>https://www.woolym.com/categories/me/status-update/</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
