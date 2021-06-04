@@ -1544,6 +1544,11 @@
 ]]></content>
   </entry>
   <entry>
+    <title>标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title></title>
     <url>/html/css-div/css/1.css</url>
     <content><![CDATA[*{
@@ -1698,7 +1703,7 @@ html, body{
 	width: 100%;
 	height: 100%;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -2572,10 +2577,5 @@ function clear1(){
 }
 	
 ]]></content>
-  </entry>
-  <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>
