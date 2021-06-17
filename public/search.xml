@@ -1492,11 +1492,6 @@
       </tags>
   </entry>
   <entry>
-    <title>分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>关于我</title>
     <url>/about/index.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1514,9 +1509,19 @@
 ]]></content>
   </entry>
   <entry>
+    <title>分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>留言板</title>
     <url>/guestbook/index.html</url>
     <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
+  </entry>
+  <entry>
+    <title>标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>前端实验</title>
@@ -1542,11 +1547,6 @@
 </li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title></title>
@@ -2308,6 +2308,49 @@ function jump1() {
   </entry>
   <entry>
     <title></title>
+    <url>/html/timer/js/1.js</url>
+    <content><![CDATA[// JavaScript Document
+var time0 = 0;
+var timecount;
+
+var a;
+
+var flag = 0;
+
+function start1(){
+	a = document.getElementById("count");
+	if(flag == 0){
+		start2(1);
+		flag = 1;
+	}
+}
+
+function start2(x){
+	if(x == 1){
+		setTimeout("function(){time0 += 1;}", 1000);
+	}
+	else{
+		time0 += 1;
+	}
+	a.value = time0;
+	timecount = setTimeout("start2(0)", 1000);
+}
+
+function stop1(){
+	flag = 0;
+	clearTimeout(timecount);
+}
+	
+function clear1(){
+	stop1();
+	time0 = 0;
+	a.value = time0;
+}
+	
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/html/personal-document/css/1.css</url>
     <content><![CDATA[@charset "utf-8";
 /* CSS Document */
@@ -2534,48 +2577,5 @@ function jump1() {
 		font-size: 2em;
 	}
 }]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/html/timer/js/1.js</url>
-    <content><![CDATA[// JavaScript Document
-var time0 = 0;
-var timecount;
-
-var a;
-
-var flag = 0;
-
-function start1(){
-	a = document.getElementById("count");
-	if(flag == 0){
-		start2(1);
-		flag = 1;
-	}
-}
-
-function start2(x){
-	if(x == 1){
-		setTimeout("function(){time0 += 1;}", 1000);
-	}
-	else{
-		time0 += 1;
-	}
-	a.value = time0;
-	timecount = setTimeout("start2(0)", 1000);
-}
-
-function stop1(){
-	flag = 0;
-	clearTimeout(timecount);
-}
-	
-function clear1(){
-	stop1();
-	time0 = 0;
-	a.value = time0;
-}
-	
-]]></content>
   </entry>
 </search>
