@@ -89,6 +89,29 @@
       </tags>
   </entry>
   <entry>
+    <title>红黑树的红黑规则</title>
+    <url>/algorithm/search/673.html</url>
+    <content><![CDATA[<p>红黑树 —— 红黑规则</p>
+<a id="more"></a>
+
+<ul>
+<li>每一个节点都是红色或黑色的</li>
+<li>根节点是黑色的</li>
+<li>每一个叶节点（Nil）是黑色的</li>
+<li>不能出现两个红色节点相连（如果节点是红色的，则他的子结点必须是黑色的）</li>
+<li>对于每一个节点，到其所有后代节点的简单路径上，均包含相同数目的黑色节点</li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>查找</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>查找</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>DP问题分析方法</title>
     <url>/algorithm/dp/671.html</url>
     <content><![CDATA[<p>DP问题分析 —— yxc 的 DP问题分析方法</p>
@@ -1519,11 +1542,6 @@
     <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>前端实验</title>
     <url>/html/index.html</url>
     <content><![CDATA[<h1 id="写的一些html页面"><a href="#写的一些html页面" class="headerlink" title="写的一些html页面"></a>写的一些html页面</h1><ul>
@@ -1547,6 +1565,11 @@
 </li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title></title>
