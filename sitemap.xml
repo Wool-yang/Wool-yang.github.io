@@ -452,6 +452,13 @@
   </url>
   
   <url>
+    <loc>https://www.woolym.com/tags/dp/</loc>
+    <lastmod>2021-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.woolym.com/tags/develop/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
@@ -474,13 +481,6 @@
   
   <url>
     <loc>https://www.woolym.com/tags/self-iteration/</loc>
-    <lastmod>2021-07-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.woolym.com/tags/dp/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -629,7 +629,7 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/develop/Java/</loc>
+    <loc>https://www.woolym.com/categories/algorithm/dp/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -643,7 +643,7 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/algorithm/dp/</loc>
+    <loc>https://www.woolym.com/categories/develop/Java/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -678,13 +678,6 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/develop/Java/JavaWeb/</loc>
-    <lastmod>2021-07-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.woolym.com/categories/algorithm/search/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
@@ -693,6 +686,13 @@
   
   <url>
     <loc>https://www.woolym.com/categories/grammar/c-c/</loc>
+    <lastmod>2021-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.woolym.com/categories/develop/Java/JavaWeb/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
