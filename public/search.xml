@@ -91,16 +91,38 @@
   <entry>
     <title>红黑树的红黑规则</title>
     <url>/algorithm/search/673.html</url>
-    <content><![CDATA[<p>红黑树 —— 红黑规则</p>
+    <content><![CDATA[<p>红黑树 —— 红黑规则及添加节点的规则</p>
 <a id="more"></a>
 
-<ul>
+<h2 id="红黑规则"><a href="#红黑规则" class="headerlink" title="红黑规则"></a>红黑规则</h2><ul>
 <li>每一个节点都是红色或黑色的</li>
 <li>根节点是黑色的</li>
-<li>每一个叶节点（Nil）是黑色的</li>
+<li>如果一个节点没有子节点或者父节点，则该节点相应的指针属性值为Nil，这些Nil视为叶节点，每一个叶节点（Nil）是黑色的</li>
 <li>不能出现两个红色节点相连（如果节点是红色的，则他的子结点必须是黑色的）</li>
-<li>对于每一个节点，到其所有后代节点的简单路径上，均包含相同数目的黑色节点</li>
+<li>对于每一个节点，到其所有后代叶节点的简单路径上，均包含相同数目的黑色节点</li>
 </ul>
+<h2 id="节点的添加规则"><a href="#节点的添加规则" class="headerlink" title="节点的添加规则"></a>节点的添加规则</h2><p>添加节点时，默认添加的节点为红色（添加红色效率高）</p>
+<p>添加节点的规则：</p>
+<ol>
+<li><p>根节点位置：直接变为黑色</p>
+</li>
+<li><p>非根节点位置</p>
+<ol>
+<li><p>父节点为黑色：不需要操作</p>
+</li>
+<li><p>父节点为红色</p>
+<ol>
+<li><p>叔叔节点为红色：</p>
+<p>将父节点、叔叔节点设为黑色，将祖父节点设为红色，如果祖父节点为根节点，则将根节点再次变为黑色</p>
+</li>
+<li><p>叔叔节点为黑色：</p>
+<p>将父节点设为黑色，祖父节点设为红色，以祖父节点为支点进行旋转（左高右旋，右高左旋）</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -1542,6 +1564,11 @@
     <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
   </entry>
   <entry>
+    <title>标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>前端实验</title>
     <url>/html/index.html</url>
     <content><![CDATA[<h1 id="写的一些html页面"><a href="#写的一些html页面" class="headerlink" title="写的一些html页面"></a>写的一些html页面</h1><ul>
@@ -1565,11 +1592,6 @@
 </li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title></title>
