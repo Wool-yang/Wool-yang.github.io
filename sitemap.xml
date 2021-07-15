@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.woolym.com/develop/Java/JavaSE/675.html</loc>
+    
+    <lastmod>2021-07-15</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.woolym.com/algorithm/search/673.html</loc>
     
     <lastmod>2021-07-15</lastmod>
@@ -487,14 +494,14 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/tags/leetcode/</loc>
+    <loc>https://www.woolym.com/tags/JavaSE/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.woolym.com/tags/memory-search/</loc>
+    <loc>https://www.woolym.com/tags/leetcode/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -509,6 +516,13 @@
   
   <url>
     <loc>https://www.woolym.com/tags/pruning/</loc>
+    <lastmod>2021-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.woolym.com/tags/memory-search/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -615,14 +629,14 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/leetcode/</loc>
+    <loc>https://www.woolym.com/categories/algorithm/graph-theory/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/algorithm/graph-theory/</loc>
+    <loc>https://www.woolym.com/categories/leetcode/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -636,14 +650,14 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/grammar/</loc>
+    <loc>https://www.woolym.com/categories/develop/Java/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/develop/Java/</loc>
+    <loc>https://www.woolym.com/categories/grammar/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -685,6 +699,13 @@
   </url>
   
   <url>
+    <loc>https://www.woolym.com/categories/develop/Java/JavaWeb/</loc>
+    <lastmod>2021-07-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.woolym.com/categories/grammar/c-c/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
@@ -692,7 +713,7 @@
   </url>
   
   <url>
-    <loc>https://www.woolym.com/categories/develop/Java/JavaWeb/</loc>
+    <loc>https://www.woolym.com/categories/develop/Java/JavaSE/</loc>
     <lastmod>2021-07-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

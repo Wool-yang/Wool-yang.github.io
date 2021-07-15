@@ -89,6 +89,27 @@
       </tags>
   </entry>
   <entry>
+    <title>Java学习记录 21.07.15</title>
+    <url>/develop/Java/JavaSE/675.html</url>
+    <content><![CDATA[<p>21年暑假小学期 —— 摸鱼中学习</p>
+<p>了解了类加载器、反射、注解相关知识</p>
+<p>了解了一些Java底层的相关数据结构 Set、Map（Treexxx &amp; Hashxxx），红黑树的一些相关知识</p>
+<p>准备开始了解Spring框架以及Vue的相关知识</p>
+<p>怎么说呢，反正不太好说，但也不一定</p>
+]]></content>
+      <categories>
+        <category>开发</category>
+        <category>Java</category>
+        <category>JavaSE</category>
+      </categories>
+      <tags>
+        <tag>开发</tag>
+        <tag>Java</tag>
+        <tag>自我迭代</tag>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>红黑树</title>
     <url>/algorithm/search/673.html</url>
     <content><![CDATA[<p>红黑树 —— 红黑规则及添加节点的规则</p>
@@ -1537,11 +1558,6 @@
       </tags>
   </entry>
   <entry>
-    <title>分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>关于我</title>
     <url>/about/index.html</url>
     <content><![CDATA[<p>&nbsp;</p>
@@ -1562,6 +1578,11 @@
     <title>留言板</title>
     <url>/guestbook/index.html</url>
     <content><![CDATA[<h1 id="想和我说什么，写在下面吧"><a href="#想和我说什么，写在下面吧" class="headerlink" title="想和我说什么，写在下面吧"></a><strong>想和我说什么，写在下面吧</strong></h1>]]></content>
+  </entry>
+  <entry>
+    <title>分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>前端实验</title>
@@ -2057,24 +2078,6 @@ aside{
 	height: 5%;
 	border-top-style: solid;
 	border-top-color: cadetblue;
-}]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/html/jump/js/1.js</url>
-    <content><![CDATA[// JavaScript Document
-function jump(){
-	var select = document.getElementById("list");
-	var num = select.selectedIndex;
-	var text = document.getElementById("site");
-	text.value = select[num].value;
-}
-
-
-
-function jump1() {
-	var site = document.getElementById("site");
-	window.open(site.value, "_self");
 }]]></content>
   </entry>
   <entry>
@@ -2578,6 +2581,24 @@ function jump1() {
 		color:rgba(20,45,105,1.00);
 		font-weight: bold;
 	}
+}]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/html/jump/js/1.js</url>
+    <content><![CDATA[// JavaScript Document
+function jump(){
+	var select = document.getElementById("list");
+	var num = select.selectedIndex;
+	var text = document.getElementById("site");
+	text.value = select[num].value;
+}
+
+
+
+function jump1() {
+	var site = document.getElementById("site");
+	window.open(site.value, "_self");
 }]]></content>
   </entry>
   <entry>
