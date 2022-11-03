@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow：/tags/
+Allow: /about/
+Allow: /page/
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /lib/
+
+Sitemap: https://www.wool.pub/sitemap.xml
+Sitemap: https://www.wool.pub/baidusitemap.xml

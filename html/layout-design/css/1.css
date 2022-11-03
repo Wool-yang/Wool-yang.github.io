@@ -1,0 +1,270 @@
+@charset "utf-8";
+/* CSS Document */
+@media screen and (min-width: 960px){
+	*{
+		padding: 0;
+		margin: 0;
+		font-family: 'Noto Serif SC', serif;
+	}
+	html, body{
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		background-image: url(https://www.woolym.com/html/layout-design/img/bg.jpg);
+		background-color: lightblue;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position:center;
+		background-attachment: fixed;
+	}
+	#div0{
+		height: 100%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	header{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column; 
+		height: 12%;
+		width: 100%;
+		position: relative;
+		top: 5%;
+		background-color: white;
+		opacity: 0.8;
+	}
+	main{
+		width: 100%;
+		height: 66%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+	article{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 30%;
+		height: 90%;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	aside{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 30%;
+		height: 90%;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+	}
+	nav{
+		text-align: center;
+		width: 100%;
+		height: 12%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		position: relative;
+		top: 4.5%;
+	}
+	footer{
+		width: 97%;
+		height: 10%;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+		position: relative;
+		bottom: 1.5%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column; 
+	}
+	#img1{
+		height: 90%;
+		width: 90%;
+		border-radius: 1em;
+	}
+	#title1{
+		font-size: 1.5em;
+		color: aliceblue;
+		font-weight: bold;
+	}
+	.title0{
+		font-size: 2em;
+		color:rgba(207,80,20,1.00);
+		position: relative;
+		
+		font-weight: bolder;
+	}
+	a{
+		font-size: 2em;
+		list-style: none;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+		color:rgba(128,0,197,1.00);
+		font-weight: bold;
+	}
+	a:hover{
+		background-image: none;
+		color:aqua;
+		background-color:rgba(78,124,221,1.00);
+	}
+	#gun{
+		font-size: 2.7em;
+		color:rgba(244,61,249,1.00);
+	}
+	#article1{
+		font-size: 1.5em;
+		color:rgba(14,58,9,1.00);
+		font-weight: bold;
+	}
+	#article2{
+		font-size: 1.5em;
+		color:rgba(20,45,105,1.00);
+		font-weight: bold;
+	}
+}
+@media screen and (max-width: 960px){
+	*{
+		padding: 0;
+		margin: 0;
+		font-family: 'Noto Serif SC', serif;
+	}
+	html, body{
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		background-image: url(https://www.woolym.com/html/layout-design/img/bg.jpg);
+		background-color: lightblue;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position:center;
+		background-attachment: fixed;
+	}
+	#div0{
+		height: 100%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	header{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column; 
+		height: 12%;
+		width: 100%;
+		position: relative;
+		top: 5%;
+		background-color: white;
+		opacity: 0.8;
+	}
+	main{
+		width: 100%;
+		height: 66%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+	article{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 30%;
+		height: 90%;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+	}
+	aside{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 30%;
+		height: 90%;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+	}
+	nav{
+		text-align: center;
+		width: 100%;
+		height: 12%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		position: relative;
+		top: 4.5%;
+	}
+	footer{
+		width: 97%;
+		height: 10%;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+		position: relative;
+		bottom: 1.5%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column; 
+	}
+	#img1{
+		height: 90%;
+		width: 90%;
+		border-radius: 1em;
+	}
+	#title1{
+		font-size: 0.8em;
+		color: aliceblue;
+		font-weight: bold;
+	}
+	.title0{
+		font-size: 1.7em;
+		color:rgba(207,80,20,1.00);
+		font-weight: bolder;
+	}
+	a{
+		font-size: 0.9em;
+		list-style: none;
+		background-image: url(https://www.woolym.com/html/personal-document/img/bg2.png);
+		border-radius: 1em;
+		color:rgba(128,0,197,1.00);
+		font-weight: bold;
+	}
+	a:hover{
+		background-image: none;
+		color:aqua;
+		background-color:rgba(78,124,221,1.00);
+	}
+	#gun{
+		font-size: 2em;
+		color:rgba(244,61,249,1.00);
+	}
+	#article1{
+		font-size: 0.8em;
+		color:rgba(14,58,9,1.00);
+		font-weight: bold;
+	}
+	#article2{
+		font-size: 0.8em;
+		color:rgba(20,45,105,1.00);
+		font-weight: bold;
+	}
+}

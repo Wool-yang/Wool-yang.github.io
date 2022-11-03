@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>我的课程表</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+<style type = "text/css">
+@media screen and (min-width: 960px){
+   html, body{
+    	width: 100%;
+    	height: 100%;
+		background-color: whitesmoke;
+	    margin: 0;
+	}
+	#div1{
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+	}
+	#table1{
+		position: absolute;
+		top: 35%;
+		border-collapse:collapse;
+		width: 75%;
+		height: 50%;
+		line-height: 1.2em;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 1.0625em;
+		font-weight:500;
+		table-layout:fixed;
+	}
+	th,td{
+		width: 16.6666666666666666%;
+	}
+	tr{
+		height: 20%;
+	}
+	#form1{
+		position: absolute;
+		z-index: 2;
+		top: 27%;
+		width: 75%;
+	}
+	#select1{
+		width: 100%;
+		padding: 0 45% 0 45%;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 1.25em;
+		background-color: skyblue;
+		color: white;
+		font-weight:bolder;
+	}
+	option{
+		text-align: center;
+		color: white;
+		font-weight:bolder;
+	}
+	#caption{
+		position: absolute;
+		top: 2%;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 3.4375em;
+		color: steelblue;
+	}
+	#back{
+		position: absolute;
+		top: 90%;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 1.25em;
+	}
+	.a{
+		background-color: steelblue;
+		color: whitesmoke;
+	}
+	.b{
+		background-color: skyblue;
+		color: black;
+	}
+}
+
+@media screen and (max-width: 960px){
+   html, body{
+    	width: 100%;
+    	height: 100%;
+		background-color: whitesmoke;
+	    margin: 0;
+	}
+	#div1{
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+	}
+	#table1{
+		position: relative;
+		border-collapse:collapse;
+		width: 95%;
+		height: 70%;
+		line-height: 1em;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 0.9em;
+		font-weight:500;
+		table-layout:fixed;
+	}
+	th,td{
+		width: 16.6666666666666666%;
+	}
+	tr{
+		height: 20%;
+	}
+	#form1{
+		position: relative;
+		z-index: 2;
+		top: -2%;
+		width: 90%;
+	}
+	#select1{
+		width: 100%;
+		padding: 0 35% 0 36%;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 1.10em;
+		background-color: skyblue;
+		color: white;
+		font-weight:bolder;
+	}
+	option{
+		text-align: center;
+		color: white;
+		font-weight:bolder;
+	}
+	#caption{
+		position: relative;
+		top: -2%;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 1.25em;
+		color: steelblue;
+	}
+	#back{
+		position: relative;
+		top: 5%;
+		font-family:  'Noto Serif SC', serif;
+		font-size: 1.0em;
+	}
+	.a{
+		background-color: steelblue;
+		color: whitesmoke;
+	}
+	.b{
+		background-color: skyblue;
+		color: black;
+	}
+}
+	
+</style>
+</head>
+
+<body>
+	<div id = "div1">
+		<p id = "caption">2020-2021学年第1学期1918班课程表</p>
+		<form id = "form1">
+			<select id = "select1" onmousedown = "if(this.options.length>6){this.size=7}" onblur = "this.size = 0" onchange = "this.size = 0;setKecheng(this.options[this.options.selectedIndex].value);">
+				<option selected value ="0">选择周数</option>
+				<option value="1">第1周</option>
+				<option value="2">第2周</option>
+				<option value="3">第3周</option>
+				<option value="4">第4周</option>
+				<option value="5">第5周</option>
+				<option value="6">第6周</option>
+				<option value="7">第7周</option>
+				<option value="8">第8周</option>
+				<option value="9">第9周</option>
+				<option value="10">第10周</option>
+				<option value="11">第11周</option>
+				<option value="12">第12周</option>
+				<option value="13">第13周</option>
+				<option value="14">第14周</option>
+				<option value="15">第15周</option>
+				<option value="16">第16周</option>
+			</select>
+		</form>
+		<table id = "table1">
+			<tr>
+				<th class = "a">上课节数</th>
+				<th class = "a">星期一</th>
+				<th class = "a">星期二</th>
+				<th class = "a">星期三</th>
+				<th class = "a">星期四</th>
+				<th class = "a">星期五</th>
+			</tr>
+			<tr>
+				<th class = "b">第一大节</th>
+				<td class = "b"></td>
+				<td class = "b"></td>
+				<td class = "b"></td>
+				<td class = "b"></td>
+				<td class = "b"></td>
+			</tr>
+			<tr>
+				<th class = "a">第二大节</th>
+				<td class = "a"></td>
+				<td class = "a"></td>
+				<td class = "a"></td>
+				<td class = "a"></td>
+				<td class = "a"></td>
+			</tr>
+			<tr>
+				<th class = "b">第三大节</th>
+				<td class = "b"></td>
+				<td class = "b"></td>
+				<td class = "b"></td>
+				<td class = "b"></td>
+				<td class = "b"></td>
+			</tr>
+			<tr>
+				<th class = "a">第四大节</th>
+				<td class = "a"></td>
+				<td class = "a"></td>
+				<td class = "a"></td>
+				<td class = "a"></td>
+				<td class = "a"></td>
+			</tr>
+		</table>
+		<p id = "back">返回我的博客&nbsp;<a href="https://www.woolym.com/">Wool's Blog</a></p>
+	</div>
+	<script>
+		var kecheng3 = new Array();
+		for(var i = 1;i <= 16;i++){
+			kecheng3[i] = new Array();
+		}
+		for(var i = 1;i <= 16;i++){
+			for(var j = 1;j <= 4;j++){
+				kecheng3[i][j] = new Array();
+			}
+		}
+		var a = document.getElementById("table1");
+		for(var i = 1;i <= 16;i++)
+		{
+			for(var j = 1;j <= 4;j++)
+			{
+				for(var k = 1;k <= 5;k++)
+				{
+					kecheng3[i][j][k] = " ";
+				}
+			}
+		}
+		for(var i = 1;i <= 16;i++)
+		{
+			if(i >= 1 && i <= 8){
+				kecheng3[i][2][1] = "Linux与Python编程R @行勉楼C213";
+				kecheng3[i][2][5] = "Linux与Python编程R @行知楼C123";
+				kecheng3[i][1][5] = "电子与电路技术R19 @行勉楼C210";
+				kecheng3[i][1][3] = "电子与电路技术R19 @行勉楼C212";
+			}
+			if(i >= 1 && i <= 16){
+				kecheng3[i][3][1] = "马克思主义基本原理 @行知楼A103";
+				kecheng3[i][4][2] = "体育(三) @体育场东操场";
+			}
+			if(i >= 1 && i <= 14){
+				kecheng3[i][3][2] = "数据结构与算法R @行勉楼C211";
+				kecheng3[i][2][4] = "数据结构与算法R @行勉楼C211";
+				kecheng3[i][2][3] = "离散结构R @行勉楼C310";
+				kecheng3[i][4][5] = "离散结构R @行知楼C124";
+				kecheng3[i][3][3] = "大学英语(三) @行远楼A302";
+				kecheng3[i][4][4] = "大学英语(三) @行知楼B213";
+			}
+			if(i % 2 == 0){
+				kecheng3[i][3][4] = "英语听力(三) @行知楼B214";
+			}
+			if(i >= 1 && i <= 12){
+				kecheng3[i][4][1] = "概率论与数理统计E @行知楼C122";
+				kecheng3[i][4][3] = "概率论与数理统计E @行知楼C122";
+			}
+			if(i >= 9 && i <= 16){
+				kecheng3[i][1][2] = "Web程序设计基础R @行勉楼C213";
+				kecheng3[i][3][5] = "Web程序设计基础R @行勉楼C213";
+			}
+			if(i >= 9 && i <= 11){
+				kecheng3[i][1][4] = "形势与政策(三) @行知楼A106";
+			}
+		}
+		function setKecheng(v){
+			if(v == 0){
+				clean();
+			}
+			else{
+				for(var j = 1;j <= 4;j++)
+				{
+					for(var k = 1;k <= 5;k++)
+					{
+						a.rows[j].cells[k].innerHTML = kecheng3[v][j][k];
+					}
+				}
+			}	
+		}
+		function clean(){
+			for(var j = 1;j <= 4;j++)
+			{
+				for(var k = 1;k <= 5;k++)
+				{
+					a.rows[j].cells[k].innerHTML = " ";
+				}
+			}
+		}
+	</script>
+</body>
+</html>

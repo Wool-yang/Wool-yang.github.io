@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<title id = "title">&nbsp;&nbsp;即将转到我的博客&nbsp;&nbsp;</title>
+<meta http-equiv="Refresh" content="8;url=https://www.woolym.com/" />
+	
+
+<style type = "text/css">
+	html, body{
+    	width: 100%;
+    	height: 100%;
+		margin: 0;
+	}
+	body
+  	{
+  		background-color:#292929;
+  	}
+	.text{
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+	}
+	#sentence{
+		font-family: 'Noto Serif SC', serif;
+		color:gainsboro;
+		font-size:5em;
+	}
+	#sentence1{
+		font-family: 'Noto Serif SC', serif;
+		color:lightgrey;
+		font-size: 2em;
+	}
+</style>
+
+</head>
+
+<body>
+<script color="255,255,255" opacity="1" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+<script type="text/javascript">
+	var y = 1;
+	var senten = "";
+	var senten1 = "你好！";
+	var senten2 = "欢迎您来看我的博客！";
+	var senten3 = "正在跳转~";
+	function s(){
+		if(y <= 5){
+			senten += senten1.charAt(y - 1);
+			document.getElementById("sentence").innerHTML = senten;
+			y++;
+		}
+		else if(y > 5 && y <= 17){
+			if(y == 6)
+				senten = "";
+			senten += senten2.charAt(y - 6);
+			document.getElementById("sentence").innerHTML = senten;
+			y++;
+		}
+		else if(y > 17 && y <= 24){
+			if(y == 18)
+				senten = "";
+			senten += senten3.charAt(y - 18);
+			document.getElementById("sentence").innerHTML = senten;
+			y++;
+		}
+	}
+	setInterval(function() {
+    	var tag = document.getElementById('title');
+    	var content = tag.innerText; 
+    	var firstStr = content.charAt(0);
+    	var surplue = content.substring(1, content.length);
+    	var new_content = surplue + firstStr;
+    	tag.innerText = new_content;
+	}, 250);
+	var x = 1;
+	function titlechange(){
+		if(x == 1){
+    		document.getElementById('title').innerHTML = "Wool's Blog&nbsp;&nbsp;";
+			x++;
+		}else{
+			document.getElementById('title').innerHTML = "即将转到我的博客&nbsp;&nbsp;";
+			x = 1;
+		}
+	}
+	setInterval(titlechange, 3500);
+	setTimeout('setInterval(s, 300)', 700);
+</script>
+	
+<div class ="text" >
+	<p id = "sentence">&nbsp;</p>
+	<p id = "sentence1" >正式域名备案中：www.woolym.com</p>
+</div>
+	
+</body>
+</html>

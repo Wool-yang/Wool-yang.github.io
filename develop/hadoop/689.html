@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="bBf4UwQsu3tjvhxd8eOYQLYivi2knvemJ03baYeycUA">
+  <meta name="baidu-site-verification" content="code-tua0XJL2qZ">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans+SC:300,300italic,400,400italic,700,700italic|Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.woolym.com","root":"/","scheme":"Muse","version":"8.0.2","exturl":false,"sidebar":{"position":"left","width":260,"display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/./public/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="记录自己尝试搭建Hadoop集群的一次经历">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop集群本地虚拟机部署 + Hadoop HA部署">
+<meta property="og:url" content="https://www.woolym.com/develop/hadoop/689.html">
+<meta property="og:site_name" content="Wool&#39;s Blog">
+<meta property="og:description" content="记录自己尝试搭建Hadoop集群的一次经历">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-17T15:15:05.000Z">
+<meta property="article:modified_time" content="2022-04-24T07:37:03.817Z">
+<meta property="article:author" content="Wool">
+<meta property="article:tag" content="开发">
+<meta property="article:tag" content="Hadoop">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.woolym.com/develop/hadoop/689.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hadoop集群本地虚拟机部署 + Hadoop HA部署 | Wool's Blog</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8ad7d2243c1e647712e62983bb9c0314";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Wool's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">memories.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-游戏站">
+
+    <a href="https://games.woolym.com/" rel="noopener" target="_blank"><i class="fa fa-gamepad fa-fw"></i>游戏站</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0HA"><span class="nav-number">1.</span> <span class="nav-text">无HA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E5%89%8D%E8%AE%BE%E8%AE%A1%E9%9B%86%E7%BE%A4%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">提前设计集群结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">系统配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85vim%E3%80%81net-tools"><span class="nav-number">1.2.1.</span> <span class="nav-text">安装vim、net-tools</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.2.</span> <span class="nav-text">防火墙设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%97%ADSELinux%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.3.</span> <span class="nav-text">关闭SELinux安全系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87java%E7%8E%AF%E5%A2%83%EF%BC%8C%E9%85%8D%E7%BD%AEhadoop"><span class="nav-number">1.2.4.</span> <span class="nav-text">准备java环境，配置hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#java"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hadoop"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">hadoop</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEhadoop%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.5.</span> <span class="nav-text">配置hadoop的配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E5%85%8B%E9%9A%86"><span class="nav-number">1.3.</span> <span class="nav-text">开始克隆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E5%AF%B9%E5%BA%94%E4%B8%BB%E6%9C%BA%E5%90%8D%E5%92%8CIP%E5%9C%B0%E5%9D%80"><span class="nav-number">1.3.1.</span> <span class="nav-text">更改对应主机名和IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%9B%86%E7%BE%A4%E7%9A%84ssh%E5%85%8D%E5%AF%86"><span class="nav-number">1.3.2.</span> <span class="nav-text">配置集群的ssh免密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5"><span class="nav-number">1.3.3.</span> <span class="nav-text">集群时间同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96NameNode"><span class="nav-number">1.3.4.</span> <span class="nav-text">格式化NameNode</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HA%E9%83%A8%E7%BD%B2"><span class="nav-number">2.</span> <span class="nav-text">HA部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.1.</span> <span class="nav-text">集群结构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Zookeeper"><span class="nav-number">2.2.</span> <span class="nav-text">安装Zookeeper</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E5%9C%A8%E4%B8%80%E5%8F%B0%E6%9C%BA%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2"><span class="nav-number">2.2.1.</span> <span class="nav-text">先在一台机器上部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%8DSCP%E5%8F%91%E9%80%81%E5%88%B0%E5%85%B6%E4%BB%96%E8%8A%82%E7%82%B9%E4%B8%8A"><span class="nav-number">2.2.2.</span> <span class="nav-text">再SCP发送到其他节点上</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9Hadoop%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%BAHA"><span class="nav-number">2.3.</span> <span class="nav-text">修改Hadoop的配置文件为HA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%90%AF%E5%8A%A8"><span class="nav-number">2.4.</span> <span class="nav-text">如何启动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8Zookeeper"><span class="nav-number">2.4.1.</span> <span class="nav-text">启动Zookeeper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E5%90%AF%E5%8A%A8JournalNode%EF%BC%88%E4%BB%85%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%9C%A8%E6%89%80%E6%9C%89%E8%A7%84%E5%88%92%E5%A5%BD%E7%9A%84JournalNode%E4%B8%8A%E5%90%AF%E5%8A%A8%EF%BC%89"><span class="nav-number">2.4.2.</span> <span class="nav-text">手动启动JournalNode（仅第一次在所有规划好的JournalNode上启动）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%90%AF%E5%8A%A8%E5%90%8C%E6%AD%A5namenode%EF%BC%88%E4%BB%85%E7%AC%AC%E4%B8%80%E6%AC%A1%EF%BC%89"><span class="nav-number">2.4.3.</span> <span class="nav-text">格式化启动同步namenode（仅第一次）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96ZKFC%EF%BC%88%E4%BB%85%E7%AC%AC%E4%B8%80%E6%AC%A1%EF%BC%89"><span class="nav-number">2.4.4.</span> <span class="nav-text">格式化ZKFC（仅第一次）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%8B%E5%90%8E%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%90%AF%E5%8A%A8%E4%BA%86"><span class="nav-number">2.4.5.</span> <span class="nav-text">之后就可以启动了</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wool"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Wool</p>
+  <div class="site-description" itemprop="description">庸人自扰</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="tencent://QQInterLive/?Cmd=2&Uin=1007950695" title="QQ → tencent:&#x2F;&#x2F;QQInterLive&#x2F;?Cmd&#x3D;2&amp;Uin&#x3D;1007950695" rel="noopener" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1007950695@qq.com" title="E-Mail → mailto:1007950695@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+<br/><br/>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=260 height=95 src="//music.163.com/outchain/player?type=2&id=22767373&auto=0&height=66"></iframe>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.woolym.com/develop/hadoop/689.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Wool">
+      <meta itemprop="description" content="庸人自扰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wool's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hadoop集群本地虚拟机部署 + Hadoop HA部署
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-17 23:15:05" itemprop="dateCreated datePublished" datetime="2022-04-17T23:15:05+08:00">2022-04-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-04-24 15:37:03" itemprop="dateModified" datetime="2022-04-24T15:37:03+08:00">2022-04-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/develop/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/develop/hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.1k</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>记录自己尝试搭建Hadoop集群的一次经历</p>
+<a id="more"></a>
+
+<h2 id="无HA"><a href="#无HA" class="headerlink" title="无HA"></a>无HA</h2><h3 id="提前设计集群结构"><a href="#提前设计集群结构" class="headerlink" title="提前设计集群结构"></a>提前设计集群结构</h3><p>看一下虚拟机NAT的网段号（一般就是192.168.xxx.0），然后提前规划你的几个节点的ip地址以及主机名</p>
+<table>
+<thead>
+<tr>
+<th>node01</th>
+<th>node02</th>
+<th>node03</th>
+<th>node04</th>
+<th>node05</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NameNode</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>SecondaryNameNode</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>ResourceManager</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>NodeManager</td>
+<td>NodeManager</td>
+<td>NodeManager</td>
+<td>NodeManager</td>
+<td>NodeManager</td>
+</tr>
+<tr>
+<td>DataNode</td>
+<td>DataNode</td>
+<td>DataNode</td>
+<td>DataNode</td>
+<td>DataNode</td>
+</tr>
+</tbody></table>
+<h3 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h3><p>CentOS-7-x86_64-2009</p>
+<p>先配置一个node，然后用你的虚拟机的clone功能快速clone出其余几个node</p>
+<p>安装的时候，记得按照你的提前计划</p>
+<ul>
+<li>不要使用DHCP服务器分配地址，你手动设置一个固定的ipv4地址，填写子网掩码，VMWare的网关默认是192.168.xxx.2，然后DNS服务器就写网关就可以了</li>
+<li>更改你的主机名</li>
+<li>除了root用户，你最好创建一个你使用的用户，给一个管理员权限</li>
+</ul>
+<h4 id="安装vim、net-tools"><a href="#安装vim、net-tools" class="headerlink" title="安装vim、net-tools"></a>安装vim、net-tools</h4>  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed | grep net-tools</span><br></pre></td></tr></table></figure>
+
+<p>检查装了没，这个版本的centos应该是自带了</p>
+<p>装 vim 方便之后修改配置文件</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install net-tools</span><br><span class="line">sudo yum install vim</span><br><span class="line"></span><br><span class="line">sudo vim /etc/vimrc</span><br><span class="line">set ts=4(加一行，设置Tab键是四个空格长度,看着舒服)</span><br></pre></td></tr></table></figure>
+
+<h4 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop firewalld.service</span><br><span class="line">sudo systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
+
+<h4 id="关闭SELinux安全系统"><a href="#关闭SELinux安全系统" class="headerlink" title="关闭SELinux安全系统"></a>关闭SELinux安全系统</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/selinux/config</span><br><span class="line"></span><br><span class="line">修改 SELINUX=disabled</span><br></pre></td></tr></table></figure>
+
+<p>不关之后的节点通信可能有问题</p>
+<h4 id="准备java环境，配置hadoop"><a href="#准备java环境，配置hadoop" class="headerlink" title="准备java环境，配置hadoop"></a>准备java环境，配置hadoop</h4><p>JDK下载：<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/">https://www.oracle.com/java/technologies/downloads/</a></p>
+<p>Hadoop：<a target="_blank" rel="noopener" href="https://hadoop.apache.org/releases.html">https://hadoop.apache.org/releases.html</a></p>
+<p>这里我用的是</p>
+<p>hadoop-3.2.3 和 jdk-8u321-linux-x64</p>
+<h5 id="java"><a href="#java" class="headerlink" title="java"></a>java</h5><p>用rpm方式安装了java环境，好处就是不用配置hadoop配置文件hadoop-env.sh中的jdk路径了，rpm安装好之后与默认路径 JAVA_HOME=/usr/java/default 一致</p>
+<p>装之前最好把centos自带的openJDK给卸载了</p>
+<p>循环这个过程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">看一下shell输出的版本</span><br><span class="line">rpm -qa | grep jdk</span><br><span class="line">rpm -e 当前版本</span><br></pre></td></tr></table></figure>
+
+<p>直到 java -version 没有输出</p>
+<p>然后安装你准备好的包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh rpm文件名</span><br></pre></td></tr></table></figure>
+
+<h5 id="hadoop"><a href="#hadoop" class="headerlink" title="hadoop"></a>hadoop</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf hadoop-2.7.1.tar.gz -C /usr/local</span><br></pre></td></tr></table></figure>
+
+<p>这里我装到 /usr/local 下了，你随意</p>
+<p>然后把hadoop常用的bash目录配置到PATH里</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/profile.d/hadoop.sh</span><br><span class="line">写两行</span><br><span class="line">export HADOOP_HOME=你的hadoop目录在哪里？</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br><span class="line">立即生效</span><br></pre></td></tr></table></figure>
+
+<p>因为是sudo解压的hadoop目录，你的用户没有权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R 用户名:组名 hadoop目录</span><br></pre></td></tr></table></figure>
+
+<p>最后创建一下hadoop的那个 hadoop.tmp.dir ,默认情况下你的NN、DN和之后的JournalNode都是在这个目录存储文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /var/hadoop_data</span><br><span class="line">sudo chown -R 用户名:组名 /var/hadoop_data</span><br></pre></td></tr></table></figure>
+
+<p>这里我创建到 /var 下了，你随意</p>
+<h4 id="配置hadoop的配置文件"><a href="#配置hadoop的配置文件" class="headerlink" title="配置hadoop的配置文件"></a>配置hadoop的配置文件</h4><p>位置都在 你的hadoop目录/etc/hadoop 下存放</p>
+<p>主要就是 </p>
+<ul>
+<li><p>core-site.xml (主节点信息、持久化和数据文件的主目录)</p>
+</li>
+<li><p>hdfs-site.xml (HDFS默认的数据存放策略)</p>
+</li>
+<li><p>mapred-site.xml (MapReduce任务调度策略)</p>
+</li>
+<li><p>yarn-site.xml (Yarn资源管理角色的信息)</p>
+</li>
+<li><p>workers (datanode的信息，我的版本是 workers，可能你的版本旧的话就是 slaves ) </p>
+</li>
+</ul>
+<p>这里参照老师上课时的文档，以及Hadoop的官方文档</p>
+<p><a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html">https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html</a> (配置文件的基本格式，左边栏有各个Configuration文件的默认参数，建议参考一下，里面每个参数的description写参数的作用写的很清楚)</p>
+<p><a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/ClusterSetup.html">https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/ClusterSetup.html</a>  (一些集群操作的参数命令)</p>
+<p>最后配置一下workers文件，把你规划好的所有DataNode的名字添加进去</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nodexx</span><br><span class="line">nodexx</span><br><span class="line">nodexx</span><br></pre></td></tr></table></figure>
+
+<p>配置hosts文件，让机器能解析你的主机名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/hosts</span><br><span class="line">192.168.xxx.80  node01</span><br><span class="line">192.168.xxx.81  node02</span><br><span class="line">192.168.xxx.82  node03</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+
+<p>把这个文件里面之前的内容删除再添加</p>
+<h3 id="开始克隆"><a href="#开始克隆" class="headerlink" title="开始克隆"></a>开始克隆</h3><p>关闭你配置好的这一台机器，克隆出等同于你规划的node数量的机器，过程比安装新机器快得多</p>
+<h4 id="更改对应主机名和IP地址"><a href="#更改对应主机名和IP地址" class="headerlink" title="更改对应主机名和IP地址"></a>更改对应主机名和IP地址</h4><p>克隆完所有机器后，在每台机器上依次执行以下的操作</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/sysconfig/networ-scripts/ifcfg-ens33</span><br><span class="line">把里面的 IPADDR 字段 改成你的规划的对应IP</span><br><span class="line"></span><br><span class="line">sudo vim /etc/hostname</span><br><span class="line">改一下每台主机的主机名</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置集群的ssh免密"><a href="#配置集群的ssh免密" class="headerlink" title="配置集群的ssh免密"></a>配置集群的ssh免密</h4><p>这里可以用 TELNET 登录，我用的 XShell，可以同时把键盘输入发送给多个 Session</p>
+<p>建议用这个功能，特别方便</p>
+<p>在所有机器上执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">一路确认后生成rsa公钥</span><br><span class="line"></span><br><span class="line">给每台机器的公钥都拷贝给所有机器</span><br><span class="line">ssh-copy-id node01</span><br><span class="line">ssh-copy-id node02</span><br><span class="line">ssh-copy-id node03</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+
+<h4 id="集群时间同步"><a href="#集群时间同步" class="headerlink" title="集群时间同步"></a>集群时间同步</h4><p>课件上老师的方法 (适用于集群可以连接外网)：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">crontab –e</span><br><span class="line">键入下面的一行代码：</span><br><span class="line">0 1 * * * /usr/sbin/ntpdate us.pool.ntp.org</span><br></pre></td></tr></table></figure>
+
+<p>无法连接外网：</p>
+<p>我找了一篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/a18850765326/article/details/121693857">https://blog.csdn.net/a18850765326/article/details/121693857</a></p>
+<p>方法就是选择一个服务器作为同步对象，让其他服务器和他同步</p>
+<h4 id="格式化NameNode"><a href="#格式化NameNode" class="headerlink" title="格式化NameNode"></a>格式化NameNode</h4><p>在你的设计的 NameNode 上执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs namenode -format</span><br></pre></td></tr></table></figure>
+
+<p>至此，无HA的Hadoop集群就可以正常运行了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start-dfs.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="HA部署"><a href="#HA部署" class="headerlink" title="HA部署"></a>HA部署</h2><p>HA部署在官网有两种方式，一种是 QJM，另一种是 NFS</p>
+<ul>
+<li>使用QJM时，active的NameNode和standby的NameNode使用独立守护进程JournalNode通信。当Active节点执行任何命名空间修改时，它会将修改记录持久地记录到这些 JN 中的大多数。这样Standby 节点就能够从 JN 中读取同步数据</li>
+<li>NFS与QJM类似，只不过没有使用JournalNode，使用了一个支持NFS的远程文件管理器装载在每个NameNode上同步数据</li>
+</ul>
+<p>我使用了QJM方式</p>
+<h3 id="集群结构设计"><a href="#集群结构设计" class="headerlink" title="集群结构设计"></a>集群结构设计</h3><table>
+<thead>
+<tr>
+<th>node01</th>
+<th>node02</th>
+<th>node03</th>
+<th>node04</th>
+<th>node05</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NameNode</td>
+<td></td>
+<td><strong>NameNode</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ZKFailoverController</strong></td>
+<td></td>
+<td><strong>ZKFailoverController</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>ResourceManager</td>
+<td></td>
+<td></td>
+<td><strong>ResourceManager</strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>JournalNode</strong></td>
+<td></td>
+<td><strong>JournalNode</strong></td>
+<td><strong>JournalNode</strong></td>
+</tr>
+<tr>
+<td>NodeManager</td>
+<td>NodeManager</td>
+<td>NodeManager</td>
+<td>NodeManager</td>
+<td>NodeManager</td>
+</tr>
+<tr>
+<td>DataNode</td>
+<td>DataNode</td>
+<td>DataNode</td>
+<td>DataNode</td>
+<td>DataNode</td>
+</tr>
+<tr>
+<td><strong>QuorumPeerMain</strong></td>
+<td><strong>QuorumPeerMain</strong></td>
+<td><strong>QuorumPeerMain</strong></td>
+<td><strong>QuorumPeerMain</strong></td>
+<td><strong>QuorumPeerMain</strong></td>
+</tr>
+</tbody></table>
+<p>对应的进程的含义如果你觉得好奇，官网写的很清楚</p>
+<p><strong>JournalNode</strong>、<strong>ZKFailoverController</strong>：<a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HDFSHighAvailabilityWithQJM.html">https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HDFSHighAvailabilityWithQJM.html</a></p>
+<p>我是先部署了无HA集群，再进行修改成HA集群，如果你要部署HA，可以在克隆前就把Hadoop的配置文件写成HA的配置，并且把Zookeeper配置好</p>
+<h3 id="安装Zookeeper"><a href="#安装Zookeeper" class="headerlink" title="安装Zookeeper"></a>安装Zookeeper</h3><p>官网：<a target="_blank" rel="noopener" href="https://zookeeper.apache.org/releases.html">https://zookeeper.apache.org/releases.html</a></p>
+<p>我用了 latest stable release 版本，apache-zookeeper-3.7.0</p>
+<h4 id="先在一台机器上部署"><a href="#先在一台机器上部署" class="headerlink" title="先在一台机器上部署"></a>先在一台机器上部署</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf apache-zookeeper-3.7.0-bin.tar.gz -C /usr/local/</span><br><span class="line">sudo chown -R 用户名:组名 /usr/local/apache-zookeeper-3.7.0-bin</span><br></pre></td></tr></table></figure>
+
+<p>同样位置不固定</p>
+<p>修改配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">cd apache-zookeeper-3.7.0-bin/conf/</span><br><span class="line">cp zoo_sample.cfg zoo.cfg</span><br><span class="line">vim zoo.cfg</span><br><span class="line"></span><br><span class="line">修改dataDir=/var/zookeeper_data/ 位置不固定</span><br><span class="line"></span><br><span class="line">添加：</span><br><span class="line">server.1=node01:2888:3888</span><br><span class="line">server.2=node02:2888:3888</span><br><span class="line">server.3=node03:2888:3888</span><br><span class="line">···</span><br><span class="line">之后就:wq</span><br><span class="line"></span><br><span class="line">创建dataDir文件夹</span><br><span class="line">sudo mkdir /var/zookeeper_data</span><br><span class="line">sudo chown -R 用户名:组名 /var/zookeeper_data</span><br><span class="line">echo 1 &gt; /var/zookeeper_data/myid</span><br></pre></td></tr></table></figure>
+
+<h4 id="再SCP发送到其他节点上"><a href="#再SCP发送到其他节点上" class="headerlink" title="再SCP发送到其他节点上"></a>再SCP发送到其他节点上</h4><p>这里说的是先部署了非HA集群，克隆时没有克隆zookeeper的情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo scp -r /usr/local/apache-zookeeper-3.7.0-bin node02:/usr/local</span><br><span class="line">sudo scp -r /var/zookeeper_data node02:/var</span><br><span class="line">···</span><br><span class="line">记得把权限提升</span><br><span class="line">然后把每个myid文件都改成对应的id</span><br><span class="line">例如：node02改成2</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="修改Hadoop的配置文件为HA"><a href="#修改Hadoop的配置文件为HA" class="headerlink" title="修改Hadoop的配置文件为HA"></a>修改Hadoop的配置文件为HA</h3><p>同样是这些文件</p>
+<ul>
+<li>core-site.xml (主节点信息、持久化和数据文件的主目录)</li>
+<li>hdfs-site.xml (HDFS默认的数据存放策略)</li>
+<li>mapred-site.xml (MapReduce任务调度策略)</li>
+<li>yarn-site.xml (Yarn资源管理角色的信息)</li>
+</ul>
+<p>同样参照老师上课时的文档，以及Hadoop的官方文档</p>
+<p><a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HDFSHighAvailabilityWithQJM.html">https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HDFSHighAvailabilityWithQJM.html</a></p>
+<h3 id="如何启动"><a href="#如何启动" class="headerlink" title="如何启动"></a>如何启动</h3><h4 id="启动Zookeeper"><a href="#启动Zookeeper" class="headerlink" title="启动Zookeeper"></a>启动Zookeeper</h4><p>所有节点</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Zookeeper目录/bin/zkServer.sh start</span><br></pre></td></tr></table></figure>
+
+<h4 id="手动启动JournalNode（仅第一次在所有规划好的JournalNode上启动）"><a href="#手动启动JournalNode（仅第一次在所有规划好的JournalNode上启动）" class="headerlink" title="手动启动JournalNode（仅第一次在所有规划好的JournalNode上启动）"></a>手动启动JournalNode（仅第一次在所有规划好的JournalNode上启动）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs --daemon start journalnode</span><br></pre></td></tr></table></figure>
+
+<h4 id="格式化启动同步namenode（仅第一次）"><a href="#格式化启动同步namenode（仅第一次）" class="headerlink" title="格式化启动同步namenode（仅第一次）"></a>格式化启动同步namenode（仅第一次）</h4><p>在一个NameNode上执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hdfs namenode -format</span><br><span class="line">hdfs --daemon start namenode</span><br></pre></td></tr></table></figure>
+
+<p>这时候在另一个节点上执行同步</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs namenode -bootstrapStandby</span><br></pre></td></tr></table></figure>
+
+<h4 id="格式化ZKFC（仅第一次）"><a href="#格式化ZKFC（仅第一次）" class="headerlink" title="格式化ZKFC（仅第一次）"></a>格式化ZKFC（仅第一次）</h4><p>在任意一个NameNode上格式化</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs zkfc -formatZK</span><br></pre></td></tr></table></figure>
+
+<h4 id="之后就可以启动了"><a href="#之后就可以启动了" class="headerlink" title="之后就可以启动了"></a>之后就可以启动了</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start-all.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>配置文件别敲错</li>
+<li><strong>启动不了进程去hadoop/logs里面查看对应进程的log文件中的error查错</strong></li>
+<li>使用虚拟机快照记录当前状态，之后可以回档</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>鼓励我</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/alipay.jpg" alt="Wool 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/develop/" rel="tag"><i class="fa fa-tag"></i> 开发</a>
+              <a href="/tags/hadoop/" rel="tag"><i class="fa fa-tag"></i> Hadoop</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/knowledge/MIT-Missing-Semester/687.html" rel="prev" title="MIT-Missing-Semester-01">
+                  <i class="fa fa-chevron-left"></i> MIT-Missing-Semester-01
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/develop/spark/690.html" rel="next" title="Spark on Yarn环境配置以及Hadoop HA配置中的问题">
+                  Spark on Yarn环境配置以及Hadoop HA配置中的问题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">92k</span>
+  </span>
+</div>
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user-alt"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wool</span>
+</div>
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">晋ICP备20000181号-3 </a>
+      <img src="/images/beian.png" style="display: inline-block;">
+  </div><script color="176,196,222" opacity="0.9" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

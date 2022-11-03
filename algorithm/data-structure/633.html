@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="bBf4UwQsu3tjvhxd8eOYQLYivi2knvemJ03baYeycUA">
+  <meta name="baidu-site-verification" content="code-tua0XJL2qZ">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans+SC:300,300italic,400,400italic,700,700italic|Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.woolym.com","root":"/","scheme":"Muse","version":"8.0.2","exturl":false,"sidebar":{"position":"left","width":260,"display":"always","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/./public/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="线索二叉树 —— 利用二叉树二叉链结构中的空链域，储存某种遍历次序下每个带空链域的结点的前驱（后继）结点的指针">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线索二叉树的理解与实现">
+<meta property="og:url" content="https://www.woolym.com/algorithm/data-structure/633.html">
+<meta property="og:site_name" content="Wool&#39;s Blog">
+<meta property="og:description" content="线索二叉树 —— 利用二叉树二叉链结构中的空链域，储存某种遍历次序下每个带空链域的结点的前驱（后继）结点的指针">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-20T15:50:27.000Z">
+<meta property="article:modified_time" content="2020-11-17T14:46:57.681Z">
+<meta property="article:author" content="Wool">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.woolym.com/algorithm/data-structure/633.html">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>线索二叉树的理解与实现 | Wool's Blog</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8ad7d2243c1e647712e62983bb9c0314";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Wool's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">memories.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-游戏站">
+
+    <a href="https://games.woolym.com/" rel="noopener" target="_blank"><i class="fa fa-gamepad fa-fw"></i>游戏站</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%A6%81%E7%90%86%E8%A7%A3%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">简要理解：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E7%90%86%E8%A7%A3-%E5%92%8C-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">具体理解 和 代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E"><span class="nav-number">2.1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E9%80%92%E5%BD%92%E5%BB%BA%E7%AB%8B%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">2.2.</span> <span class="nav-text">先序遍历递归建立二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%B4%A2%E5%8C%96%E8%BF%87%E7%A8%8B"><span class="nav-number">2.3.</span> <span class="nav-text">线索化过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E5%BA%8F%E9%9D%9E%E9%80%92%E5%BD%92%E5%8C%96%E9%81%8D%E5%8E%86%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">2.4.</span> <span class="nav-text">中序非递归化遍历线索二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E5%90%91"><span class="nav-number">2.4.1.</span> <span class="nav-text">正向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%90%91"><span class="nav-number">2.4.2.</span> <span class="nav-text">反向</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E5%8C%96%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95"><span class="nav-number">2.5.</span> <span class="nav-text">递归化遍历方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#main%E5%87%BD%E6%95%B0"><span class="nav-number">2.6.</span> <span class="nav-text">main函数</span></a></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wool"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Wool</p>
+  <div class="site-description" itemprop="description">庸人自扰</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="tencent://QQInterLive/?Cmd=2&Uin=1007950695" title="QQ → tencent:&#x2F;&#x2F;QQInterLive&#x2F;?Cmd&#x3D;2&amp;Uin&#x3D;1007950695" rel="noopener" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1007950695@qq.com" title="E-Mail → mailto:1007950695@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+<br/><br/>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=260 height=95 src="//music.163.com/outchain/player?type=2&id=22767373&auto=0&height=66"></iframe>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.woolym.com/algorithm/data-structure/633.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Wool">
+      <meta itemprop="description" content="庸人自扰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wool's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          线索二叉树的理解与实现
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-20 23:50:27" itemprop="dateCreated datePublished" datetime="2020-10-20T23:50:27+08:00">2020-10-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-17 22:46:57" itemprop="dateModified" datetime="2020-11-17T22:46:57+08:00">2020-11-17</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/algorithm/data-structure/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.6k</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>线索二叉树 —— 利用二叉树二叉链结构中的空链域，储存某种遍历次序下每个带空链域的结点的前驱（后继）结点的指针</p>
+<a id="more"></a>
+
+<p><strong>数据结构课代码实现 之 中序线索二叉树</strong></p>
+<h2 id="简要理解："><a href="#简要理解：" class="headerlink" title="简要理解："></a>简要理解：</h2><p>设p为二叉树中的一个结点</p>
+<ol>
+<li>若 <code>p-&gt;lchild</code> 为空 则储存中序遍历序列中 <code>p</code> 的前驱结点</li>
+<li>若 <code>p-&gt;rchild</code> 为空 则储存中序遍历序列中 <code>p</code> 的后继结点</li>
+</ol>
+<p>那么在遍历二叉树线索化时需要一个标记来指明结点的 <code>lchild</code> 与 <code>rchild</code> 指向的是 线索指针 还是 孩子指针</p>
+<p>线索化后可以不使用递归遍历，且可以正反向遍历</p>
+<h2 id="具体理解-和-代码实现"><a href="#具体理解-和-代码实现" class="headerlink" title="具体理解 和 代码实现"></a>具体理解 和 代码实现</h2><h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OVERFLOW -2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR -1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span>&#123;</span>Link, Thread&#125; PointerTag; <span class="comment">//枚举类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiThrNode</span> // 线索二叉树比普通树多两个标记</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiThrNode</span> *<span class="title">lchild</span>, *<span class="title">rchild</span>;</span>   </span><br><span class="line">    PointerTag ltag; </span><br><span class="line">    PointerTag rtag; <span class="comment">// 用来标记每个结点的*lchild, *rchild指向的是 线索指针 还是 孩子指针</span></span><br><span class="line">&#125;BiThrNode, *BiThrTree;</span><br><span class="line"></span><br><span class="line">BiThrTree pre; <span class="comment">// 很关键的一个指针 用于线索化时储存上一个结点</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">visit</span><span class="params">(<span class="keyword">char</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>; <span class="comment">//visit函数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="先序遍历递归建立二叉树"><a href="#先序遍历递归建立二叉树" class="headerlink" title="先序遍历递归建立二叉树"></a>先序遍历递归建立二叉树</h3><p>这里踩了个坑，一开始忘记把所有结点的 <code>ltag</code> 和 <code>rtag</code> 全部初始化为 <code>Link</code>，这会导致后面的 <code>InOrderThreading</code> 过程中产生错误</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CreateBiThrTree</span><span class="params">(BiThrTree &amp;T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; ch; </span><br><span class="line">    <span class="keyword">if</span>(ch == <span class="string">&#x27;#&#x27;</span>) T = <span class="literal">NULL</span>; <span class="comment">// 输入 # 号将当前结点设置为NULL</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!(T = (BiThrNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiThrNode)))) <span class="built_in">exit</span>(OVERFLOW);</span><br><span class="line">        T-&gt;data = ch;</span><br><span class="line">        T-&gt;ltag = Link;</span><br><span class="line">        T-&gt;rtag = Link;</span><br><span class="line">        CreateBiThrTree(T-&gt;lchild);</span><br><span class="line">        CreateBiThrTree(T-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="线索化过程"><a href="#线索化过程" class="headerlink" title="线索化过程"></a>线索化过程</h3><p>线索化的过程就是将中序遍历的过程中的访问操作改为线索化过程</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InThreading</span><span class="params">(BiThrTree p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(p)</span><br><span class="line">    &#123;</span><br><span class="line">        InThreading(p-&gt;lchild);</span><br><span class="line">        <span class="keyword">if</span>(!p-&gt;lchild)</span><br><span class="line">        &#123;</span><br><span class="line">            p-&gt;ltag = Thread; </span><br><span class="line">            p-&gt;lchild = pre;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!pre-&gt;rchild)</span><br><span class="line">        &#123;</span><br><span class="line">            pre-&gt;rtag = Thread;</span><br><span class="line">            pre-&gt;rchild = p;   <span class="comment">//下文解释此处为何对pre指针进行操作</span></span><br><span class="line">        &#125;</span><br><span class="line">        pre = p;</span><br><span class="line">        InThreading(p-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 中序遍历顺序相同 读取数据操作变为线索化过程</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">InOrderThreading</span><span class="params">(BiThrTree &amp;Thrt,BiThrTree T)</span> <span class="comment">// 此处新创建一个线索树</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!(Thrt = (BiThrNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiThrNode)))) <span class="built_in">exit</span>(OVERFLOW);</span><br><span class="line">    Thrt-&gt;ltag = Link;       <span class="comment">//创建 Thrt 的头结点</span></span><br><span class="line">    Thrt-&gt;rtag = Thread;     <span class="comment">//书上将 Thrt 的头结点的 ltag 设置为 Link, ltag 设置为 Link</span></span><br><span class="line">    Thrt-&gt;rchild = Thrt;     <span class="comment">//将 Thrt 头结点的 rchild 指向自己</span></span><br><span class="line">    <span class="keyword">if</span>(!T) Thrt-&gt;lchild = Thrt; <span class="comment">//如果 T 为空，则将 Thrt 头结点的 lchild 指向自己</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Thrt-&gt;lchild = T;</span><br><span class="line">        pre = Thrt;</span><br><span class="line">        InThreading(T);      <span class="comment">//此时 pre指针 指向了 T 中序遍历的最后一个结点</span></span><br><span class="line">        pre-&gt;rchild = Thrt;  <span class="comment">//将最后一个结点的后继指针指向 Thrt 的头结点 </span></span><br><span class="line">        pre-&gt;rtag = Thread;  <span class="comment">//更改最后一个结点 rchild 的类型</span></span><br><span class="line">        Thrt-&gt;rchild = pre;	 <span class="comment">//将 Thrt 的 rchild 指向最后一个结点 在倒中序遍历时有用</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 <code>InThreading</code> 中,遍历时，无法确认当前结点的后继结点，但是可以确定 <code>pre</code>结点 的后继结点(也就是当前结点)</p>
+<p>在 <code>InOrderThreading</code> 中对 <code>Thrt</code> 的头结点 <code>ltag</code> 与 <code>rtag</code> 的设置貌似并没有多大意义，在这个程序中使用线索非递归化遍历时并没有检查这两个标记，也许在其他地方有用…</p>
+<h3 id="中序非递归化遍历线索二叉树"><a href="#中序非递归化遍历线索二叉树" class="headerlink" title="中序非递归化遍历线索二叉树"></a>中序非递归化遍历线索二叉树</h3><h4 id="正向"><a href="#正向" class="headerlink" title="正向"></a>正向</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">InOrderTraverse_Thr</span><span class="params">(BiThrTree T,<span class="keyword">bool</span> (* visit)(<span class="keyword">char</span> x))</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BiThrTree p = T-&gt;lchild;  <span class="comment">//指向二叉树的根结点</span></span><br><span class="line">    <span class="keyword">while</span>(p != T)             <span class="comment">//循环检测是否遍历结束 (最后一个结点的后继结点指向 T)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(p-&gt;ltag == Link) </span><br><span class="line">        	p = p-&gt;lchild;    <span class="comment">//循环直至到中序遍历的第一个结点</span></span><br><span class="line">		<span class="keyword">if</span>(!visit(p-&gt;data)) <span class="keyword">return</span> ERROR;</span><br><span class="line">        <span class="keyword">while</span>(p-&gt;rtag == Thread &amp;&amp; p-&gt;rchild != T)</span><br><span class="line">        &#123;</span><br><span class="line">            p = p-&gt;rchild;    <span class="comment">//通过后继结点遍历</span></span><br><span class="line">            visit(p-&gt;data);</span><br><span class="line">        &#125;</span><br><span class="line">        p = p-&gt;rchild;		  <span class="comment">//指向 p结点 的右孩子 (因为此时 p结点 的 rtag 为 Link)</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="反向"><a href="#反向" class="headerlink" title="反向"></a>反向</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">reInOrderTraverse_Thr</span><span class="params">(BiThrTree T,<span class="keyword">bool</span> (* visit)(<span class="keyword">char</span> x))</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BiThrTree p = T-&gt;rchild;   <span class="comment">//指向二叉树的根结点</span></span><br><span class="line">    <span class="keyword">while</span>(p != T)              <span class="comment">//循环检测是否遍历结束 (第一个结点的前驱结点指向 T)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(p-&gt;rtag == Link) </span><br><span class="line">            p = p-&gt;rchild;     <span class="comment">//循环直至到中序遍历的最后一个结点</span></span><br><span class="line">        <span class="keyword">if</span>(!visit(p-&gt;data)) <span class="keyword">return</span> ERROR;</span><br><span class="line">        <span class="keyword">while</span>(p-&gt;ltag == Thread &amp;&amp; p-&gt;lchild != T)</span><br><span class="line">        &#123;</span><br><span class="line">            p = p-&gt;lchild;     <span class="comment">//通过前驱结点遍历</span></span><br><span class="line">            visit(p-&gt;data); </span><br><span class="line">        &#125;</span><br><span class="line">        p = p-&gt;lchild;         <span class="comment">//同理还是指向 p结点 的左孩子</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这里还是比较好理解的</p>
+<h3 id="递归化遍历方法"><a href="#递归化遍历方法" class="headerlink" title="递归化遍历方法"></a>递归化遍历方法</h3><p>为了验证，写一下递归化的遍历方法</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ooInThreading</span><span class="params">(BiThrTree p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(p == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    ooInThreading(p-&gt;lchild);</span><br><span class="line">    visit(p-&gt;data);</span><br><span class="line">    ooInThreading(p-&gt;rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h3><p>给出一组数据</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BiThrTree Tre,Thre;</span><br><span class="line">    CreateBiThrTree(Tre);</span><br><span class="line">    ooInThreading(Tre);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    InOrderThreading(Thre, Tre);</span><br><span class="line">    InOrderTraverse_Thr(Thre, visit);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    reInOrderTraverse_Thr(Thre, visit);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 输入： ABPL####CM##NO### */</span></span><br><span class="line"><span class="comment">/* 输出：L P B A M C O N 递归化</span></span><br><span class="line"><span class="comment">        L P B A M C O N 非递归线索化</span></span><br><span class="line"><span class="comment">        N O C M A B P L 反向非递归线索化 */</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>鼓励我</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/alipay.jpg" alt="Wool 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/algorithm/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+              <a href="/tags/data-structure/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/me/life/625.html" rel="prev" title="哈哈">
+                  <i class="fa fa-chevron-left"></i> 哈哈
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/me/status-update/self-iteration/635.html" rel="next" title="博客由 LAMP + WordPress 配置转移至 Github 与 Coding 托管方式双线部署">
+                  博客由 LAMP + WordPress 配置转移至 Github 与 Coding 托管方式双线部署 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">92k</span>
+  </span>
+</div>
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user-alt"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wool</span>
+</div>
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">晋ICP备20000181号-3 </a>
+      <img src="/images/beian.png" style="display: inline-block;">
+  </div><script color="176,196,222" opacity="0.9" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

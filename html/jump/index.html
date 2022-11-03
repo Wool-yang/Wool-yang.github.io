@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type = "text/javascript" src = "js/1.js"></script>
+<title>网页跳转</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+<style>
+	*{
+		font-family: 'Noto Serif SC', serif;
+	}
+	html, body{
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	#main{
+		font-size: 1.2em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 90%;
+		width: 100%;
+	}
+	#cap{
+		font-size: 1.5em;
+	}
+</style>
+</head>
+
+<body>
+	<div id = "main">
+		<div id = "cap">
+			<p>选择要去的网址</p>
+		</div>
+		<div id = "Form">
+			<form>
+				<select id = "list" onChange = "jump()">
+					<option selected = "true" value = "">请选择</option>
+					<option value = "https://www.baidu.com">百度</option>
+					<option value = "https://www.163.com">网易</option>
+					<option value = "https://www.qq.com">qq</option>
+					<option value = "https://www.sina.com.cn">新浪</option>
+				</select>
+				<input id = "site" type= "text"/>
+				<input type="button" onClick = "jump1()" value = "确认跳转"/>
+			</form>
+		</div>
+		<p>返回我的博客：<a href="https://www.woolym.com">https://www.woolym.com</a></p>
+	</div>
+	<script opacity="0.8" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+</body>
+</html>

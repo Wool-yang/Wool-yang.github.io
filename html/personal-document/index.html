@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>个人资料</title>
+<link href = "css/1.css" rel = "stylesheet" type = "text/css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div id = "div0">
+		<div id = "div1"></div>
+		<form>
+			<table id = "main">
+				<caption>请留下个人资料</caption>
+				<tr>
+					<th>姓名:</th>
+					<td><input type = "text" name = "name" class = "input1"/></td>
+				</tr>
+				<tr>
+					<th>E-mail:</th>
+					<td><input type = "email" name = "email" class = "input2"/></td>
+				</tr>
+				<tr>
+					<th>电话:</th>
+					<td><input type = "text" name = "tel" class = "input2" pattern = "^1(3[0-9]|5[0-35-9]|4[57]|7[035-8]|8[0-9]|66|9[89]|47)\d{8}$"></td>
+				</tr>
+				<tr>
+					<th>性别:</th>
+					<td>
+						<table>
+							<td class = "sexwidth">
+								<input type = "radio" name = "sex" id = "woman" checked = "true"/><label for = "woman"> 女</label>
+							</td>
+							<td class = "sexwidth">
+								<input type = "radio" name = "sex" id = "man"/><label for = "man"> 男</label>
+							</td>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<th>年龄:</th>
+					<td>
+						<select>
+  							<option value ="20-" selected = "true">20以下</option>
+  							<option value ="20">20</option>
+  							<option value = "21">21</option>
+  							<option value = "22">22</option>
+							<option value = "23">23</option>
+							<option value = "24">24</option>
+							<option value = "25">25</option>
+							<option value = "25+">25以上</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>留言板:</th>
+					<td id = "guesttd">
+						<textarea wrap = "hard" placeholder = "写一些你想说的话吧！" id = "guestbook"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<th id = "th1">您的爱好:</th>
+					<td>
+						<input type = "checkbox" name = "hobby" value = "sports" id = "sports"/>
+						<label for = "sports">运动</label>
+						<br/>
+						<input type = "checkbox" name = "hobby" value = "read" id = "read"/>
+						<label for = "read">阅读</label>
+						<br/>
+						<input type = "checkbox" name = "hobby" value = "music" id = "music"/>
+						<label for = "music">听音乐</label>
+						<br/>
+						<input type = "checkbox" name = "hobby" value = "travel" id = "travel"/>
+						<label for = "travel">旅游</label>
+						<br/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<table id = "table1">
+							<tr>
+								<td class = "buttontd"><input type="submit" value = "提交" class = "button"/></td>
+								<td class = "buttontd"><input type="reset" value = "全部重写" class = "button"/></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<div id = "div2">
+			<p>👈<a href="https://www.woolym.com/"><span>返回我的博客</span>&nbsp;Wool's Blog</a></p>
+		</div>
+	</div>
+</body>
+</html>
